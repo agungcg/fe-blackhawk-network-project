@@ -6,6 +6,26 @@
     width: 70%;
 }
 
+.entry:after {
+    width: 0;
+    content: "";
+    position: absolute;
+    border: .5px solid #EBEBEB;
+    top: 10px;
+    right: 0px;
+    left: auto;
+    height: 60%;
+}
+
+.text-exit {
+    color: #00cec9  !important;
+}
+
+.bg-exit {
+    background-color: #00cec9 !important;
+}
+
+
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
     .sb-topnav .navbar-brand {

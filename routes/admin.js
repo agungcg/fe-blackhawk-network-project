@@ -8,4 +8,11 @@ router.get('/', function(req, res, next) {
     });
 });
 
+router.get('/md', function(req, res, next) {
+    // chart.render();
+    res.render('admin/md',{
+        "titlePage" : "MD",
+    });
+});
+
 module.exports = router;
