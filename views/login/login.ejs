@@ -42,4 +42,30 @@
             </main>
         </div>
     </div>
+
+    <% 
+        if (messages.length > 0) {
+            if (messages[0] === "nonAdmin") {
+    %>           
+                <script type='text/javascript'>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'You dont Have Permission!',
+                    })
+                </script>
+            <% } else if (messages[0] === "nonRegistered") { %> 
+                <script type='text/javascript'>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Your Email or Password Incorrect!',
+                    })
+                </script>
+    <%
+            }
+        }
+    %>
+    
+
 <%- include('../layout/footer') -%>

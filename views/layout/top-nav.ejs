@@ -35,12 +35,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/">
+                <a class="nav-link" href="/logout">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>
             </li>
         </ul>
+        <% if (titlePage === "Dashboard") { %>
         <ul class="navbar-nav ml-auto ml-md-0 d-flex d-md-none d-lg-none d-xl-none">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,11 +61,12 @@
                         MD
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="/">
+                    <a class="dropdown-item" href="/logout">
                         Logout
                     </a>
                 </div>
             </li>
         </ul>
+        <% } %>
     </nav>
 

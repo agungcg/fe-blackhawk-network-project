@@ -6,86 +6,55 @@
                 <div class="nav-link d-block pb-0">
                     <div class="form-group">
                         <label class="normal">Month</label>
-                        <select class="form-control">
-                            <option>January</option>
-                            <option>February</option>
-                            <option>March</option>
-                            <option>April</option>
-                            <option>May</option>
-                            <option>June</option>
-                            <option>July</option>
-                            <option>August</option>
-                            <option>September</option>
-                            <option>October</option>
-                            <option>November</option>
-                            <option>Desember</option>
+                        <select id="selectMonth" name="selectMonth" class="js-example-basic-single form-control" style="width: 100%">
                         </select>
                     </div>
                 </div>
                 <div class="nav-link d-block pb-0">
                     <div class="form-group">
                         <label class="normal">Brand</label>
-                        <select class="form-control">
-                            <option>Google</option>
-                            <option>Spotify</option>
+                        <select id="selectBrand" name="selectBrand" class="js-example-basic-single form-control" style="width: 100%">
+                            <option></option>
                         </select>
                     </div>
                 </div>
                 <div class="nav-link d-block pb-0">
                     <div class="form-group">
                         <label class="normal">Fixture Type</label>
-                        <select class="form-control">
-                            <option>IDM</option>
-                            <option>SAT</option>
+                        <select id="selectFixtureType" name="selectFixtureType" class="js-example-basic-single form-control" style="width: 100%">
+                            <option></option>
                         </select>
                     </div>
                 </div>
                 <div class="nav-link d-block pb-0">
                     <div class="form-group">
                         <label class="normal">Store</label>
-                        <select class="form-control">
-                            <option>IDM - TINUMBU (T02T)</option>
-                            <option>SAT - TINUMBU RAYA (R419)</option>
-                            <option>SAT - ANDALAS (R063)</option>
-                            <option>IDM - ANDALAS (TKJG)</option>
-                            <option>SAT - MUHAMMDIYAH (R067)</option>
-                            <option>SAT - TENTARA PELAJAR (R054)</option>
+                        <select id="selectStore" name="selectStore" class="js-example-basic-single form-control" style="width: 100%">
+                            <option></option>
                         </select>
                     </div>
                 </div>
                 <div class="nav-link d-block pb-0">
                     <div class="form-group">
                         <label class="normal">DC</label>
-                        <select class="form-control">
-                            <option>1JZ1 - KARAWANG</option>
-                            <option>1MZ1 - PARUNG</option>
-                            <option>BALARAJA</option>
-                            <option>BANDUNG</option>
-                            <option>BEKASI</option>
+                        <select id="selectDC" name="selectDC" class="js-example-basic-single form-control" style="width: 100%">
+                            <option></option>
                         </select>
                     </div>
                 </div>
                 <div class="nav-link d-block pb-0">
                     <div class="form-group">
                         <label class="normal">Supervisor</label>
-                        <select class="form-control">
+                        <select id="selectSupervisor" name="selectSupervisor" class="js-example-basic-single form-control" style="width: 100%" disabled>
+                            <option></option>
                         </select>
                     </div>
                 </div>
                 <div class="nav-link d-block pb-0">
                     <div class="form-group">
                         <label class="normal">MD ID</label>
-                        <select class="form-control">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
-                            <option>7</option>
-                            <option>8</option>
-                            <option>9</option>
-                            <option>10</option>
+                        <select id="selectMD" name="selectMD" class="js-example-basic-single form-control" style="width: 100%">
+                            <option></option>
                         </select>
                     </div>
                 </div>
@@ -103,3 +72,75 @@
         </div>
     </nav>
 </div>
+
+<script type='text/javascript'>
+
+    $(document).ready(function() {
+
+        $.ajax({
+            url: '/function/get-select-sidenav',
+            method: 'get',
+            dataType: 'json',
+            success: function (result) {
+
+                console.log(result)
+
+                $('#selectMonth').select2({
+                    theme: "bootstrap",
+                    data: result[0].month
+                });
+
+                $('#selectBrand').select2({
+                    allowClear: true,
+                    theme: "bootstrap",
+                    placeholder: "Select Brand",
+                    data: result[1].brand
+                });
+
+                $('#selectFixtureType').select2({
+                    allowClear: true,
+                    theme: "bootstrap",
+                    placeholder: "Select Fixture Type",
+                    data: result[2].fixtureType
+                });
+
+                $('#selectStore').select2({
+                    allowClear: true,
+                    theme: "bootstrap",
+                    placeholder: "Select Store",
+                    data: result[3].store
+                });
+
+                $('#selectDC').select2({
+                    allowClear: true,
+                    theme: "bootstrap",
+                    placeholder: "Select DC",
+                    data: result[4].dc
+                });
+
+                $('#selectSupervisor').select2({
+                    allowClear: true,
+                    theme: "bootstrap",
+                    placeholder: "Select Supervisor",
+                    data: ''
+                });
+
+                $('#selectMD').select2({
+                    allowClear: true,
+                    theme: "bootstrap",
+                    placeholder: "Select MD",
+                    data: result[5].md
+                });
+
+                $('#selectMonth').val('<%- month %>').trigger("change");
+
+            }, error: function(error) {
+                console.log(error);
+            }
+        })
+
+        
+    });
+
+   
+</script>
