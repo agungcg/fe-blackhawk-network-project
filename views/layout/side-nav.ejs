@@ -2,11 +2,13 @@
     <nav class="sb-sidenav accordion sb-sidenav-light bg-white shadow" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
+                <form method="POST" action="/admin/filter">
                 <div class="sb-sidenav-menu-heading">Filter</div>
                 <div class="nav-link d-block pb-0">
                     <div class="form-group">
                         <label class="normal">Month</label>
                         <select id="selectMonth" name="selectMonth" class="js-example-basic-single form-control" style="width: 100%">
+                            <option></option>
                         </select>
                     </div>
                 </div>
@@ -14,6 +16,14 @@
                     <div class="form-group">
                         <label class="normal">Brand</label>
                         <select id="selectBrand" name="selectBrand" class="js-example-basic-single form-control" style="width: 100%">
+                            <option></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="nav-link d-block pb-0">
+                    <div class="form-group">
+                        <label class="normal">Retailer</label>
+                        <select id="selectRetailer" name="selectRetailer" class="js-example-basic-single form-control" style="width: 100%">
                             <option></option>
                         </select>
                     </div>
@@ -61,13 +71,14 @@
                 <div class="nav-link d-block pb-0">
                     <div class="row">
                         <div class="mb-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                            <button type="button" class="btn btn-secondary btn-block">Clear</button>
+                            <button type="button" class="btn btn-secondary btn-block" onclick="clearClick()">Clear</button>
                         </div>
                         <div class="mb-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                             <button type="submit" class="btn btn-primary btn-block">Filter</button>
                         </div>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </nav>
@@ -77,16 +88,62 @@
 
     $(document).ready(function() {
 
+        $('#selectMonth').select2({
+            theme: "bootstrap",
+            placeholder: "Select Month",
+        })
+
+        $('#selectBrand').select2({
+            allowClear: true,
+            theme: "bootstrap",
+            placeholder: "Select Brand",
+        });
+
+        $('#selectFixtureType').select2({
+            allowClear: true,
+            theme: "bootstrap",
+            placeholder: "Select Fixture Type",
+        });
+
+        $('#selectStore').select2({
+            allowClear: true,
+            theme: "bootstrap",
+            placeholder: "Select Store",
+        });
+
+        $('#selectDC').select2({
+            allowClear: true,
+            theme: "bootstrap",
+            placeholder: "Select DC",
+        });
+
+        $('#selectSupervisor').select2({
+            allowClear: true,
+            theme: "bootstrap",
+            placeholder: "Select Supervisor",
+            data: ''
+        });
+
+        $('#selectMD').select2({
+            allowClear: true,
+            theme: "bootstrap",
+            placeholder: "Select MD",
+        });
+
+        $('#selectRetailer').select2({
+            allowClear: true,
+            theme: "bootstrap",
+            placeholder: "Select Retailer",
+        });
+
         $.ajax({
             url: '/function/get-select-sidenav',
             method: 'get',
             dataType: 'json',
             success: function (result) {
-
-                console.log(result)
-
                 $('#selectMonth').select2({
                     theme: "bootstrap",
+                    placeholder: "Select Month",
                     data: result[0].month
                 });
 
@@ -132,15 +189,37 @@
                     data: result[5].md
                 });
 
+                $('#selectRetailer').select2({
+                    allowClear: true,
+                    theme: "bootstrap",
+                    placeholder: "Select Retailer",
+                    data: result[6].retailer
+                });
+
                 $('#selectMonth').val('<%- month %>').trigger("change");
+                $('#selectBrand').val('<%- brand %>').trigger("change");
+                $('#selectFixtureType').val('<%- fixture %>').trigger("change");
+                $('#selectStore').val('<%- store %>').trigger("change");
+                $('#selectDC').val('<%- dc %>').trigger("change");
+                $('#selectMD').val('<%- md %>').trigger("change");
+                $('#selectRetailer').val('<%- retailer %>').trigger("change");
 
             }, error: function(error) {
                 console.log(error);
             }
         })
-
-        
     });
+
+    function clearClick(){
+        $('#selectMonth').val('').trigger("change");
+        $('#selectBrand').val('').trigger("change");
+        $('#selectFixtureType').val('').trigger("change");
+        $('#selectStore').val('').trigger("change");
+        $('#selectDC').val('').trigger("change");
+        $('#selectSupervisor').val('').trigger("change");
+        $('#selectMD').val('').trigger("change");
+        $('#selectRetailer').val('').trigger("change");
+    }
 
    
 </script>

@@ -5,31 +5,17 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h1 class="mt-4">Dashboard</h1>
-                <div class="mb-4 row">
-                    <div class="col-12 ">
-                        <button type="submit" class="btn btn-primary float-right">UPLOAD DOCUMENT</button>
-                    </div>
-                </div>
+                <h1 class="my-4">Dashboard</h1>
                 <div class="row">
                     <div class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
                         <div class="card text-center">
                             <h5 class="card-header">Visit Compliance</h5>
                             <div class="card-body">
-                                <div class="progress mb-3">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0</div>
-                                </div>
-                                <div class="progress mb-3">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-exit" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0</div>
-                                </div>
+                                <canvas class="mb-4" id="chartVisitCompliance" width="100%" height="50"></canvas>
                                 <div class="row">
-                                    <div class="entry col-6">
-                                        <h3 class="text-primary">0</h3>
-                                        <h6 class="text-primary">Entry</h6>
-                                    </div>
-                                    <div class="exit col-6">
-                                        <h3 class="text-exit">0</h3>
-                                        <h6 class="text-exit">Exit</h6>
+                                    <div class="col-12">
+                                        <h3 class="text-primary"><%- Math.round(dashboard.visitCompliance.persen) %></h3>
+                                        <h6 class="text-primary">Percent</h6>
                                     </div>
                                 </div>
                             </div>
@@ -42,19 +28,14 @@
                         <div class="card text-center">
                             <h5 class="card-header">Fixture Compliance</h5>
                             <div class="card-body">
-                                <div class="progress mb-3">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0</div>
-                                </div>
-                                <div class="progress mb-3">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-exit" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" style="width: 92%">92</div>
-                                </div>
+                                <canvas class="mb-4" id="chartFixtureCompliance" width="100%" height="50"></canvas>
                                 <div class="row">
                                     <div class="entry col-6">
-                                        <h3 class="text-primary">0</h3>
+                                        <h3 class="text-primary"><%- Math.round(dashboard.fixtureCompliance.entry) %></h3>
                                         <h6 class="text-primary">Entry</h6>
                                     </div>
                                     <div class="exit col-6">
-                                        <h3 class="text-exit">92</h3>
+                                        <h3 class="text-exit"><%- Math.round(dashboard.fixtureCompliance.exit) %></h3>
                                         <h6 class="text-exit">Exit</h6>
                                     </div>
                                 </div>
@@ -68,19 +49,14 @@
                         <div class="card text-center">
                             <h5 class="card-header">POG Compliance</h5>
                             <div class="card-body">
-                                <div class="progress mb-3">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0</div>
-                                </div>
-                                <div class="progress mb-3">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-exit" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" style="width: 92%">92</div>
-                                </div>
+                                <canvas class="mb-4" id="chartPOGCompliance" width="100%" height="50"></canvas>
                                 <div class="row">
                                     <div class="entry col-6">
-                                        <h3 class="text-primary">0</h3>
+                                        <h3 class="text-primary"><%- Math.round(dashboard.POGCompliance.entry) %></h3>
                                         <h6 class="text-primary">Entry</h6>
                                     </div>
                                     <div class="exit col-6">
-                                        <h3 class="text-exit">92</h3>
+                                        <h3 class="text-exit"><%- Math.round(dashboard.POGCompliance.exit) %></h3>
                                         <h6 class="text-exit">Exit</h6>
                                     </div>
                                 </div>
@@ -94,19 +70,14 @@
                         <div class="card text-center">
                             <h5 class="card-header">POD Compliance</h5>
                             <div class="card-body">
-                                <div class="progress mb-3">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0</div>
-                                </div>
-                                <div class="progress mb-3">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-exit" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0</div>
-                                </div>
+                                <canvas class="mb-4" id="chartPODCompliance" width="100%" height="50"></canvas>
                                 <div class="row">
                                     <div class="entry col-6">
-                                        <h3 class="text-primary">0</h3>
+                                        <h3 class="text-primary"><%- Math.round(dashboard.PODCompliance.entry) %></h3>
                                         <h6 class="text-primary">Entry</h6>
                                     </div>
                                     <div class="exit col-6">
-                                        <h3 class="text-exit">0</h3>
+                                        <h3 class="text-exit"><%- Math.round(dashboard.PODCompliance.exit) %></h3>
                                         <h6 class="text-exit">Exit</h6>
                                     </div>
                                 </div>
@@ -120,19 +91,14 @@
                         <div class="card text-center">
                             <h5 class="card-header">POP Compliance</h5>
                             <div class="card-body">
-                                <div class="progress mb-3">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0</div>
-                                </div>
-                                <div class="progress mb-3">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-exit" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">45</div>
-                                </div>
+                                <canvas class="mb-4" id="chartPOPCompliance" width="100%" height="50"></canvas>
                                 <div class="row">
                                     <div class="entry col-6">
-                                        <h3 class="text-primary">0</h3>
+                                        <h3 class="text-primary"><%- Math.round(dashboard.POPCompliance.entry) %></h3>
                                         <h6 class="text-primary">Entry</h6>
                                     </div>
                                     <div class="exit col-6">
-                                        <h3 class="text-exit">45</h3>
+                                        <h3 class="text-exit"><%- Math.round(dashboard.POPCompliance.exit) %></h3>
                                         <h6 class="text-exit">Exit</h6>
                                     </div>
                                 </div>
@@ -146,19 +112,14 @@
                         <div class="card text-center">
                             <h5 class="card-header">In-Stock Compliance</h5>
                             <div class="card-body">
-                                <div class="progress mb-3">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0</div>
-                                </div>
-                                <div class="progress mb-3">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-exit" role="progressbar" aria-valuenow="13" aria-valuemin="0" aria-valuemax="100" style="width: 13%">13</div>
-                                </div>
+                                <canvas class="mb-4" id="chartInStockCompliance" width="100%" height="50"></canvas>
                                 <div class="row">
                                     <div class="entry col-6">
-                                        <h3 class="text-primary">0</h3>
+                                        <h3 class="text-primary"><%- Math.round(dashboard.instockCompliance.entryInstockCompliance) %></h3>
                                         <h6 class="text-primary">Entry</h6>
                                     </div>
                                     <div class="exit col-6">
-                                        <h3 class="text-exit">13</h3>
+                                        <h3 class="text-exit"><%- Math.round(dashboard.instockCompliance.exitInstockCompliance) %></h3>
                                         <h6 class="text-exit">Exit</h6>
                                     </div>
                                 </div>
@@ -172,20 +133,11 @@
                         <div class="card text-center">
                             <h5 class="card-header">Activation know-how</h5>
                             <div class="card-body">
-                                <div class="progress mb-3">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="46" aria-valuemin="0" aria-valuemax="100" style="width: 46%">46</div>
-                                </div>
-                                <div class="progress mb-3">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-exit" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0</div>
-                                </div>
+                                <canvas class="mb-4" id="chartActivationKnowHow" width="100%" height="50"></canvas>
                                 <div class="row">
-                                    <div class="entry col-6">
-                                        <h3 class="text-primary">46</h3>
-                                        <h6 class="text-primary">Entry</h6>
-                                    </div>
-                                    <div class="exit col-6">
-                                        <h3 class="text-exit">0</h3>
-                                        <h6 class="text-exit">Exit</h6>
+                                    <div class="col-12">
+                                        <h3 class="text-primary"><%- Math.round(dashboard.activationKnowHow.persen) %></h3>
+                                        <h6 class="text-primary">Percent</h6>
                                     </div>
                                 </div>
                             </div>
@@ -198,20 +150,11 @@
                         <div class="card text-center">
                             <h5 class="card-header">Promotion Awareness</h5>
                             <div class="card-body">
-                                <div class="progress mb-3">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0</div>
-                                </div>
-                                <div class="progress mb-3">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-exit" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0</div>
-                                </div>
+                                <canvas class="mb-4" id="chartPromotionAwareness" width="100%" height="50"></canvas>
                                 <div class="row">
-                                    <div class="entry col-6">
-                                        <h3 class="text-primary">0</h3>
-                                        <h6 class="text-primary">Entry</h6>
-                                    </div>
-                                    <div class="exit col-6">
-                                        <h3 class="text-exit">0</h3>
-                                        <h6 class="text-exit">Exit</h6>
+                                    <div class="col-12">
+                                        <h3 class="text-primary"><%- Math.round(dashboard.promotionAwareness.persen) %></h3>
+                                        <h6 class="text-primary">Percent</h6>
                                     </div>
                                 </div>
                             </div>
@@ -224,20 +167,11 @@
                         <div class="card text-center">
                             <h5 class="card-header">Complaint Handling</h5>
                             <div class="card-body">
-                                <div class="progress mb-3">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" style="width: 92%">92</div>
-                                </div>
-                                <div class="progress mb-3">
-                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-exit" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">0</div>
-                                </div>
+                                <canvas class="mb-4" id="chartComplaintHandling" width="100%" height="50"></canvas>
                                 <div class="row">
-                                    <div class="entry col-6">
-                                        <h3 class="text-primary">92</h3>
-                                        <h6 class="text-primary">Entry</h6>
-                                    </div>
-                                    <div class="exit col-6">
-                                        <h3 class="text-exit">0</h3>
-                                        <h6 class="text-exit">Exit</h6>
+                                    <div class="col-12">
+                                        <h3 class="text-primary"><%- Math.round(dashboard.complaintHandling.persen) %></h3>
+                                        <h6 class="text-primary">Percent</h6>
                                     </div>
                                 </div>
                             </div>
@@ -264,5 +198,165 @@
     </div>
 </div>
 
+<script type='text/javascript'>
+
+    console.log("data dashboar", <%- JSON.stringify(dashboard) %>)
+
+    Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+    Chart.defaults.global.defaultFontColor = '#292b2c';
+
+    var chartVisitCompliance = document.getElementById("chartVisitCompliance");
+    var chartFixtureCompliance = document.getElementById("chartFixtureCompliance");
+    var chartPOGCompliance = document.getElementById("chartPOGCompliance");
+    var chartPODCompliance = document.getElementById("chartPODCompliance");
+    var chartPOPCompliance = document.getElementById("chartPOPCompliance");
+    var chartInStockCompliance = document.getElementById("chartInStockCompliance");
+    var chartActivationKnowHow = document.getElementById("chartActivationKnowHow");
+    var chartPromotionAwareness = document.getElementById("chartPromotionAwareness");
+    var chartComplaintHandling = document.getElementById("chartComplaintHandling");
+
+    
+    var tempDashboardVisitCompliancePersen = <%- dashboard.visitCompliance.persen %>
+    var tempDashboardFixtureComplianceEntry = <%- dashboard.fixtureCompliance.entry %>
+    var tempDashboardFixtureComplianceExit = <%- dashboard.fixtureCompliance.exit %>
+    var tempDashboardPOGComplianceEntry = <%- dashboard.POGCompliance.entry %>
+    var tempDashboardPOGComplianceExit = <%- dashboard.POGCompliance.exit %>
+    var tempDashboardPODComplianceEntry = <%- dashboard.PODCompliance.entry %>
+    var tempDashboardPODComplianceExit = <%- dashboard.PODCompliance.exit %>
+    var tempDashboardPOPComplianceEntry = <%- dashboard.POPCompliance.entry %>
+    var tempDashboardPOPComplianceExit = <%- dashboard.POPCompliance.exit %>
+    var tempDashboardInstockComplianceEntryInstockCompliance = <%- dashboard.instockCompliance.entryInstockCompliance %>
+    var tempDashboardInstockComplianceExitInstockCompliance = <%- dashboard.instockCompliance.exitInstockCompliance %>
+    var tempDashboardActivationKnowHowPersen = <%- dashboard.activationKnowHow.persen %>
+    var tempDashboardPromotionAwarenessPersen = <%- dashboard.promotionAwareness.persen %>
+    var tempDashboardComplaintHandlingPersen = <%- dashboard.complaintHandling.persen %>
+
+    var tempvisitCompliancePersen = 0
+    if (tempDashboardVisitCompliancePersen != null) {
+        if (tempDashboardVisitCompliancePersen <= 100) {
+            tempvisitCompliancePersen = 100 - tempDashboardVisitCompliancePersen
+        }
+    }
+
+    var tempactivationKnowHowPersen = 0
+    if (tempDashboardActivationKnowHowPersen != null) {
+        if (tempDashboardActivationKnowHowPersen <= 100) {
+            tempactivationKnowHowPersen = 100 - tempDashboardActivationKnowHowPersen
+        }
+    }
+
+    var temppromotionAwarenessPersen = 0
+    if (tempDashboardPromotionAwarenessPersen != null) {
+        if (tempDashboardPromotionAwarenessPersen <= 100) {
+            temppromotionAwarenessPersen = 100 - tempDashboardPromotionAwarenessPersen
+        }
+    }
+    
+    var tempcomplaintHandlingPersen = 0
+    if (tempDashboardComplaintHandlingPersen != null) {
+        if (tempDashboardComplaintHandlingPersen <= 100) {
+            tempcomplaintHandlingPersen = 100 - tempDashboardComplaintHandlingPersen
+        }
+    }
+    
+    var configChartVisitCompliance = new Chart(chartVisitCompliance, {
+        type: 'pie',
+        data: {
+            labels: ['Percent'],
+            datasets: [{
+                data: [tempDashboardVisitCompliancePersen, tempvisitCompliancePersen],
+                backgroundColor: ['#007bff', '#f7f7f7'],
+            }],
+        },
+    });
+
+    var configChartFixtureCompliance = new Chart(chartFixtureCompliance, {
+        type: 'pie',
+        data: {
+            labels: ['Entry', 'Exit'],
+            datasets: [{
+            data: [tempDashboardFixtureComplianceEntry, tempDashboardFixtureComplianceExit, 200 - (tempDashboardFixtureComplianceEntry + tempDashboardFixtureComplianceExit)],
+            backgroundColor: ['#007bff', '#00cec9', '#f7f7f7'],
+            }],
+        },
+    });
+
+    var configChartPOGCompliance = new Chart(chartPOGCompliance, {
+        type: 'pie',
+        data: {
+            labels: ['Entry', 'Exit'],
+            datasets: [{
+            data: [tempDashboardPOGComplianceEntry, tempDashboardPOGComplianceExit, 200 - (tempDashboardPOGComplianceEntry + tempDashboardPOGComplianceExit)],
+            backgroundColor: ['#007bff', '#00cec9','#f7f7f7'],
+            }],
+        },
+    });
+
+    var configChartPODCompliance = new Chart(chartPODCompliance, {
+        type: 'pie',
+        data: {
+            labels: ['Entry', 'Exit'],
+            datasets: [{
+                data: [tempDashboardPODComplianceEntry, tempDashboardPODComplianceExit, 200 - (tempDashboardPODComplianceEntry + tempDashboardPODComplianceExit)],
+                backgroundColor: ['#007bff', '#00cec9', '#f7f7f7'],
+            }],
+        },
+    });
+
+    var configConfigChartPOPCompliance = new Chart(chartPOPCompliance, {
+        type: 'pie',
+        data: {
+            labels: ['Entry', 'Exit'],
+            datasets: [{
+                data: [tempDashboardPOPComplianceEntry, tempDashboardPOPComplianceExit, 200 - (tempDashboardPOPComplianceEntry + tempDashboardPOPComplianceExit)],
+                backgroundColor: ['#007bff', '#00cec9', '#f7f7f7'],
+            }],
+        },
+    });
+
+    var configChartInStockCompliance = new Chart(chartInStockCompliance, {
+        type: 'pie',
+        data: {
+            labels: ['Entry', 'Exit'],
+            datasets: [{
+                data: [tempDashboardInstockComplianceEntryInstockCompliance, tempDashboardInstockComplianceExitInstockCompliance, 200 - (tempDashboardInstockComplianceEntryInstockCompliance + tempDashboardInstockComplianceExitInstockCompliance)],
+                backgroundColor: ['#007bff', '#00cec9', '#f7f7f7'],
+            }],
+        },
+    });
+
+    var configChartActivationKnowHow = new Chart(chartActivationKnowHow, {
+        type: 'pie',
+        data: {
+            labels: ['Percent'],
+            datasets: [{
+                data: [tempDashboardActivationKnowHowPersen, tempactivationKnowHowPersen],
+                backgroundColor: ['#007bff', '#f7f7f7'],
+            }],
+        },
+    });
+
+    var configChartPromotionAwareness = new Chart(chartPromotionAwareness, {
+        type: 'pie',
+        data: {
+            labels: ['Percent'],
+            datasets: [{
+                data: [tempDashboardPromotionAwarenessPersen, temppromotionAwarenessPersen],
+                backgroundColor: ['#007bff', '#f7f7f7'],
+            }],
+        },
+    });
+
+    var configChartComplaintHandling = new Chart(chartComplaintHandling, {
+        type: 'pie',
+        data: {
+            labels: ['Percent'],
+            datasets: [{
+                data: [tempDashboardComplaintHandlingPersen, tempcomplaintHandlingPersen],
+                backgroundColor: ['#007bff', '#f7f7f7'],
+            }],
+        },
+    });
+</script>
 
 <%- include('../layout/footer') -%>

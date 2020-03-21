@@ -54,7 +54,6 @@ const serviceGloba = {
                 text: "December"
             }
         ];
-        console.log('getAllSelectMonth', temp)
         return temp;
     },
     getAllSelectBrand: async () => {
@@ -87,11 +86,10 @@ const serviceGloba = {
                     }
                     return tempData;
                 });
-                console.log('getAllSelectFixtureType',temp)
-                console.log("success service getAllFixtureType")
+                console.log("success service getAllSelectFixtureType")
             })
             .catch(function (error) {
-                console.log("error service getAllFixtureType")
+                console.log("error service getAllSelectFixtureType")
             });
         return temp;
     },
@@ -111,10 +109,10 @@ const serviceGloba = {
                     }
                     return tempData;
                 });
-                console.log("success service getAllStore")
+                console.log("success service getAllSelectStore")
             })
             .catch(function (error) {
-                console.log("error service getAllStore")
+                console.log("error service getAllSelectStore")
             });
         return temp;
     },
@@ -134,10 +132,10 @@ const serviceGloba = {
                     }
                     return tempData;
                 });
-                console.log("success service getAllDC")
+                console.log("success service getAllSelectDC")
             })
             .catch(function (error) {
-                console.log("error service getAllDC")
+                console.log("error service getAllSelectDC")
             });
         return temp;
     },
@@ -157,13 +155,37 @@ const serviceGloba = {
                     }
                     return tempData;
                 });
-                console.log("success service getAllMD")
+                console.log("success service getAllSelectMD")
             })
             .catch(function (error) {
-                console.log("error service getAllMD")
+                console.log("error service getAllSelectMD")
             });
         return temp;
     },
+    getAllSelectRetailer: async (Token) => {
+        temp = [];
+
+        await axios.get(
+            consConfig.urlService + 'retailer',
+            {   
+                headers: Token 
+            })
+            .then(function(response) {
+                temp  = response.data.data.map(obj => {
+                    var tempData = {
+                        id : obj.id,
+                        text : obj.retailer_name
+                    }
+                    return tempData;
+                });
+                console.log("success service getAllSelectRetailer")
+            })
+            .catch(function (error) {
+                console.log("error service getAllSelectRetailer")
+            });
+        return temp;
+    },
+    
     
 };
 module.exports = serviceGloba;

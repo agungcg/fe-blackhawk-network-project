@@ -12,7 +12,8 @@ router.get('/get-select-sidenav', async function(req, res, next) {
     const store = await serviceGlobal.getAllSelectStore(sess.token)
     const dc = await serviceGlobal.getAllSelectDC(sess.token)
     const md = await serviceGlobal.getAllSelectMD(sess.token)
-    temp.push({month : month}, {brand : brand}, {fixtureType : fixtureType}, {store : store}, {dc : dc}, {md : md})
+    const retailer = await serviceGlobal.getAllSelectRetailer(sess.token)
+    temp.push({month : month}, {brand : brand}, {fixtureType : fixtureType}, {store : store}, {dc : dc}, {md : md}, {retailer : retailer})
     res.json(temp);
 });
 
