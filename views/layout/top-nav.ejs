@@ -4,7 +4,7 @@
         <a class="navbar-brand " href="/admin">
             <img src="/images/logo.png" class="logo-admin">
         </a>
-        <% if (titlePage === "Dashboard") { %>
+        <% if (titlePage === "Dashboard" || titlePage === "Gallery") { %>
         <button class="btn btn-link btn-sm" id="sidebarToggle" href="#">
             <i class="fas fa-bars"></i>
         </button>
@@ -17,15 +17,15 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/admin/report">
                     <i class="fas fa-file-alt"></i>
                     <span>Report</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/admin/gallery">
                     <i class="fas fa-images"></i>
-                    <span>Galery</span>
+                    <span>Gallery</span>
                 </a>
             </li>
             <li class="nav-item">
@@ -41,7 +41,7 @@
                 </a>
             </li>
         </ul>
-        <% if (titlePage === "Dashboard") { %>
+        <% if (titlePage === "Dashboard" || titlePage === "Gallery") { %>
         <ul class="navbar-nav ml-auto ml-md-0 d-flex d-md-none d-lg-none d-xl-none">
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -51,11 +51,11 @@
                     <a class="dropdown-item" href="/admin">
                         Dashboard
                     </a>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="/admin/report">
                         Report
                     </a>
-                    <a class="dropdown-item" href="#">
-                        Galery
+                    <a class="dropdown-item" href="/admin/gallery">
+                        Gallery
                     </a>
                     <a class="dropdown-item" href="/admin/md">
                         MD

@@ -17,6 +17,17 @@
     height: 60%;
 }
 
+.divider-gallery:after {
+    width: 0;
+    content: "";
+    position: absolute;
+    border: .5px solid #EBEBEB;
+    top: 5px;
+    right: 0px;
+    left: auto;
+    height: 60%;
+}
+
 .text-exit {
     color: #00cec9  !important;
 }

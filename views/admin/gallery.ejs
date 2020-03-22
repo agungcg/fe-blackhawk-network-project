@@ -1,0 +1,79 @@
+<%- include('../layout/top-nav') -%>
+
+<%
+    formatDate = function(date) {
+        var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+        
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+        
+        return [year, month, day].join('-');
+    }
+%>
+
+<div id="layoutSidenav">
+    <%- include('../layout/side-nav') -%>
+    <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid">
+                <h1 class="my-4">Gallery</h1>
+                <div class="row">
+                     <% if (gallery) {
+                        for(var i = 0; i < gallery.length; i++) { %>
+                            <div class="mb-4 col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                <div class="card">
+                                    <h5 class="card-header"><%- gallery[i].tbl_store.store_name %></h5>
+                                    <div class="card-body">
+                                        <div class="text-center">
+                                            <img src="<%- domain %><%- gallery[i].img_store %>" class="rounded img-thumbnail" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="card-footer bg-white">
+                                        <div class="row">
+                                            <div class="divider-gallery col-6">
+                                                <h6 class="mb-0">Store Code : <%- gallery[i].tbl_store.store_code %></h3>
+                                            </div>
+                                            <div class="col-6">
+                                                <h6 class="mb-0">City : <%- gallery[i].tbl_store.city %></h3>
+                                            </div>
+                                        </div>
+                                        <div class="mt-2 row">
+                                            <div class="col-12">
+                                                <label class="mb-0 normal text-secondary"><%- formatDate(gallery[i].visit_date) %></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    <%  }
+                    } %>
+                </div>
+            </div>
+        </main>
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid">
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted">Copyright &copy; BLACKHAWK NETWORK 2020</div>
+                    <div>
+                        <a href="#">Privacy Policy</a>
+                        &middot;
+                        <a href="#">Terms &amp; Conditions</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+<script type='text/javascript'>
+
+    console.log("gallery", <%- JSON.stringify(gallery) %>)
+
+</script>
+
+<%- include('../layout/footer') -%>

@@ -36,18 +36,15 @@ const serviceAdmin = {
             });
         return temp;  
     },
-    editUser: async (Token, id, dataUser) => {
+    editUser: async (Token, id, password) => {
         var temp = {};
-        var params = {
-            password : dataUser.password,
-        };
         await axios.put(
-            consConfig.urlService + 'user/' + id, "", {
-                params: params,   
-                headers: { 
-                    "Content-Type": "application/x-www-form-urlencoded",
-                    Token
-                }      
+            consConfig.urlService + 'user/' + id,
+            {
+                password: password,
+            },
+            {
+                headers: Token
             })
             .then(function(response) {
                 temp = response.data
@@ -106,6 +103,32 @@ const serviceAdmin = {
             })
             .catch(function (error) {
                 console.log("error service getDashboard")
+            });
+        return temp;
+    },
+    getGallery: async (Token, month, brand, retailer, fixture, store, dc, md) => {
+        temp = {};
+        await axios.get(
+            consConfig.urlService + 'galery',
+            {
+                params: {
+                    month: month,
+                    brand: brand,
+                    retailer: retailer,
+                    fixture: fixture,
+                    store: store,
+                    dc: dc,
+                    md: md
+                },
+                headers: Token
+            })
+            .then(function(response) {
+                temp = response.data.data
+                console.log("success service getGallery")
+                
+            })
+            .catch(function (error) {
+                console.log("error service getGallery")
             });
         return temp;
     },
