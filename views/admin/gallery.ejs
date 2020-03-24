@@ -30,7 +30,7 @@
                                     <h5 class="card-header"><%- gallery[i].tbl_store.store_name %></h5>
                                     <div class="card-body">
                                         <div class="text-center">
-                                            <img src="<%- domain %><%- gallery[i].img_store %>" class="rounded img-thumbnail" alt="">
+                                            <img src="<%- domain %><%- gallery[i].img_store %>" class="rounded img-thumbnail img-gallery" alt="">
                                         </div>
                                     </div>
                                     <div class="card-footer bg-white">
@@ -72,7 +72,9 @@
 
 <script type='text/javascript'>
 
-    console.log("gallery", <%- JSON.stringify(gallery) %>)
+    $('img').on("error", function() {
+        $(this).attr('src', '/images/image-solid.svg');
+    });
 
 </script>
 

@@ -16,7 +16,6 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "node-excel-export": "^1.4.4",
-    "query-string": "^6.11.1",
-    "sweetalert2": "^9.10.3"
+    "query-string": "^6.11.1"
   }
 }
