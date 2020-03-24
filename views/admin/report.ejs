@@ -8,7 +8,51 @@
             <div class="card mb-4">
                 <div class="card-header"><i class="fas fa-table mr-1"></i>Data Report</div>
                 <div class="card-body">
-                    
+                    <form method="POST" action="/admin/report/process/export-excel">
+                    <div class="row">
+                        <div class="col-12 col-sm-5 col-md-5 col-lg-5 col-xl-5">
+                            <div class="form-group">
+                                <label class="normal" style="width: 100%;">Filter</label>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="radioDaily" name="radioFilter" class="custom-control-input" value="daily">
+                                    <label class="custom-control-label" for="radioDaily">Daily</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="radioWeekly" name="radioFilter" class="custom-control-input" value="weekly">
+                                    <label class="custom-control-label" for="radioWeekly">Weekly</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="radioMonthly" name="radioFilter" class="custom-control-input" value="monthly">
+                                    <label class="custom-control-label" for="radioMonthly">Monthly</label>
+                                </div>
+                            </div>
+                            <div class="form-group mb-2">
+                                <label class="normal">Date</label>
+                                <input type="date" class="form-control" name="inputDate" id="inputDate">
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-7 col-md-7 col-lg-7 col-xl-7">
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="card text-center">
+                                        <div class="card-body">
+                                            <i class="fas fa-file-excel text-secondary" style="font-size:6.3em"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-8">
+                                    <div class="form-group">
+                                        <label class="normal">File Name</label>
+                                        <input type="text" class="form-control" name="inputFileName" id="inputFileName" disabled>
+                                    </div>
+                                    <div class="mt-4 form-group float-right">
+                                        <button type="submit" class="btn btn-primary">Download</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -27,5 +71,14 @@
     </footer>
 </div>
 </div>
+
+<script>
+    const daySelect = document.querySelector('[name=inputDate]');
+    daySelect.onchange = function() {
+        const dateVal = daySelect.value
+        const radioVal = $("input[name='radioFilter']:checked").val()
+        $('#inputFileName').val(radioVal + "-" + dateVal)
+    }
+</script>
 
 <%- include('../layout/footer') -%>

@@ -132,6 +132,24 @@ const serviceAdmin = {
             });
         return temp;
     },
+    getReport: async (Token, filter, date) => {
+        temp = {};
+        await axios.get(
+            consConfig.urlService + 'report?' + filter + "=" + date,
+            {
+                headers: Token
+            })
+            .then(function(response) {
+                temp = response.data
+                console.log("success service getReport")
+                
+            })
+            .catch(function (error) {
+                console.log("error service getReport")
+            });
+        return temp;
+    },
+
 };
 
 module.exports = serviceAdmin;
