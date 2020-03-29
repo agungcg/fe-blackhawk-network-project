@@ -10,7 +10,7 @@ function uploadModalQuartetImg(idCategory, idRetailer) {
         html:
         '<div class="upload-modal row">' +
             '<div class="col-6">' +
-                '<label class="upload-title" text-secondary">' +
+                '<label class="upload-title text-secondary">' +
                     'Vertical Line' + 
                 '</label>'+
                 '<div class="upload-figure-img justify-content-center">' +
@@ -25,16 +25,21 @@ function uploadModalQuartetImg(idCategory, idRetailer) {
                 '</div>' +
                 '<div class="row" style="">' +
                     '<div class="col-12">' +
-                        '<label class="upload-browse btn btn-secondary btn-sm">' +
+                        '<label class="upload-browse btn btn-secondary btn-sm mb-0">' +
                             '<input id="inputVerticalLine" name="inputVerticalLine" class="inputVerticalLine" type="file" style="display: none"/>' +
                             'Browse' +
                         '</label>' +
                         '<button id="btnUploadVerticalLine" name="btnUploadVerticalLine" type="button" class="upload-upload btn btn-primary btn-sm" onclick="">Upload</button>' +
                     '</div>' +
+                    '<div class="col-12">' +
+                        '<label id="labelSuccessVerticalLine" class="upload-file-name justify-content-center">' +
+                            ''+ 
+                        '</label>'+
+                    '</div>' +
                 '</div>' +
             '</div>' +
             '<div class="col-6">' +
-                '<label class="upload-title" text-secondary">' +
+                '<label class="upload-title text-secondary">' +
                     'Wing' + 
                 '</label>'+
                 '<div class="upload-figure-img justify-content-center">' +
@@ -49,16 +54,21 @@ function uploadModalQuartetImg(idCategory, idRetailer) {
                 '</div>' +
                 '<div class="row" style="">' +
                     '<div class="col-12">' +
-                        '<label class="upload-browse btn btn-secondary btn-sm">' +
+                        '<label class="upload-browse btn btn-secondary btn-sm mb-0">' +
                             '<input id="inputWing" name="inputWing" class="inputWing" type="file" style="display: none"/>' +
                             'Browse' +
                         '</label>' +
                         '<button id="btnUploadWing" name="btnUploadWing" type="button" class="upload-upload btn btn-primary btn-sm" onclick="">Upload</button>' +
                     '</div>' +
+                    '<div class="col-12">' +
+                        '<label id="labelSuccessWing" class="upload-file-name justify-content-center">' +
+                            ''+ 
+                        '</label>'+
+                    '</div>' +
                 '</div>' +
             '</div>' +
             '<div class="col-6">' +
-                '<label class="upload-title" text-secondary">' +
+                '<label class="upload-title text-secondary">' +
                     'Sarana BHN' + 
                 '</label>'+
                 '<div class="upload-figure-img justify-content-center">' +
@@ -73,16 +83,21 @@ function uploadModalQuartetImg(idCategory, idRetailer) {
                 '</div>' +
                 '<div class="row" style="">' +
                     '<div class="col-12">' +
-                        '<label class="upload-browse btn btn-secondary btn-sm">' +
+                        '<label class="upload-browse btn btn-secondary btn-sm mb-0">' +
                             '<input id="inputSaranaBHN" name="inputSaranaBHN" class="inputSaranaBHN" type="file" style="display: none"/>' +
                             'Browse' +
                         '</label>' +
                         '<button id="btnUploadSaranaBHN" name="btnUploadSaranaBHN" type="button" class="upload-upload btn btn-primary btn-sm" onclick="">Upload</button>' +
                     '</div>' +
+                    '<div class="col-12">' +
+                        '<label id="labelSuccessSaranaBHN" class="upload-file-name justify-content-center">' +
+                            ''+ 
+                        '</label>'+
+                    '</div>' +
                 '</div>' +
             '</div>' +
             '<div class="col-6">' +
-                '<label class="upload-title" text-secondary">' +
+                '<label class="upload-title text-secondary">' +
                     'Sarana Google' + 
                 '</label>'+
                 '<div class="upload-figure-img justify-content-center">' +
@@ -97,11 +112,16 @@ function uploadModalQuartetImg(idCategory, idRetailer) {
                 '</div>' +
                 '<div class="row" style="">' +
                     '<div class="col-12">' +
-                        '<label class="upload-browse btn btn-secondary btn-sm">' +
+                        '<label class="upload-browse btn btn-secondary btn-sm mb-0">' +
                             '<input id="inputSaranaGoogle" name="inputSaranaGoogle" class="inputSaranaGoogle" type="file" style="display: none"/>' +
                             'Browse' +
                         '</label>' +
                         '<button id="btnUploadSaranaGoogle" name="btnUploadSaranaGoogle" type="button" class="upload-upload btn btn-primary btn-sm" onclick="">Upload</button>' +
+                    '</div>' +
+                    '<div class="col-12">' +
+                        '<label id="labelSuccessSaranaGoogle" class="upload-file-name justify-content-center">' +
+                            ''+ 
+                        '</label>'+
                     '</div>' +
                 '</div>' +
             '</div>' +
@@ -181,7 +201,6 @@ function uploadModalQuartetImg(idCategory, idRetailer) {
                 formData.append("category_upload_id", idCategory);
                 formData.append("retailer_id", idRetailer);
                 formData.append("fixture_type_id", 2);
-
                 $.ajax({
                     method: 'post',
                     url: domain + 'upload',
@@ -190,10 +209,14 @@ function uploadModalQuartetImg(idCategory, idRetailer) {
                     processData: false,
                     contentType: false,
                     success: function (result) {
-                        console.log(result)
+                        var element = document.getElementById('labelSuccessVerticalLine')
+                        document.getElementById('labelSuccessVerticalLine').innerHTML = 'Upload Success';
+                        element.classList.add("text-success");
                     },
                     error: function() {
-                        console.log("error")
+                        var element = document.getElementById('labelSuccessVerticalLine')
+                        document.getElementById('labelSuccessVerticalLine').innerHTML = 'Upload Failed';
+                        element.classList.add("text-danger");
                     }
                 })
             });
@@ -204,7 +227,6 @@ function uploadModalQuartetImg(idCategory, idRetailer) {
                 formData.append("category_upload_id", idCategory);
                 formData.append("retailer_id", idRetailer);
                 formData.append("fixture_type_id", 1);
-
                 $.ajax({
                     method: 'post',
                     url: domain + 'upload',
@@ -213,10 +235,14 @@ function uploadModalQuartetImg(idCategory, idRetailer) {
                     processData: false,
                     contentType: false,
                     success: function (result) {
-                        console.log(result)
+                        var element = document.getElementById('labelSuccessWing')
+                        document.getElementById('labelSuccessWing').innerHTML = 'Upload Success';
+                        element.classList.add("text-success");
                     },
                     error: function() {
-                        console.log("error")
+                        var element = document.getElementById('labelSuccessWing')
+                        document.getElementById('labelSuccessWing').innerHTML = 'Upload Failed';
+                        element.classList.add("text-danger");
                     }
                 })
             });
@@ -227,7 +253,6 @@ function uploadModalQuartetImg(idCategory, idRetailer) {
                 formData.append("category_upload_id", idCategory);
                 formData.append("retailer_id", idRetailer);
                 formData.append("fixture_type_id", 4);
-
                 $.ajax({
                     method: 'post',
                     url: domain + 'upload',
@@ -236,10 +261,14 @@ function uploadModalQuartetImg(idCategory, idRetailer) {
                     processData: false,
                     contentType: false,
                     success: function (result) {
-                        console.log(result)
+                        var element = document.getElementById('labelSuccessSaranaBHN')
+                        document.getElementById('labelSuccessSaranaBHN').innerHTML = 'Upload Success';
+                        element.classList.add("text-success");
                     },
                     error: function() {
-                        console.log("error")
+                        var element = document.getElementById('labelSuccessSaranaBHN')
+                        document.getElementById('labelSuccessSaranaBHN').innerHTML = 'Upload Failed';
+                        element.classList.add("text-danger");
                     }
                 })
             });
@@ -250,7 +279,6 @@ function uploadModalQuartetImg(idCategory, idRetailer) {
                 formData.append("category_upload_id", idCategory);
                 formData.append("retailer_id", idRetailer);
                 formData.append("fixture_type_id", 5);
-
                 $.ajax({
                     method: 'post',
                     url: domain + 'upload',
@@ -259,10 +287,14 @@ function uploadModalQuartetImg(idCategory, idRetailer) {
                     processData: false,
                     contentType: false,
                     success: function (result) {
-                        console.log(result)
+                        var element = document.getElementById('labelSuccessSaranaGoogle')
+                        document.getElementById('labelSuccessSaranaGoogle').innerHTML = 'Upload Success';
+                        element.classList.add("text-success");
                     },
                     error: function() {
-                        console.log("error")
+                        var element = document.getElementById('labelSuccessSaranaGoogle')
+                        document.getElementById('labelSuccessSaranaGoogle').innerHTML = 'Upload Failed';
+                        element.classList.add("text-danger");
                     }
                 })
             });
@@ -347,11 +379,16 @@ function uploadModalSingleImg(idCategory, idRetailer) {
                 '</div>' +
                 '<div class="row" style="">' +
                     '<div class="col-12">' +
-                        '<label class="upload-browse btn btn-secondary btn-sm">' +
+                        '<label class="upload-browse btn btn-secondary btn-sm mb-0">' +
                             '<input id="inputModalSingleImg" name="inputModalSingleImg" class="inputModalSingleImg" type="file" style="display: none"/>' +
                             'Browse' +
                         '</label>' +
                         '<button id="btnUploadModalSingleImg" name="btnUploadModalSingleImg" type="button" class="upload-upload btn btn-primary btn-sm" onclick="">Upload</button>' +
+                    '</div>' +
+                    '<div class="col-12">' +
+                        '<label id="labelSuccess" class="upload-file-name justify-content-center">' +
+                            ''+ 
+                        '</label>'+
                     '</div>' +
                 '</div>' +
             '</div>' +
@@ -399,7 +436,6 @@ function uploadModalSingleImg(idCategory, idRetailer) {
                 readURLModalSingleImg(this, tempPath);
             });
             $("#btnUploadModalSingleImg").click(function(){
-                console.log(tempFixtureType)
                 var formData = new FormData();
                 var file = $('.inputModalSingleImg')[0].files[0];
                 formData.append("files", file);
@@ -415,10 +451,14 @@ function uploadModalSingleImg(idCategory, idRetailer) {
                     processData: false,
                     contentType: false,
                     success: function (result) {
-                        console.log(result)
+                        var element = document.getElementById('labelSuccess')
+                        document.getElementById('labelSuccess').innerHTML = 'Upload Success';
+                        element.classList.add("text-success");
                     },
                     error: function() {
-                        console.log("error")
+                        var element = document.getElementById('labelSuccess')
+                        document.getElementById('labelSuccess').innerHTML = 'Upload Failed';
+                        element.classList.add("text-danger");
                     }
                 })
             });
@@ -436,7 +476,6 @@ function uploadModalSingleImg(idCategory, idRetailer) {
         if (input.files && input.files[0]) {
             var extension = input.files[0].name.split('.').pop().toLowerCase(),
             isTypeFile = fileTypeImg.indexOf(extension) > -1;
-            console.log(isTypeFile)
             if (isTypeFile) {
                 var reader = new FileReader();
                 reader.onload = function (e) {
@@ -482,11 +521,16 @@ function uploadModalSingleDoc(idCategory) {
                 '</div>' +
                 '<div class="row" style="">' +
                     '<div class="col-12">' +
-                        '<label class="upload-browse btn btn-secondary btn-sm">' +
+                        '<label class="upload-browse btn btn-secondary btn-sm mb-0">' +
                             '<input id="inputModalSingleDoc" name="inputModalSingleDoc" class="inputModalSingleDoc" type="file" style="display: none"/>' +
                             'Browse' +
                         '</label>' +
                         '<button id="btnUploadModalSingleDoc" name="btnUploadModalSingleDoc" type="button" class="upload-upload btn btn-primary btn-sm" onclick="">Upload</button>' +
+                    '</div>' +
+                    '<div class="col-12">' +
+                        '<label id="labelSuccess" class="upload-file-name justify-content-center">' +
+                            ''+ 
+                        '</label>'+
                     '</div>' +
                 '</div>' +
             '</div>' +
@@ -514,10 +558,14 @@ function uploadModalSingleDoc(idCategory) {
                     processData: false,
                     contentType: false,
                     success: function (result) {
-                        console.log(result)
+                        var element = document.getElementById('labelSuccess')
+                        document.getElementById('labelSuccess').innerHTML = 'Upload Success';
+                        element.classList.add("text-success");
                     },
                     error: function() {
-                        console.log("error")
+                        var element = document.getElementById('labelSuccess')
+                        document.getElementById('labelSuccess').innerHTML = 'Upload Failed';
+                        element.classList.add("text-danger");
                     }
                 })
             });
@@ -548,5 +596,164 @@ function uploadModalSingleDoc(idCategory) {
             }
         }
         return fileName
+    }
+};
+
+function uploadModalMultipleImg(idCategory, idRetailer) {
+    var titleModal1 = idCategory == 1 ? 'POG' : idCategory == 2 ? 'Fixture Traits' : idCategory == 3 ? 'Promotions' : ''
+    var titleModal2 = idRetailer == 2 ? 'Alfamart (SAT)' : idRetailer == 3 ? 'Alfamidi (MIDI)' : 'Idomaret (IDM)'
+    var labelExtensionModal = 'JPG, JPEG, PNG'
+    Swal.fire({
+        title: titleModal1 + ' ' + titleModal2,
+        html:
+        '<div class="upload-modal row">' +
+            '<div class="col-6">' +
+                '<label class="upload-title text-secondary">' +
+                    titleModal1 + 
+                '</label>'+
+                '<div class="upload-figure-img justify-content-center">' +
+                   '<img id="thumbPromotions1" name="thumbPromotions1" src="" class="upload-img rounded">' +
+                '</div>' +
+                '<div class="row">' +
+                    '<div class="col-12">' +
+                        '<label id="fileName" class="upload-file-name text-secondary">' +
+                            labelExtensionModal + 
+                        '</label>'+
+                    '</div>' +
+                '</div>' +
+                '<div class="row" style="">' +
+                    '<div class="col-12">' +
+                        '<label class="btn btn-secondary btn-sm">' +
+                            '<input id="inputPromotions1" name="inputPromotions1" class="inputPromotions1" type="file" style="display: none"/>' +
+                            'Browse' +
+                        '</label>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="col-6">' +
+                '<label class="upload-title text-secondary">' +
+                    titleModal1 + 
+                '</label>'+
+                '<div class="upload-figure-img justify-content-center">' +
+                   '<img id="thumbPromotions2" name="thumbPromotions2" src="" class="upload-img rounded">' +
+                '</div>' +
+                '<div class="row">' +
+                    '<div class="col-12">' +
+                        '<label id="fileName" class="upload-file-name text-secondary">' +
+                            labelExtensionModal + 
+                        '</label>'+
+                    '</div>' +
+                '</div>' +
+                '<div class="row" style="">' +
+                    '<div class="col-12">' +
+                        '<label class="btn btn-secondary btn-sm">' +
+                            '<input id="inputPromotions2" name="inputPromotions2" class="inputPromotions2" type="file" style="display: none"/>' +
+                            'Browse' +
+                        '</label>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+            '<div class="col-12">' +
+                '<button id="btnUploadPromotion" name="btnUploadPromotion" type="button" class=" btn btn-primary btn-sm" onclick="" style="">Upload</button>' +
+            '</div>' +
+            '<div class="col-12">' +
+                '<label id="labelSuccess" class="upload-file-name justify-content-center">' +
+                    ''+ 
+                '</label>'+
+            '</div>' +
+        '</div>',
+        onBeforeOpen: () => {
+            var pathPromotion1 = ''
+            var pathPromotion2 = ''
+            if (idCategory == 3) {
+                for (var i = 0; i < file.length; i++){
+                    if(file[i].id == idCategory) {
+                        for (var j = 0; j < file[i].retailers.length; j++) {
+                            if (file[i].retailers[j].retailer_id == idRetailer) {
+                                pathPromotion1 = domain + file[i].retailers[j].promotion_1
+                                pathPromotion2 = domain + file[i].retailers[j].promotion_2
+                                $('#thumbPromotions1').attr('src', '' + pathPromotion1 + '');
+                                $('#thumbPromotions2').attr('src', '' + pathPromotion2 + '');
+                            }
+                        }
+                    }
+                }
+            }
+            $("#inputPromotions1").change(function(){
+                readURLModalMultipleImg(this, 1, pathPromotion1);
+            });
+            $("#inputPromotions2").change(function(){
+                readURLModalMultipleImg(this, 2, pathPromotion2);
+            });
+            $("#btnUploadPromotion").click(function(){
+                var formData = new FormData();
+                var file = $('.inputPromotions1')[0].files[0];
+                var file2 = $('.inputPromotions2')[0].files[0];
+                formData.append("files", file);
+                formData.append("files", file2);
+                formData.append("category_upload_id", idCategory);
+                formData.append("retailer_id", idRetailer);
+                $.ajax({
+                    method: 'post',
+                    url: domain + 'upload',
+                    data: formData,
+                    headers: token,
+                    processData: false,
+                    contentType: false,
+                    success: function (result) {
+                        var element = document.getElementById('labelSuccess')
+                        document.getElementById('labelSuccess').innerHTML = 'Upload Success';
+                        element.classList.add("text-success");
+                    },
+                    error: function() {
+                        var element = document.getElementById('labelSuccess')
+                        document.getElementById('labelSuccess').innerHTML = 'Upload Failed';
+                        element.classList.add("text-danger");
+                    }
+                })
+            });
+        },
+        allowOutsideClick: false,
+        showCloseButton: true,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Done',
+    }).then((result) => {
+        window.location.href = '/admin'
+    });
+
+    function readURLModalMultipleImg(input, id, path) {
+        if (input.files && input.files[0]) {
+            var extension = input.files[0].name.split('.').pop().toLowerCase(),
+            isTypeFile = fileTypeImg.indexOf(extension) > -1;
+            if (isTypeFile) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var img = new Image();      
+                    img.src = e.target.result;
+                    img.onload = function() {
+                        if (id == 1){
+                            $('#thumbPromotions1').attr('src', e.target.result);   
+                        } else if (id == 2) {
+                            $('#thumbPromotions2').attr('src', e.target.result);
+                        } 
+                    }; 
+                };  
+                reader.readAsDataURL(input.files[0]);
+            } 
+            else {
+                if (id == 1){
+                    $('#inputPromotions1').val('');
+                    $('#thumbPromotions1').attr('src', path);
+                } else if (id == 2) {
+                    $('#inputPromotions2').val('');
+                    $('#thumbPromotions2').attr('src', path);
+                }  
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Fill in with Image Extension (.jpg, .jpeg, .png) !',
+                }) 
+            }
+        }
     }
 };
