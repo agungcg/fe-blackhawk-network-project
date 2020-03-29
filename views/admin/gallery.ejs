@@ -71,7 +71,7 @@
 </div>
 
 <script type='text/javascript'>
-
+    console.log(<%- JSON.stringify(gallery) %>)
     $('img').on("error", function() {
         $(this).attr('src', '/images/image-solid.svg');
     });

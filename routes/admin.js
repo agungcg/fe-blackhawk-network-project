@@ -1,17 +1,20 @@
 var express = require('express');
 var router = express.Router();
 const excel = require('node-excel-export');
+var multer  = require('multer');
 
 var serviceAdmin = require('../services/serviceAdmin');
 var consConfig = require("../configs/constants");
 
 var date = new Date();
+var upload = multer() ;
 
 router.get('/', async function(req, res, next) {
     sess = req.session;
     if (sess.token){
         const month = date.getMonth() + 1;
         const dashboard = await serviceAdmin.getDashboard(sess.token, month)
+        const file = await serviceAdmin.getFile(sess.token)
         res.render('admin/dashboard',{
             "titlePage" : "Dashboard",
             "month" : month,
@@ -22,7 +25,10 @@ router.get('/', async function(req, res, next) {
             "store": '',
             "dc": '',
             "md": '',
-            "sideNavPath": "/admin/filter"
+            "sideNavPath": "/admin/filter",
+            "domain": consConfig.urlService,
+            "file": file,
+            "token": sess.token
         });
     } else {
         res.redirect('/')
@@ -204,6 +210,5 @@ router.post('/report/process/export-excel', async function(req, res, next) {
   res.attachment(req.body.radioFilter + '-' + req.body.inputDate + '.xlsx');
   return res.send(report);
 });
-
 
 module.exports = router;

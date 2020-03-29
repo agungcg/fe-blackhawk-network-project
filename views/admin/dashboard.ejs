@@ -6,6 +6,57 @@
         <main id="mainDiagram">
             <div class="container-fluid">
                 <h1 id="labelDashboard" class="my-4">Dashboard</h1>
+                <div id="btnUpload">
+                    <div class="mb-2 d-flex justify-content-end">
+                        <div class="dropdown pr-2">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                UPLOAD POG
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="javascript: void(0)" onclick="uploadModalQuartetImg(1,1)">IDM</a>
+                                <a class="dropdown-item" href="javascript: void(0)" onclick="uploadModalSingleImg(1,2)">SAT</a>
+                                <a class="dropdown-item" href="javascript: void(0)" onclick="uploadModalSingleImg(1,3)">MIDI</a>
+                            </div>
+                        </div>
+                        <div class="dropdown pr-2">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                UPLOAD FIXTURE TRAITS
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="javascript: void(0)" onclick="uploadModalQuartetImg(2,1)">IDM</a>
+                                <a class="dropdown-item" href="javascript: void(0)" onclick="uploadModalSingleImg(2,2)">SAT</a>
+                                <a class="dropdown-item" href="javascript: void(0)" onclick="uploadModalSingleImg(2,3)">MIDI</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                UPLOAD PROMOTIONS
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="javascript: void(0)" onclick="uploadVisitInstructions(1)">IDM</a>
+                                <a class="dropdown-item" href="javascript: void(0)" onclick="uploadModalSingleImg(3,2)">SAT</a>
+                                <a class="dropdown-item" href="javascript: void(0)" onclick="uploadModalSingleImg(3,3)">MIDI</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4 d-flex justify-content-end">
+                        <div class="pr-2">
+                            <button class="btn btn-danger" type="button" onclick="uploadModalSingleDoc(4)">
+                                UPLOAD STORE LIST
+                            </button>
+                        </div>
+                        <div class="pr-2">
+                            <button class="btn btn-warning" type="button" onclick="uploadModalSingleDoc(5)">
+                                UPLOAD PERMIT
+                            </button>
+                        </div>
+                        <div class="">
+                            <button class="btn btn-info" type="button" onclick="uploadModalSingleDoc(6)">
+                                UPLOAD VISIT INTRUCTIONS
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 <div id="labelDetails" class="my-4 align-self-center" style="display: none;">
                     <h1 >Details</h1>
                     <a class="ml-auto align-self-center h6" href="/admin"><i class="fas fa-chevron-left mr-2 "></i>BACK</a>
@@ -385,6 +436,343 @@
 <script type='text/javascript'>
 
     console.log("data dashboar", <%- JSON.stringify(dashboard) %>)
+    console.log("data file", <%- JSON.stringify(file) %>)
+
+    var file = <%- JSON.stringify(file) %>
+    var domain = <%- JSON.stringify(domain) %>
+    var token = <%- JSON.stringify(token) %>
+
+    Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+    Chart.defaults.global.defaultFontColor = '#292b2c';
+
+    var chartVisitCompliance = document.getElementById("chartVisitCompliance");
+    var chartFixtureCompliance = document.getElementById("chartFixtureCompliance");
+    var chartPOGCompliance = document.getElementById("chartPOGCompliance");
+    var chartPODCompliance = document.getElementById("chartPODCompliance");
+    var chartPOPCompliance = document.getElementById("chartPOPCompliance");
+    var chartInStockCompliance = document.getElementById("chartInStockCompliance");
+    var chartActivationKnowHow = document.getElementById("chartActivationKnowHow");
+    var chartPromotionAwareness = document.getElementById("chartPromotionAwareness");
+    var chartComplaintHandling = document.getElementById("chartComplaintHandling");
+    
+    var tempDashboardVisitCompliancePersen = <%- dashboard.visitCompliance.persen %>
+    var tempDashboardFixtureComplianceEntry = <%- dashboard.fixtureCompliance.entry %>
+    var tempDashboardFixtureComplianceExit = <%- dashboard.fixtureCompliance.exit %>
+    var tempDashboardPOGComplianceEntry = <%- dashboard.POGCompliance.entry %>
+    var tempDashboardPOGComplianceExit = <%- dashboard.POGCompliance.exit %>
+    var tempDashboardPODComplianceEntry = <%- dashboard.PODCompliance.entry %>
+    var tempDashboardPODComplianceExit = <%- dashboard.PODCompliance.exit %>
+    var tempDashboardPOPComplianceEntry = <%- dashboard.POPCompliance.entry %>
+    var tempDashboardPOPComplianceExit = <%- dashboard.POPCompliance.exit %>
+    var tempDashboardInstockComplianceEntryInstockCompliance = <%- dashboard.instockCompliance.entryInstockCompliance %>
+    var tempDashboardInstockComplianceExitInstockCompliance = <%- dashboard.instockCompliance.exitInstockCompliance %>
+    var tempDashboardActivationKnowHowPersen = <%- dashboard.activationKnowHow.persen %>
+    var tempDashboardPromotionAwarenessPersen = <%- dashboard.promotionAwareness.persen %>
+    var tempDashboardComplaintHandlingPersen = <%- dashboard.complaintHandling.persen %>
+
+    var tempvisitCompliancePersen = 0
+    if (tempDashboardVisitCompliancePersen != null) {
+        if (tempDashboardVisitCompliancePersen <= 100) {
+            tempvisitCompliancePersen = 100 - tempDashboardVisitCompliancePersen
+        }
+    }
+
+    var tempactivationKnowHowPersen = 0
+    if (tempDashboardActivationKnowHowPersen != null) {
+        if (tempDashboardActivationKnowHowPersen <= 100) {
+            tempactivationKnowHowPersen = 100 - tempDashboardActivationKnowHowPersen
+        }
+    }
+
+    var temppromotionAwarenessPersen = 0
+    if (tempDashboardPromotionAwarenessPersen != null) {
+        if (tempDashboardPromotionAwarenessPersen <= 100) {
+            temppromotionAwarenessPersen = 100 - tempDashboardPromotionAwarenessPersen
+        }
+    }
+    
+    var tempcomplaintHandlingPersen = 0
+    if (tempDashboardComplaintHandlingPersen != null) {
+        if (tempDashboardComplaintHandlingPersen <= 100) {
+            tempcomplaintHandlingPersen = 100 - tempDashboardComplaintHandlingPersen
+        }
+    }
+    
+    var configChartVisitCompliance = new Chart(chartVisitCompliance, {
+        type: 'pie',
+        data: {
+            labels: ['Percent'],
+            datasets: [{
+                data: [tempDashboardVisitCompliancePersen, tempvisitCompliancePersen],
+                backgroundColor: ['#007bff', '#f7f7f7'],
+            }],
+        },
+    });
+
+    var configChartFixtureCompliance = new Chart(chartFixtureCompliance, {
+        type: 'pie',
+        data: {
+            labels: ['Entry', 'Exit'],
+            datasets: [{
+            data: [tempDashboardFixtureComplianceEntry, tempDashboardFixtureComplianceExit, 200 - (tempDashboardFixtureComplianceEntry + tempDashboardFixtureComplianceExit)],
+            backgroundColor: ['#007bff', '#00cec9', '#f7f7f7'],
+            }],
+        },
+    });
+
+    var configChartPOGCompliance = new Chart(chartPOGCompliance, {
+        type: 'pie',
+        data: {
+            labels: ['Entry', 'Exit'],
+            datasets: [{
+            data: [tempDashboardPOGComplianceEntry, tempDashboardPOGComplianceExit, 200 - (tempDashboardPOGComplianceEntry + tempDashboardPOGComplianceExit)],
+            backgroundColor: ['#007bff', '#00cec9','#f7f7f7'],
+            }],
+        },
+    });
+
+    var configChartPODCompliance = new Chart(chartPODCompliance, {
+        type: 'pie',
+        data: {
+            labels: ['Entry', 'Exit'],
+            datasets: [{
+                data: [tempDashboardPODComplianceEntry, tempDashboardPODComplianceExit, 200 - (tempDashboardPODComplianceEntry + tempDashboardPODComplianceExit)],
+                backgroundColor: ['#007bff', '#00cec9', '#f7f7f7'],
+            }],
+        },
+    });
+
+    var configConfigChartPOPCompliance = new Chart(chartPOPCompliance, {
+        type: 'pie',
+        data: {
+            labels: ['Entry', 'Exit'],
+            datasets: [{
+                data: [tempDashboardPOPComplianceEntry, tempDashboardPOPComplianceExit, 200 - (tempDashboardPOPComplianceEntry + tempDashboardPOPComplianceExit)],
+                backgroundColor: ['#007bff', '#00cec9', '#f7f7f7'],
+            }],
+        },
+    });
+
+    var configChartInStockCompliance = new Chart(chartInStockCompliance, {
+        type: 'pie',
+        data: {
+            labels: ['Entry', 'Exit'],
+            datasets: [{
+                data: [tempDashboardInstockComplianceEntryInstockCompliance, tempDashboardInstockComplianceExitInstockCompliance, 200 - (tempDashboardInstockComplianceEntryInstockCompliance + tempDashboardInstockComplianceExitInstockCompliance)],
+                backgroundColor: ['#007bff', '#00cec9', '#f7f7f7'],
+            }],
+        },
+    });
+
+    var configChartActivationKnowHow = new Chart(chartActivationKnowHow, {
+        type: 'pie',
+        data: {
+            labels: ['Percent'],
+            datasets: [{
+                data: [tempDashboardActivationKnowHowPersen, tempactivationKnowHowPersen],
+                backgroundColor: ['#007bff', '#f7f7f7'],
+            }],
+        },
+    });
+
+    var configChartPromotionAwareness = new Chart(chartPromotionAwareness, {
+        type: 'pie',
+        data: {
+            labels: ['Percent'],
+            datasets: [{
+                data: [tempDashboardPromotionAwarenessPersen, temppromotionAwarenessPersen],
+                backgroundColor: ['#007bff', '#f7f7f7'],
+            }],
+        },
+    });
+
+    var configChartComplaintHandling = new Chart(chartComplaintHandling, {
+        type: 'pie',
+        data: {
+            labels: ['Percent'],
+            datasets: [{
+                data: [tempDashboardComplaintHandlingPersen, tempcomplaintHandlingPersen],
+                backgroundColor: ['#007bff', '#f7f7f7'],
+            }],
+        },
+    });
+
+    var diagramVisitCompliance = document.getElementById("diagramVisitCompliance");
+    var diagramFixtureCompliance = document.getElementById("diagramFixtureCompliance");
+    var diagramPOGCompliance = document.getElementById("diagramPOGCompliance");
+    var diagramPODCompliance = document.getElementById("diagramPODCompliance");
+    var diagramPOPCompliance = document.getElementById("diagramPOPCompliance");
+    var diagramInStockCompliance = document.getElementById("diagramInStockCompliance");
+    var diagramActivationKnowHow = document.getElementById("diagramActivationKnowHow");
+    var diagramPromotionAwareness = document.getElementById("diagramPromotionAwareness");
+    var diagramComplaintHandling = document.getElementById("diagramComplaintHandling");
+
+    var tableVisitCompliance = document.getElementById("tableVisitCompliance"); 
+    var tableFixtureCompliance = document.getElementById("tableFixtureCompliance");
+    var tablePOGCompliance = document.getElementById("tablePOGCompliance");
+    var tablePODCompliance = document.getElementById("tablePODCompliance");
+    var tablePOPCompliance = document.getElementById("tablePOPCompliance");
+    var tableInStockCompliance = document.getElementById("tableInStockCompliance");
+    var tableActivationKnowHow = document.getElementById("tableActivationKnowHow");
+    var tablePromotionAwareness = document.getElementById("tablePromotionAwareness");
+    var tableComplaintHandling = document.getElementById("tableComplaintHandling");
+
+    var btnUpload = document.getElementById("btnUpload");
+    var labelDetails = document.getElementById("labelDetails");
+    var labelDashboard = document.getElementById("labelDashboard");
+
+    function detailsVisitCompliance() {
+        diagramFixtureCompliance.style.display = "none"
+        diagramPOGCompliance.style.display = "none";
+        diagramPODCompliance.style.display = "none";
+        diagramPOPCompliance.style.display = "none";
+        diagramInStockCompliance.style.display = "none";
+        diagramActivationKnowHow.style.display = "none";
+        diagramPromotionAwareness.style.display = "none";
+        diagramComplaintHandling.style.display = "none";
+
+        tableVisitCompliance.style.display = "block"
+
+        btnUpload.style.display = "none"
+        labelDashboard.style.display = "none"
+        labelDetails.style.display = "flex"
+    }
+
+    function detailsFixtureCompliance() {
+        diagramVisitCompliance.style.display = "none"
+        diagramPOGCompliance.style.display = "none";
+        diagramPODCompliance.style.display = "none";
+        diagramPOPCompliance.style.display = "none";
+        diagramInStockCompliance.style.display = "none";
+        diagramActivationKnowHow.style.display = "none";
+        diagramPromotionAwareness.style.display = "none";
+        diagramComplaintHandling.style.display = "none";
+
+        tableFixtureCompliance.style.display = "block"
+
+        btnUpload.style.display = "none"
+        labelDashboard.style.display = "none"
+        labelDetails.style.display = "flex"
+    }
+
+    function detailsPOGCompliance() {
+        diagramVisitCompliance.style.display = "none"
+        diagramFixtureCompliance.style.display = "none";
+        diagramPODCompliance.style.display = "none";
+        diagramPOPCompliance.style.display = "none";
+        diagramInStockCompliance.style.display = "none";
+        diagramActivationKnowHow.style.display = "none";
+        diagramPromotionAwareness.style.display = "none";
+        diagramComplaintHandling.style.display = "none";
+
+        tablePOGCompliance.style.display = "block"
+
+        btnUpload.style.display = "none"
+        labelDashboard.style.display = "none"
+        labelDetails.style.display = "flex"
+    }
+
+    function detailsPODCompliance() {
+        diagramVisitCompliance.style.display = "none"
+        diagramFixtureCompliance.style.display = "none";
+        diagramPOGCompliance.style.display = "none";
+        diagramPOPCompliance.style.display = "none";
+        diagramInStockCompliance.style.display = "none";
+        diagramActivationKnowHow.style.display = "none";
+        diagramPromotionAwareness.style.display = "none";
+        diagramComplaintHandling.style.display = "none";
+
+        tablePODCompliance.style.display = "block"
+
+        btnUpload.style.display = "none"
+        labelDashboard.style.display = "none"
+        labelDetails.style.display = "flex"
+    }
+
+    function detailsPOPCompliance() {
+        diagramVisitCompliance.style.display = "none"
+        diagramFixtureCompliance.style.display = "none";
+        diagramPOGCompliance.style.display = "none";
+        diagramPODCompliance.style.display = "none";
+        diagramInStockCompliance.style.display = "none";
+        diagramActivationKnowHow.style.display = "none";
+        diagramPromotionAwareness.style.display = "none";
+        diagramComplaintHandling.style.display = "none";
+
+        tablePOPCompliance.style.display = "block"
+
+        btnUpload.style.display = "none"
+        labelDashboard.style.display = "none"
+        labelDetails.style.display = "flex"
+    }
+
+    function detailsInStockCompliance() {
+        diagramVisitCompliance.style.display = "none"
+        diagramFixtureCompliance.style.display = "none";
+        diagramPOGCompliance.style.display = "none";
+        diagramPODCompliance.style.display = "none";
+        diagramPOPCompliance.style.display = "none";
+        diagramActivationKnowHow.style.display = "none";
+        diagramPromotionAwareness.style.display = "none";
+        diagramComplaintHandling.style.display = "none";
+
+        tableInStockCompliance.style.display = "block"
+
+        btnUpload.style.display = "none"
+        labelDashboard.style.display = "none"
+        labelDetails.style.display = "flex"
+    }
+
+    function detailsActivationKnowHow() {
+        diagramVisitCompliance.style.display = "none"
+        diagramFixtureCompliance.style.display = "none";
+        diagramPOGCompliance.style.display = "none";
+        diagramPODCompliance.style.display = "none";
+        diagramPOPCompliance.style.display = "none";
+        diagramInStockCompliance.style.display = "none";
+        diagramPromotionAwareness.style.display = "none";
+        diagramComplaintHandling.style.display = "none";
+
+        tableActivationKnowHow.style.display = "block"
+
+        btnUpload.style.display = "none"
+        labelDashboard.style.display = "none"
+        labelDetails.style.display = "flex"
+    }
+
+    function detailsPromotionAwareness() {
+        diagramVisitCompliance.style.display = "none"
+        diagramFixtureCompliance.style.display = "none";
+        diagramPOGCompliance.style.display = "none";
+        diagramPODCompliance.style.display = "none";
+        diagramPOPCompliance.style.display = "none";
+        diagramInStockCompliance.style.display = "none";
+        diagramActivationKnowHow.style.display = "none";
+        diagramComplaintHandling.style.display = "none";
+
+        tablePromotionAwareness.style.display = "block"
+
+        btnUpload.style.display = "none"
+        labelDashboard.style.display = "none"
+        labelDetails.style.display = "flex"
+    }
+
+    function detailsComplaintHandling() {
+        diagramVisitCompliance.style.display = "none"
+        diagramFixtureCompliance.style.display = "none";
+        diagramPOGCompliance.style.display = "none";
+        diagramPODCompliance.style.display = "none";
+        diagramPOPCompliance.style.display = "none";
+        diagramInStockCompliance.style.display = "none";
+        diagramActivationKnowHow.style.display = "none";
+        diagramPromotionAwareness.style.display = "none";
+
+        tableComplaintHandling.style.display = "block"
+
+        btnUpload.style.display = "none"
+        labelDashboard.style.display = "none"
+        labelDetails.style.display = "flex"
+    }
 
     $(document).ready(function() {
         $('#dataTableVisitCompliance').DataTable({
@@ -811,328 +1199,7 @@
         });
     });
 
-    Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-    Chart.defaults.global.defaultFontColor = '#292b2c';
-
-    var chartVisitCompliance = document.getElementById("chartVisitCompliance");
-    var chartFixtureCompliance = document.getElementById("chartFixtureCompliance");
-    var chartPOGCompliance = document.getElementById("chartPOGCompliance");
-    var chartPODCompliance = document.getElementById("chartPODCompliance");
-    var chartPOPCompliance = document.getElementById("chartPOPCompliance");
-    var chartInStockCompliance = document.getElementById("chartInStockCompliance");
-    var chartActivationKnowHow = document.getElementById("chartActivationKnowHow");
-    var chartPromotionAwareness = document.getElementById("chartPromotionAwareness");
-    var chartComplaintHandling = document.getElementById("chartComplaintHandling");
-
     
-    var tempDashboardVisitCompliancePersen = <%- dashboard.visitCompliance.persen %>
-    var tempDashboardFixtureComplianceEntry = <%- dashboard.fixtureCompliance.entry %>
-    var tempDashboardFixtureComplianceExit = <%- dashboard.fixtureCompliance.exit %>
-    var tempDashboardPOGComplianceEntry = <%- dashboard.POGCompliance.entry %>
-    var tempDashboardPOGComplianceExit = <%- dashboard.POGCompliance.exit %>
-    var tempDashboardPODComplianceEntry = <%- dashboard.PODCompliance.entry %>
-    var tempDashboardPODComplianceExit = <%- dashboard.PODCompliance.exit %>
-    var tempDashboardPOPComplianceEntry = <%- dashboard.POPCompliance.entry %>
-    var tempDashboardPOPComplianceExit = <%- dashboard.POPCompliance.exit %>
-    var tempDashboardInstockComplianceEntryInstockCompliance = <%- dashboard.instockCompliance.entryInstockCompliance %>
-    var tempDashboardInstockComplianceExitInstockCompliance = <%- dashboard.instockCompliance.exitInstockCompliance %>
-    var tempDashboardActivationKnowHowPersen = <%- dashboard.activationKnowHow.persen %>
-    var tempDashboardPromotionAwarenessPersen = <%- dashboard.promotionAwareness.persen %>
-    var tempDashboardComplaintHandlingPersen = <%- dashboard.complaintHandling.persen %>
-
-    var tempvisitCompliancePersen = 0
-    if (tempDashboardVisitCompliancePersen != null) {
-        if (tempDashboardVisitCompliancePersen <= 100) {
-            tempvisitCompliancePersen = 100 - tempDashboardVisitCompliancePersen
-        }
-    }
-
-    var tempactivationKnowHowPersen = 0
-    if (tempDashboardActivationKnowHowPersen != null) {
-        if (tempDashboardActivationKnowHowPersen <= 100) {
-            tempactivationKnowHowPersen = 100 - tempDashboardActivationKnowHowPersen
-        }
-    }
-
-    var temppromotionAwarenessPersen = 0
-    if (tempDashboardPromotionAwarenessPersen != null) {
-        if (tempDashboardPromotionAwarenessPersen <= 100) {
-            temppromotionAwarenessPersen = 100 - tempDashboardPromotionAwarenessPersen
-        }
-    }
-    
-    var tempcomplaintHandlingPersen = 0
-    if (tempDashboardComplaintHandlingPersen != null) {
-        if (tempDashboardComplaintHandlingPersen <= 100) {
-            tempcomplaintHandlingPersen = 100 - tempDashboardComplaintHandlingPersen
-        }
-    }
-    
-    var configChartVisitCompliance = new Chart(chartVisitCompliance, {
-        type: 'pie',
-        data: {
-            labels: ['Percent'],
-            datasets: [{
-                data: [tempDashboardVisitCompliancePersen, tempvisitCompliancePersen],
-                backgroundColor: ['#007bff', '#f7f7f7'],
-            }],
-        },
-    });
-
-    var configChartFixtureCompliance = new Chart(chartFixtureCompliance, {
-        type: 'pie',
-        data: {
-            labels: ['Entry', 'Exit'],
-            datasets: [{
-            data: [tempDashboardFixtureComplianceEntry, tempDashboardFixtureComplianceExit, 200 - (tempDashboardFixtureComplianceEntry + tempDashboardFixtureComplianceExit)],
-            backgroundColor: ['#007bff', '#00cec9', '#f7f7f7'],
-            }],
-        },
-    });
-
-    var configChartPOGCompliance = new Chart(chartPOGCompliance, {
-        type: 'pie',
-        data: {
-            labels: ['Entry', 'Exit'],
-            datasets: [{
-            data: [tempDashboardPOGComplianceEntry, tempDashboardPOGComplianceExit, 200 - (tempDashboardPOGComplianceEntry + tempDashboardPOGComplianceExit)],
-            backgroundColor: ['#007bff', '#00cec9','#f7f7f7'],
-            }],
-        },
-    });
-
-    var configChartPODCompliance = new Chart(chartPODCompliance, {
-        type: 'pie',
-        data: {
-            labels: ['Entry', 'Exit'],
-            datasets: [{
-                data: [tempDashboardPODComplianceEntry, tempDashboardPODComplianceExit, 200 - (tempDashboardPODComplianceEntry + tempDashboardPODComplianceExit)],
-                backgroundColor: ['#007bff', '#00cec9', '#f7f7f7'],
-            }],
-        },
-    });
-
-    var configConfigChartPOPCompliance = new Chart(chartPOPCompliance, {
-        type: 'pie',
-        data: {
-            labels: ['Entry', 'Exit'],
-            datasets: [{
-                data: [tempDashboardPOPComplianceEntry, tempDashboardPOPComplianceExit, 200 - (tempDashboardPOPComplianceEntry + tempDashboardPOPComplianceExit)],
-                backgroundColor: ['#007bff', '#00cec9', '#f7f7f7'],
-            }],
-        },
-    });
-
-    var configChartInStockCompliance = new Chart(chartInStockCompliance, {
-        type: 'pie',
-        data: {
-            labels: ['Entry', 'Exit'],
-            datasets: [{
-                data: [tempDashboardInstockComplianceEntryInstockCompliance, tempDashboardInstockComplianceExitInstockCompliance, 200 - (tempDashboardInstockComplianceEntryInstockCompliance + tempDashboardInstockComplianceExitInstockCompliance)],
-                backgroundColor: ['#007bff', '#00cec9', '#f7f7f7'],
-            }],
-        },
-    });
-
-    var configChartActivationKnowHow = new Chart(chartActivationKnowHow, {
-        type: 'pie',
-        data: {
-            labels: ['Percent'],
-            datasets: [{
-                data: [tempDashboardActivationKnowHowPersen, tempactivationKnowHowPersen],
-                backgroundColor: ['#007bff', '#f7f7f7'],
-            }],
-        },
-    });
-
-    var configChartPromotionAwareness = new Chart(chartPromotionAwareness, {
-        type: 'pie',
-        data: {
-            labels: ['Percent'],
-            datasets: [{
-                data: [tempDashboardPromotionAwarenessPersen, temppromotionAwarenessPersen],
-                backgroundColor: ['#007bff', '#f7f7f7'],
-            }],
-        },
-    });
-
-    var configChartComplaintHandling = new Chart(chartComplaintHandling, {
-        type: 'pie',
-        data: {
-            labels: ['Percent'],
-            datasets: [{
-                data: [tempDashboardComplaintHandlingPersen, tempcomplaintHandlingPersen],
-                backgroundColor: ['#007bff', '#f7f7f7'],
-            }],
-        },
-    });
-
-    var diagramVisitCompliance = document.getElementById("diagramVisitCompliance");
-    var diagramFixtureCompliance = document.getElementById("diagramFixtureCompliance");
-    var diagramPOGCompliance = document.getElementById("diagramPOGCompliance");
-    var diagramPODCompliance = document.getElementById("diagramPODCompliance");
-    var diagramPOPCompliance = document.getElementById("diagramPOPCompliance");
-    var diagramInStockCompliance = document.getElementById("diagramInStockCompliance");
-    var diagramActivationKnowHow = document.getElementById("diagramActivationKnowHow");
-    var diagramPromotionAwareness = document.getElementById("diagramPromotionAwareness");
-    var diagramComplaintHandling = document.getElementById("diagramComplaintHandling");
-
-    var tableVisitCompliance = document.getElementById("tableVisitCompliance"); 
-    var tableFixtureCompliance = document.getElementById("tableFixtureCompliance");
-    var tablePOGCompliance = document.getElementById("tablePOGCompliance");
-    var tablePODCompliance = document.getElementById("tablePODCompliance");
-    var tablePOPCompliance = document.getElementById("tablePOPCompliance");
-    var tableInStockCompliance = document.getElementById("tableInStockCompliance");
-    var tableActivationKnowHow = document.getElementById("tableActivationKnowHow");
-    var tablePromotionAwareness = document.getElementById("tablePromotionAwareness");
-    var tableComplaintHandling = document.getElementById("tableComplaintHandling");
-
-    var labelDetails = document.getElementById("labelDetails");
-    var labelDashboard = document.getElementById("labelDashboard");
-
-    function detailsVisitCompliance() {
-        diagramFixtureCompliance.style.display = "none"
-        diagramPOGCompliance.style.display = "none";
-        diagramPODCompliance.style.display = "none";
-        diagramPOPCompliance.style.display = "none";
-        diagramInStockCompliance.style.display = "none";
-        diagramActivationKnowHow.style.display = "none";
-        diagramPromotionAwareness.style.display = "none";
-        diagramComplaintHandling.style.display = "none";
-
-        tableVisitCompliance.style.display = "block"
-
-        labelDashboard.style.display = "none"
-        labelDetails.style.display = "flex"
-    }
-
-    function detailsFixtureCompliance() {
-        diagramVisitCompliance.style.display = "none"
-        diagramPOGCompliance.style.display = "none";
-        diagramPODCompliance.style.display = "none";
-        diagramPOPCompliance.style.display = "none";
-        diagramInStockCompliance.style.display = "none";
-        diagramActivationKnowHow.style.display = "none";
-        diagramPromotionAwareness.style.display = "none";
-        diagramComplaintHandling.style.display = "none";
-
-        tableFixtureCompliance.style.display = "block"
-
-        labelDashboard.style.display = "none"
-        labelDetails.style.display = "flex"
-    }
-
-    function detailsPOGCompliance() {
-        diagramVisitCompliance.style.display = "none"
-        diagramFixtureCompliance.style.display = "none";
-        diagramPODCompliance.style.display = "none";
-        diagramPOPCompliance.style.display = "none";
-        diagramInStockCompliance.style.display = "none";
-        diagramActivationKnowHow.style.display = "none";
-        diagramPromotionAwareness.style.display = "none";
-        diagramComplaintHandling.style.display = "none";
-
-        tablePOGCompliance.style.display = "block"
-
-        labelDashboard.style.display = "none"
-        labelDetails.style.display = "flex"
-    }
-
-    function detailsPODCompliance() {
-        diagramVisitCompliance.style.display = "none"
-        diagramFixtureCompliance.style.display = "none";
-        diagramPOGCompliance.style.display = "none";
-        diagramPOPCompliance.style.display = "none";
-        diagramInStockCompliance.style.display = "none";
-        diagramActivationKnowHow.style.display = "none";
-        diagramPromotionAwareness.style.display = "none";
-        diagramComplaintHandling.style.display = "none";
-
-        tablePODCompliance.style.display = "block"
-
-        labelDashboard.style.display = "none"
-        labelDetails.style.display = "flex"
-    }
-
-    function detailsPOPCompliance() {
-        diagramVisitCompliance.style.display = "none"
-        diagramFixtureCompliance.style.display = "none";
-        diagramPOGCompliance.style.display = "none";
-        diagramPODCompliance.style.display = "none";
-        diagramInStockCompliance.style.display = "none";
-        diagramActivationKnowHow.style.display = "none";
-        diagramPromotionAwareness.style.display = "none";
-        diagramComplaintHandling.style.display = "none";
-
-        tablePOPCompliance.style.display = "block"
-
-        labelDashboard.style.display = "none"
-        labelDetails.style.display = "flex"
-    }
-
-    function detailsInStockCompliance() {
-        diagramVisitCompliance.style.display = "none"
-        diagramFixtureCompliance.style.display = "none";
-        diagramPOGCompliance.style.display = "none";
-        diagramPODCompliance.style.display = "none";
-        diagramPOPCompliance.style.display = "none";
-        diagramActivationKnowHow.style.display = "none";
-        diagramPromotionAwareness.style.display = "none";
-        diagramComplaintHandling.style.display = "none";
-
-        tableInStockCompliance.style.display = "block"
-
-        labelDashboard.style.display = "none"
-        labelDetails.style.display = "flex"
-    }
-
-    function detailsActivationKnowHow() {
-        diagramVisitCompliance.style.display = "none"
-        diagramFixtureCompliance.style.display = "none";
-        diagramPOGCompliance.style.display = "none";
-        diagramPODCompliance.style.display = "none";
-        diagramPOPCompliance.style.display = "none";
-        diagramInStockCompliance.style.display = "none";
-        diagramPromotionAwareness.style.display = "none";
-        diagramComplaintHandling.style.display = "none";
-
-        tableActivationKnowHow.style.display = "block"
-
-        labelDashboard.style.display = "none"
-        labelDetails.style.display = "flex"
-    }
-
-    function detailsPromotionAwareness() {
-        diagramVisitCompliance.style.display = "none"
-        diagramFixtureCompliance.style.display = "none";
-        diagramPOGCompliance.style.display = "none";
-        diagramPODCompliance.style.display = "none";
-        diagramPOPCompliance.style.display = "none";
-        diagramInStockCompliance.style.display = "none";
-        diagramActivationKnowHow.style.display = "none";
-        diagramComplaintHandling.style.display = "none";
-
-        tablePromotionAwareness.style.display = "block"
-
-        labelDashboard.style.display = "none"
-        labelDetails.style.display = "flex"
-    }
-
-    function detailsComplaintHandling() {
-        diagramVisitCompliance.style.display = "none"
-        diagramFixtureCompliance.style.display = "none";
-        diagramPOGCompliance.style.display = "none";
-        diagramPODCompliance.style.display = "none";
-        diagramPOPCompliance.style.display = "none";
-        diagramInStockCompliance.style.display = "none";
-        diagramActivationKnowHow.style.display = "none";
-        diagramPromotionAwareness.style.display = "none";
-
-        tableComplaintHandling.style.display = "block"
-
-        labelDashboard.style.display = "none"
-        labelDetails.style.display = "flex"
-    }
 
     formatDate = function(date) {
         var d = new Date(date),
@@ -1147,8 +1214,8 @@
         
         return [year, month, day].join('-');
     }
-
-
 </script>
+
+<script src="/js/upload.js"></script>
 
 <%- include('../layout/footer') -%>

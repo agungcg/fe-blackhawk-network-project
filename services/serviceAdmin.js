@@ -149,6 +149,23 @@ const serviceAdmin = {
             });
         return temp;
     },
+    getFile: async (Token) => {
+        temp = [];
+        await axios.get(
+            consConfig.urlService + 'upload',
+            {   
+                headers: Token 
+            })
+            .then(function(response) {
+                temp = response.data.data
+                console.log("success service getFile")
+                
+            })
+            .catch(function (error) {
+                console.log("error service getFile")
+            });
+        return temp;
+    },
 
 };
 
