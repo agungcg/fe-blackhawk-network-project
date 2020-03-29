@@ -1,13 +1,11 @@
 var express = require('express');
 var router = express.Router();
 const excel = require('node-excel-export');
-var multer  = require('multer');
 
 var serviceAdmin = require('../services/serviceAdmin');
 var consConfig = require("../configs/constants");
 
 var date = new Date();
-var upload = multer() ;
 
 router.get('/', async function(req, res, next) {
     sess = req.session;
