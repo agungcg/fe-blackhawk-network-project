@@ -37,6 +37,7 @@ router.use('/filter', async function(req, res, next) {
     sess = req.session;
     if (sess.token){
         const dashboard = await serviceAdmin.getDashboard(sess.token, req.body.selectMonth, req.body.selectBrand, req.body.selectRetailer, req.body.selectFixtureType, req.body.selectStore, req.body.selectDC, req.body.selectMD)
+        const file = await serviceAdmin.getFile(sess.token)
         res.render('admin/dashboard',{
             "titlePage" : "Dashboard",
             "month" : req.body.selectMonth,
@@ -47,7 +48,10 @@ router.use('/filter', async function(req, res, next) {
             "store": req.body.selectStore,
             "dc": req.body.selectDC,
             "md": req.body.selectMD,
-            "sideNavPath": "/admin/filter"
+            "sideNavPath": "/admin/filter",
+            "domain": consConfig.urlService,
+            "file": file,
+            "token": sess.token
         });
     } else {
         res.redirect('/')
