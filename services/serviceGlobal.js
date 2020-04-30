@@ -78,7 +78,6 @@ const serviceGloba = {
                 headers: Token 
             })
             .then(function(response) {
-                console.log()
                 temp  = response.data.data.map(obj => {
                     var tempData = {
                         id : obj.id,
