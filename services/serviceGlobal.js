@@ -104,7 +104,7 @@ const serviceGloba = {
                 temp  = response.data.data.map(obj => {
                     var tempData = {
                         id : obj.store_code,
-                        text : obj.store_name
+                        text : obj.store_code
                     }
                     return tempData;
                 });
