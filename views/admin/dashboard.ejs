@@ -66,7 +66,7 @@
                         <div class="card text-center">
                             <h5 class="card-header">Visit Compliance</h5>
                             <div class="card-body">
-                                <canvas class="mb-4" id="chartVisitCompliance" width="100%" height="50"></canvas>
+                                <canvas class="mb-2" id="chartVisitCompliance" width="100%" height="100"></canvas>
                                 <div class="row">
                                     <div class="col-12">
                                         <h3 class="text-primary"><%- Math.round(dashboard.visitCompliance.persen) %></h3>
@@ -84,14 +84,13 @@
                             <div class="card-header"><i class="fas fa-table mr-2"></i>Data Visit Compliance</div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTableVisitCompliance" width="100%" cellspacing="0">
-                                        <thead>
+                                    <table class="table table-bordered table-striped table-hover" id="dataTableVisitCompliance" width="100%" cellspacing="0">
+                                        <thead class="thead-dark">
                                             <tr>
                                                 <th class="text-center">Date</th>
                                                 <th class="text-center">Retailer</th>
                                                 <th class="text-center">Store Code</th>
-                                                <th class="text-center">Corect Fixture</th>
-                                                <th class="text-center">Status Visit</th>
+                                                <th class="text-center">DC</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -103,7 +102,7 @@
                         <div class="card text-center">
                             <h5 class="card-header">Fixture Compliance</h5>
                             <div class="card-body">
-                                <canvas class="mb-4" id="chartFixtureCompliance" width="100%" height="50"></canvas>
+                                <canvas class="mb-2" id="chartFixtureCompliance" width="100%" height="100"></canvas>
                                 <div class="row">
                                     <div class="entry col-6">
                                         <h3 class="text-primary"><%- Math.round(dashboard.fixtureCompliance.entry) %></h3>
@@ -125,13 +124,13 @@
                             <div class="card-header"><i class="fas fa-table mr-2"></i>Data Fixture Compliance</div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTableFixtureCompliance" width="100%" cellspacing="0">
-                                        <thead>
+                                    <table class="table table-bordered table-striped table-hover" id="dataTableFixtureCompliance" width="100%" cellspacing="0">
+                                        <thead class="thead-dark">
                                             <tr>
                                                 <th class="text-center">Date</th>
                                                 <th class="text-center">Retailer</th>
                                                 <th class="text-center">Store Code</th>
-                                                <th class="text-center">Corect Fixture</th>
+                                                <th class="text-center">Correct Fixture</th>
                                                 <th class="text-center">Status Visit</th>
                                             </tr>
                                         </thead>
@@ -144,7 +143,7 @@
                         <div class="card text-center">
                             <h5 class="card-header">POG Compliance</h5>
                             <div class="card-body">
-                                <canvas class="mb-4" id="chartPOGCompliance" width="100%" height="50"></canvas>
+                                <canvas class="mb-2" id="chartPOGCompliance" width="100%" height="100"></canvas>
                                 <div class="row">
                                     <div class="entry col-6">
                                         <h3 class="text-primary"><%- Math.round(dashboard.POGCompliance.entry) %></h3>
@@ -166,13 +165,13 @@
                             <div class="card-header"><i class="fas fa-table mr-2"></i>Data POG Compliance</div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTablePOGCompliance" width="100%" cellspacing="0">
-                                        <thead>
+                                    <table class="table table-bordered table-striped table-hover" id="dataTablePOGCompliance" width="100%" cellspacing="0">
+                                        <thead class="thead-dark">
                                             <tr>
                                                 <th class="text-center">Date</th>
                                                 <th class="text-center">Retailer</th>
                                                 <th class="text-center">Store Code</th>
-                                                <th class="text-center">Corect Fixture</th>
+                                                <th class="text-center">Correct POG</th>
                                                 <th class="text-center">Status Visit</th>
                                             </tr>
                                         </thead>
@@ -185,7 +184,7 @@
                         <div class="card text-center">
                             <h5 class="card-header">POD Compliance</h5>
                             <div class="card-body">
-                                <canvas class="mb-4" id="chartPODCompliance" width="100%" height="50"></canvas>
+                                <canvas class="mb-2" id="chartPODCompliance" width="100%" height="100"></canvas>
                                 <div class="row">
                                     <div class="entry col-6">
                                         <h3 class="text-primary"><%- Math.round(dashboard.PODCompliance.entry) %></h3>
@@ -207,14 +206,17 @@
                             <div class="card-header"><i class="fas fa-table mr-2"></i>Data POD Compliance</div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTablePODCompliance" width="100%" cellspacing="0">
-                                        <thead>
+                                    <table class="table table-bordered table-striped table-hover" id="dataTablePODCompliance" width="100%" cellspacing="0">
+                                        <thead class="thead-dark">
                                             <tr>
                                                 <th class="text-center">Date</th>
                                                 <th class="text-center">Retailer</th>
                                                 <th class="text-center">Store Code</th>
-                                                <th class="text-center">Corect Fixture</th>
-                                                <th class="text-center">Status Visit</th>
+                                                <th class="text-center">Fixture</th>
+                                                <th class="text-center">Entry Broken Pegs</th>
+                                                <th class="text-center">Entry POD Compliance</th>
+                                                <th class="text-center">Exit Broken Pegs</th>
+                                                <th class="text-center">Exit POD Compliance</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -226,7 +228,7 @@
                         <div class="card text-center">
                             <h5 class="card-header">POP Compliance</h5>
                             <div class="card-body">
-                                <canvas class="mb-4" id="chartPOPCompliance" width="100%" height="50"></canvas>
+                                <canvas class="mb-2" id="chartPOPCompliance" width="100%" height="100"></canvas>
                                 <div class="row">
                                     <div class="entry col-6">
                                         <h3 class="text-primary"><%- Math.round(dashboard.POPCompliance.entry) %></h3>
@@ -248,14 +250,14 @@
                             <div class="card-header"><i class="fas fa-table mr-2"></i>Data POP Compliance</div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTablePOPCompliance" width="100%" cellspacing="0">
-                                        <thead>
+                                    <table class="table table-bordered table-striped table-hover" id="dataTablePOPCompliance" width="100%" cellspacing="0">
+                                        <thead class="thead-dark">
                                             <tr>
                                                 <th class="text-center">Date</th>
                                                 <th class="text-center">Retailer</th>
                                                 <th class="text-center">Store Code</th>
-                                                <th class="text-center">Corect Fixture</th>
-                                                <th class="text-center">Status Visit</th>
+                                                <th class="text-center">POP 1</th>
+                                                <th class="text-center">POP 2</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -267,7 +269,7 @@
                         <div class="card text-center">
                             <h5 class="card-header">In-Stock Compliance</h5>
                             <div class="card-body">
-                                <canvas class="mb-4" id="chartInStockCompliance" width="100%" height="50"></canvas>
+                                <canvas class="mb-2" id="chartInStockCompliance" width="100%" height="100"></canvas>
                                 <div class="row">
                                     <div class="entry col-6">
                                         <h3 class="text-primary"><%- Math.round(dashboard.instockCompliance.entryInstockCompliance) %></h3>
@@ -289,8 +291,8 @@
                             <div class="card-header"><i class="fas fa-table mr-2"></i>Data In-Stock Compliance</div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTableInStockCompliance" width="100%" cellspacing="0">
-                                        <thead>
+                                    <table class="table table-bordered table-striped table-hover" id="dataTableInStockCompliance" width="100%" cellspacing="0">
+                                        <thead class="thead-dark">
                                             <tr>
                                                 <th class="text-center">Date</th>
                                                 <th class="text-center">Retailer</th>
@@ -308,7 +310,7 @@
                         <div class="card text-center">
                             <h5 class="card-header">Activation know-how</h5>
                             <div class="card-body">
-                                <canvas class="mb-4" id="chartActivationKnowHow" width="100%" height="50"></canvas>
+                                <canvas class="mb-2" id="chartActivationKnowHow" width="100%" height="100"></canvas>
                                 <div class="row">
                                     <div class="col-12">
                                         <h3 class="text-primary"><%- Math.round(dashboard.activationKnowHow.persen) %></h3>
@@ -326,14 +328,13 @@
                             <div class="card-header"><i class="fas fa-table mr-2"></i>Data Activation know-how</div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTableActivationKnowHow" width="100%" cellspacing="0">
-                                        <thead>
+                                    <table class="table table-bordered table-striped table-hover" id="dataTableActivationKnowHow" width="100%" cellspacing="0">
+                                        <thead class="thead-dark">
                                             <tr>
                                                 <th class="text-center">Date</th>
                                                 <th class="text-center">Retailer</th>
                                                 <th class="text-center">Store Code</th>
-                                                <th class="text-center">Corect Fixture</th>
-                                                <th class="text-center">Status Visit</th>
+                                                <th class="text-center">Activation</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -345,7 +346,7 @@
                         <div class="card text-center">
                             <h5 class="card-header">Promotion Awareness</h5>
                             <div class="card-body">
-                                <canvas class="mb-4" id="chartPromotionAwareness" width="100%" height="50"></canvas>
+                                <canvas class="mb-2" id="chartPromotionAwareness" width="100%" height="100"></canvas>
                                 <div class="row">
                                     <div class="col-12">
                                         <h3 class="text-primary"><%- Math.round(dashboard.promotionAwareness.persen) %></h3>
@@ -363,14 +364,13 @@
                             <div class="card-header"><i class="fas fa-table mr-2"></i>Data Promotion Awareness</div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTablePromotionAwareness" width="100%" cellspacing="0">
-                                        <thead>
+                                    <table class="table table-bordered table-striped table-hover" id="dataTablePromotionAwareness" width="100%" cellspacing="0">
+                                        <thead class="thead-dark">
                                             <tr>
                                                 <th class="text-center">Date</th>
                                                 <th class="text-center">Retailer</th>
                                                 <th class="text-center">Store Code</th>
-                                                <th class="text-center">Corect Fixture</th>
-                                                <th class="text-center">Status Visit</th>
+                                                <th class="text-center">Promotion Awareness</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -382,7 +382,7 @@
                         <div class="card text-center">
                             <h5 class="card-header">Complaint Handling</h5>
                             <div class="card-body">
-                                <canvas class="mb-4" id="chartComplaintHandling" width="100%" height="50"></canvas>
+                                <canvas class="mb-2" id="chartComplaintHandling" width="100%" height="100"></canvas>
                                 <div class="row">
                                     <div class="col-12">
                                         <h3 class="text-primary"><%- Math.round(dashboard.complaintHandling.persen) %></h3>
@@ -400,14 +400,13 @@
                             <div class="card-header"><i class="fas fa-table mr-2"></i>Data Complaint Handling</div>
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTableComplaintHandling" width="100%" cellspacing="0">
-                                        <thead>
+                                    <table class="table table-bordered table-striped table-hover" id="dataTableComplaintHandling" width="100%" cellspacing="0">
+                                        <thead class="thead-dark">
                                             <tr>
                                                 <th class="text-center">Date</th>
                                                 <th class="text-center">Retailer</th>
                                                 <th class="text-center">Store Code</th>
-                                                <th class="text-center">Corect Fixture</th>
-                                                <th class="text-center">Status Visit</th>
+                                                <th class="text-center">Complain Handling</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -455,146 +454,230 @@
     var chartPromotionAwareness = document.getElementById("chartPromotionAwareness");
     var chartComplaintHandling = document.getElementById("chartComplaintHandling");
     
-    var tempDashboardVisitCompliancePersen = <%- dashboard.visitCompliance.persen %>
-    var tempDashboardFixtureComplianceEntry = <%- dashboard.fixtureCompliance.entry %>
-    var tempDashboardFixtureComplianceExit = <%- dashboard.fixtureCompliance.exit %>
-    var tempDashboardPOGComplianceEntry = <%- dashboard.POGCompliance.entry %>
-    var tempDashboardPOGComplianceExit = <%- dashboard.POGCompliance.exit %>
-    var tempDashboardPODComplianceEntry = <%- dashboard.PODCompliance.entry %>
-    var tempDashboardPODComplianceExit = <%- dashboard.PODCompliance.exit %>
-    var tempDashboardPOPComplianceEntry = <%- dashboard.POPCompliance.entry %>
-    var tempDashboardPOPComplianceExit = <%- dashboard.POPCompliance.exit %>
-    var tempDashboardInstockComplianceEntryInstockCompliance = <%- dashboard.instockCompliance.entryInstockCompliance %>
-    var tempDashboardInstockComplianceExitInstockCompliance = <%- dashboard.instockCompliance.exitInstockCompliance %>
-    var tempDashboardActivationKnowHowPersen = <%- dashboard.activationKnowHow.persen %>
-    var tempDashboardPromotionAwarenessPersen = <%- dashboard.promotionAwareness.persen %>
-    var tempDashboardComplaintHandlingPersen = <%- dashboard.complaintHandling.persen %>
-
-    var tempvisitCompliancePersen = 0
-    if (tempDashboardVisitCompliancePersen != null) {
-        if (tempDashboardVisitCompliancePersen <= 100) {
-            tempvisitCompliancePersen = 100 - tempDashboardVisitCompliancePersen
-        }
-    }
-
-    var tempactivationKnowHowPersen = 0
-    if (tempDashboardActivationKnowHowPersen != null) {
-        if (tempDashboardActivationKnowHowPersen <= 100) {
-            tempactivationKnowHowPersen = 100 - tempDashboardActivationKnowHowPersen
-        }
-    }
-
-    var temppromotionAwarenessPersen = 0
-    if (tempDashboardPromotionAwarenessPersen != null) {
-        if (tempDashboardPromotionAwarenessPersen <= 100) {
-            temppromotionAwarenessPersen = 100 - tempDashboardPromotionAwarenessPersen
-        }
-    }
-    
-    var tempcomplaintHandlingPersen = 0
-    if (tempDashboardComplaintHandlingPersen != null) {
-        if (tempDashboardComplaintHandlingPersen <= 100) {
-            tempcomplaintHandlingPersen = 100 - tempDashboardComplaintHandlingPersen
-        }
-    }
-    
     var configChartVisitCompliance = new Chart(chartVisitCompliance, {
-        type: 'pie',
+        type: 'bar',
         data: {
             labels: ['Percent'],
             datasets: [{
-                data: [tempDashboardVisitCompliancePersen, tempvisitCompliancePersen],
-                backgroundColor: ['#007bff', '#f7f7f7'],
+                label: null,
+                data: ['<%- Math.round(dashboard.visitCompliance.persen) %>'],
+                backgroundColor: ['#007bff'],
             }],
         },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        max: 100,
+                        maxTicksLimit: 20,
+                    }
+                }]
+            },
+            legend :{
+                display : false
+            }
+        }
     });
 
     var configChartFixtureCompliance = new Chart(chartFixtureCompliance, {
-        type: 'pie',
+        type: 'bar',
         data: {
             labels: ['Entry', 'Exit'],
             datasets: [{
-            data: [tempDashboardFixtureComplianceEntry, tempDashboardFixtureComplianceExit, 200 - (tempDashboardFixtureComplianceEntry + tempDashboardFixtureComplianceExit)],
-            backgroundColor: ['#007bff', '#00cec9', '#f7f7f7'],
+                data: ['<%- Math.round(dashboard.fixtureCompliance.entry) %>', '<%- Math.round(dashboard.fixtureCompliance.exit) %>'],
+                backgroundColor: ['#007bff', '#00cec9'],
             }],
         },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        max: 100,
+                        maxTicksLimit: 20,
+                    }
+                }]
+            },
+            legend :{
+                display : false
+            }
+        }
     });
 
     var configChartPOGCompliance = new Chart(chartPOGCompliance, {
-        type: 'pie',
+        type: 'bar',
         data: {
             labels: ['Entry', 'Exit'],
             datasets: [{
-            data: [tempDashboardPOGComplianceEntry, tempDashboardPOGComplianceExit, 200 - (tempDashboardPOGComplianceEntry + tempDashboardPOGComplianceExit)],
-            backgroundColor: ['#007bff', '#00cec9','#f7f7f7'],
+                data: ['<%- Math.round(dashboard.POGCompliance.entry) %>', '<%- Math.round(dashboard.POGCompliance.exit) %>'],
+                backgroundColor: ['#007bff', '#00cec9'],
             }],
         },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        max: 100,
+                        maxTicksLimit: 20,
+                    }
+                }]
+            },
+            legend :{
+                display : false
+            }
+        }
     });
 
     var configChartPODCompliance = new Chart(chartPODCompliance, {
-        type: 'pie',
+        type: 'bar',
         data: {
             labels: ['Entry', 'Exit'],
             datasets: [{
-                data: [tempDashboardPODComplianceEntry, tempDashboardPODComplianceExit, 200 - (tempDashboardPODComplianceEntry + tempDashboardPODComplianceExit)],
-                backgroundColor: ['#007bff', '#00cec9', '#f7f7f7'],
+                data: ['<%- Math.round(dashboard.PODCompliance.entry) %>', '<%- Math.round(dashboard.PODCompliance.exit) %>'],
+                backgroundColor: ['#007bff', '#00cec9'],
             }],
         },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        max: 100,
+                        maxTicksLimit: 20,
+                    }
+                }]
+            },
+            legend :{
+                display : false
+            }
+        }
     });
 
     var configConfigChartPOPCompliance = new Chart(chartPOPCompliance, {
-        type: 'pie',
+        type: 'bar',
         data: {
             labels: ['Entry', 'Exit'],
             datasets: [{
-                data: [tempDashboardPOPComplianceEntry, tempDashboardPOPComplianceExit, 200 - (tempDashboardPOPComplianceEntry + tempDashboardPOPComplianceExit)],
-                backgroundColor: ['#007bff', '#00cec9', '#f7f7f7'],
+                data: ['<%- Math.round(dashboard.POPCompliance.entry) %>', '<%- Math.round(dashboard.POPCompliance.exit) %>'],
+                backgroundColor: ['#007bff', '#00cec9'],
             }],
         },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        max: 100,
+                        maxTicksLimit: 20,
+                    }
+                }]
+            },
+            legend :{
+                display : false
+            }
+        }
     });
 
     var configChartInStockCompliance = new Chart(chartInStockCompliance, {
-        type: 'pie',
+        type: 'bar',
         data: {
             labels: ['Entry', 'Exit'],
             datasets: [{
-                data: [tempDashboardInstockComplianceEntryInstockCompliance, tempDashboardInstockComplianceExitInstockCompliance, 200 - (tempDashboardInstockComplianceEntryInstockCompliance + tempDashboardInstockComplianceExitInstockCompliance)],
-                backgroundColor: ['#007bff', '#00cec9', '#f7f7f7'],
+                data: ['<%- Math.round(dashboard.instockCompliance.entryInstockCompliance) %>', '<%- Math.round(dashboard.instockCompliance.exitInstockCompliancet) %>'],
+                backgroundColor: ['#007bff', '#00cec9'],
             }],
         },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        max: 100,
+                        maxTicksLimit: 20,
+                    }
+                }]
+            },
+            legend :{
+                display : false
+            }
+        }
     });
 
     var configChartActivationKnowHow = new Chart(chartActivationKnowHow, {
-        type: 'pie',
+        type: 'bar',
         data: {
             labels: ['Percent'],
             datasets: [{
-                data: [tempDashboardActivationKnowHowPersen, tempactivationKnowHowPersen],
-                backgroundColor: ['#007bff', '#f7f7f7'],
+                data: ['<%- Math.round(dashboard.activationKnowHow.persen) %>'],
+                backgroundColor: ['#007bff'],
             }],
         },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        max: 100,
+                        maxTicksLimit: 20,
+                    }
+                }]
+            },
+            legend :{
+                display : false
+            }
+        }
     });
 
     var configChartPromotionAwareness = new Chart(chartPromotionAwareness, {
-        type: 'pie',
+        type: 'bar',
         data: {
             labels: ['Percent'],
             datasets: [{
-                data: [tempDashboardPromotionAwarenessPersen, temppromotionAwarenessPersen],
-                backgroundColor: ['#007bff', '#f7f7f7'],
+                data: ['<%- Math.round(dashboard.promotionAwareness.persen) %>'],
+                backgroundColor: ['#007bff'],
             }],
         },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        max: 100,
+                        maxTicksLimit: 20,
+                    }
+                }]
+            },
+            legend :{
+                display : false
+            }
+        }
     });
 
     var configChartComplaintHandling = new Chart(chartComplaintHandling, {
-        type: 'pie',
+        type: 'bar',
         data: {
             labels: ['Percent'],
             datasets: [{
-                data: [tempDashboardComplaintHandlingPersen, tempcomplaintHandlingPersen],
-                backgroundColor: ['#007bff', '#f7f7f7'],
+                data: ['<%- Math.round(dashboard.complaintHandling.persen) %>'],
+                backgroundColor: ['#007bff'],
             }],
         },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true,
+                        max: 100,
+                        maxTicksLimit: 20,
+                    }
+                }]
+            },
+            legend :{
+                display : false
+            }
+        }
     });
 
     var diagramVisitCompliance = document.getElementById("diagramVisitCompliance");
@@ -785,40 +868,15 @@
                 },
                 { data: 'tbl_store.tbl_retailer.retailer_name' },
                 { data: 'tbl_store.store_code' },
-                { data: null,
-                    render : function (data, type, row) {
-                        if(row.entry_fixture_comp == true && row.exit_fixture_comp == true) {
-                            return 'Yes'
-                        } else {
-                            return 'No'
-                        }
-                    }
-                },
-                { data: null,
-                    render : function (data, type, row) {
-                        if(row.entry_fixture_comp == true && row.exit_fixture_comp == true) {
-                            return 'Entry & Exit'
-                        } else if (row.entry_fixture_comp == true) {
-                            return 'Entry'
-                        } else if (row.exit_fixture_comp == true) {
-                            return 'Exit'
-                        } else {
-                            return 'No'
-                        }
-                    }
-                },
+                { data: 'tbl_store.tbl_dc.DC_name' },
             ],
             columnDefs: [
                 {
-                    targets: [4],
-                    orderable: false,
-                },
-                {
-                    targets: [0, 1, 2, 3, 4],
+                    targets: [0, 1, 2, 3],
                     className: 'text-center'
                 },
-                {   width: '20%', 
-                    targets: [0, 1, 2, 3, 4]
+                {   width: '25%', 
+                    targets: [0, 1, 2, 3]
                 },
             ],
             order: [[0, 'asc']],
@@ -834,15 +892,7 @@
                 },
                 { data: 'tbl_store.tbl_retailer.retailer_name' },
                 { data: 'tbl_store.store_code' },
-                { data: null,
-                    render : function (data, type, row) {
-                        if(row.entry_fixture_comp == true && row.exit_fixture_comp == true) {
-                            return 'Yes'
-                        } else {
-                            return 'No'
-                        }
-                    }
-                },
+                { data: null },
                 { data: null,
                     render : function (data, type, row) {
                         if(row.entry_fixture_comp == true && row.exit_fixture_comp == true) {
@@ -885,7 +935,7 @@
                 { data: 'tbl_store.store_code' },
                 { data: null,
                     render : function (data, type, row) {
-                        if(row.entry_fixture_comp == true && row.exit_fixture_comp == true) {
+                        if(row.entry_pog_comp == true && row.exit_pog_comp == true) {
                             return 'Yes'
                         } else {
                             return 'No'
@@ -894,11 +944,11 @@
                 },
                 { data: null,
                     render : function (data, type, row) {
-                        if(row.entry_fixture_comp == true && row.exit_fixture_comp == true) {
+                        if(row.entry_pog_comp == true && row.exit_pog_comp == true) {
                             return 'Entry & Exit'
-                        } else if (row.entry_fixture_comp == true) {
+                        } else if (row.entry_pog_comp == true) {
                             return 'Entry'
-                        } else if (row.exit_fixture_comp == true) {
+                        } else if (row.exit_pog_comp == true) {
                             return 'Exit'
                         } else {
                             return 'No'
@@ -934,7 +984,21 @@
                 { data: 'tbl_store.store_code' },
                 { data: null,
                     render : function (data, type, row) {
-                        if(row.entry_fixture_comp == true && row.exit_fixture_comp == true) {
+                        return 'data kosong'
+                    }
+                },
+                { data: null,
+                    render : function (data, type, row) {
+                        if (row.entry_broken_hanger == null) {
+                            return 0
+                        } else {
+                            return row.entry_broken_hanger
+                        }
+                    }
+                },
+                { data: null,
+                    render : function (data, type, row) {
+                        if (row.entry_broken_hanger == null) {
                             return 'Yes'
                         } else {
                             return 'No'
@@ -943,29 +1007,31 @@
                 },
                 { data: null,
                     render : function (data, type, row) {
-                        if(row.entry_fixture_comp == true && row.exit_fixture_comp == true) {
-                            return 'Entry & Exit'
-                        } else if (row.entry_fixture_comp == true) {
-                            return 'Entry'
-                        } else if (row.exit_fixture_comp == true) {
-                            return 'Exit'
+                        if (row.exit_broken_hanger == null) {
+                            return 0
+                        } else {
+                            return row.exit_broken_hanger
+                        }
+                    }
+                },
+                { data: null,
+                    render : function (data, type, row) {
+                        if (row.exit_broken_hanger == null) {
+                            return 'Yes'
                         } else {
                             return 'No'
                         }
                     }
                 },
+                
             ],
             columnDefs: [
                 {
-                    targets: [4],
-                    orderable: false,
-                },
-                {
-                    targets: [0, 1, 2, 3, 4],
+                    targets: [0, 1, 2, 3, 4, 5, 6, 7],
                     className: 'text-center'
                 },
-                {   width: '20%', 
-                    targets: [0, 1, 2, 3, 4]
+                {   width: '14.3%', 
+                    targets: [0, 1, 2, 3, 4, 5, 6, 7]
                 },
             ],
             order: [[0, 'asc']],
@@ -983,7 +1049,7 @@
                 { data: 'tbl_store.store_code' },
                 { data: null,
                     render : function (data, type, row) {
-                        if(row.entry_fixture_comp == true && row.exit_fixture_comp == true) {
+                        if(row.entry_pop_pic_1 == true && row.exit_pop_pic_1 == true) {
                             return 'Yes'
                         } else {
                             return 'No'
@@ -992,12 +1058,8 @@
                 },
                 { data: null,
                     render : function (data, type, row) {
-                        if(row.entry_fixture_comp == true && row.exit_fixture_comp == true) {
-                            return 'Entry & Exit'
-                        } else if (row.entry_fixture_comp == true) {
-                            return 'Entry'
-                        } else if (row.exit_fixture_comp == true) {
-                            return 'Exit'
+                        if(row.entry_pop_pic_2 == true && row.exit_pop_pic_2 == true) {
+                            return 'Yes'
                         } else {
                             return 'No'
                         }
@@ -1005,10 +1067,6 @@
                 },
             ],
             columnDefs: [
-                {
-                    targets: [4],
-                    orderable: false,
-                },
                 {
                     targets: [0, 1, 2, 3, 4],
                     className: 'text-center'
@@ -1081,21 +1139,8 @@
                 { data: 'tbl_store.store_code' },
                 { data: null,
                     render : function (data, type, row) {
-                        if(row.entry_fixture_comp == true && row.exit_fixture_comp == true) {
+                        if(row.q1 == true) {
                             return 'Yes'
-                        } else {
-                            return 'No'
-                        }
-                    }
-                },
-                { data: null,
-                    render : function (data, type, row) {
-                        if(row.entry_fixture_comp == true && row.exit_fixture_comp == true) {
-                            return 'Entry & Exit'
-                        } else if (row.entry_fixture_comp == true) {
-                            return 'Entry'
-                        } else if (row.exit_fixture_comp == true) {
-                            return 'Exit'
                         } else {
                             return 'No'
                         }
@@ -1104,15 +1149,11 @@
             ],
             columnDefs: [
                 {
-                    targets: [4],
-                    orderable: false,
-                },
-                {
-                    targets: [0, 1, 2, 3, 4],
+                    targets: [0, 1, 2, 3],
                     className: 'text-center'
                 },
-                {   width: '20%', 
-                    targets: [0, 1, 2, 3, 4]
+                {   width: '25%', 
+                    targets: [0, 1, 2, 3]
                 },
             ],
             order: [[0, 'asc']],
@@ -1130,21 +1171,8 @@
                 { data: 'tbl_store.store_code' },
                 { data: null,
                     render : function (data, type, row) {
-                        if(row.entry_fixture_comp == true && row.exit_fixture_comp == true) {
+                        if(row.q2 == true) {
                             return 'Yes'
-                        } else {
-                            return 'No'
-                        }
-                    }
-                },
-                { data: null,
-                    render : function (data, type, row) {
-                        if(row.entry_fixture_comp == true && row.exit_fixture_comp == true) {
-                            return 'Entry & Exit'
-                        } else if (row.entry_fixture_comp == true) {
-                            return 'Entry'
-                        } else if (row.exit_fixture_comp == true) {
-                            return 'Exit'
                         } else {
                             return 'No'
                         }
@@ -1153,15 +1181,11 @@
             ],
             columnDefs: [
                 {
-                    targets: [4],
-                    orderable: false,
-                },
-                {
-                    targets: [0, 1, 2, 3, 4],
+                    targets: [0, 1, 2, 3],
                     className: 'text-center'
                 },
-                {   width: '20%', 
-                    targets: [0, 1, 2, 3, 4]
+                {   width: '25%', 
+                    targets: [0, 1, 2, 3]
                 },
             ],
             order: [[0, 'asc']],
@@ -1179,21 +1203,8 @@
                 { data: 'tbl_store.store_code' },
                 { data: null,
                     render : function (data, type, row) {
-                        if(row.entry_fixture_comp == true && row.exit_fixture_comp == true) {
+                        if (row.q3 == true) {
                             return 'Yes'
-                        } else {
-                            return 'No'
-                        }
-                    }
-                },
-                { data: null,
-                    render : function (data, type, row) {
-                        if(row.entry_fixture_comp == true && row.exit_fixture_comp == true) {
-                            return 'Entry & Exit'
-                        } else if (row.entry_fixture_comp == true) {
-                            return 'Entry'
-                        } else if (row.exit_fixture_comp == true) {
-                            return 'Exit'
                         } else {
                             return 'No'
                         }
@@ -1202,15 +1213,11 @@
             ],
             columnDefs: [
                 {
-                    targets: [4],
-                    orderable: false,
-                },
-                {
-                    targets: [0, 1, 2, 3, 4],
+                    targets: [0, 1, 2, 3],
                     className: 'text-center'
                 },
-                {   width: '20%', 
-                    targets: [0, 1, 2, 3, 4]
+                {   width: '25%', 
+                    targets: [0, 1, 2, 3]
                 },
             ],
             order: [[0, 'asc']],
@@ -1224,13 +1231,18 @@
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear();
+        hour = d.getHours();
+        minute = d.getMinutes();
         
         if (month.length < 2) 
             month = '0' + month;
         if (day.length < 2) 
             day = '0' + day;
         
-        return [year, month, day].join('-');
+        var date = [year, month, day].join('-');
+        var hourMinute = [hour, minute].join(':')
+
+        return [date, hourMinute].join(' ')
     }
 </script>
 

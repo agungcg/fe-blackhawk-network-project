@@ -6,13 +6,18 @@
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
         year = d.getFullYear();
+        hour = d.getHours();
+        minute = d.getMinutes();
         
         if (month.length < 2) 
             month = '0' + month;
         if (day.length < 2) 
             day = '0' + day;
         
-        return [year, month, day].join('-');
+        var date = [year, month, day].join('-');
+        var hourMinute = [hour, minute].join(':')
+
+        return [date, hourMinute].join(' ')
     }
 %>
 
@@ -21,37 +26,122 @@
     <div id="layoutSidenav_content">
         <main>
             <div class="container-fluid">
-                <h1 class="my-4">Gallery</h1>
-                <div class="row">
-                     <% if (gallery) {
-                        for(var i = 0; i < gallery.length; i++) { %>
-                            <div class="mb-4 col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                <div class="card">
-                                    <h5 class="card-header"><%- gallery[i].tbl_store.store_name %></h5>
-                                    <div class="card-body">
-                                        <div class="text-center">
-                                            <img src="<%- domain %><%- gallery[i].img_store %>" class="rounded img-thumbnail img-gallery" alt="">
+                <h1 class="mt-4">Gallery</h1>
+                <div class="mb-4 row">
+                    <div class="col-12 ">
+                        <ul class="nav nav-pills justify-content-end" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="pills-store-tab" data-toggle="pill" href="#store" role="tab" aria-controls="store" aria-selected="true">Store</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-entryFixture-tab" data-toggle="pill" href="#entryFixture" role="tab" aria-controls="entryFixture" aria-selected="false">Entry Fixture</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-exitFixture-tab" data-toggle="pill" href="#exitFixture" role="tab" aria-controls="exitFixture" aria-selected="false">Exit Fixture</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="store" role="tabpanel" aria-labelledby="store">
+                        <div class="row">
+                            <% if (gallery) {
+                                for(var i = 0; i < gallery.length; i++) { %>
+                                    <div class="mb-4 col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                        <div class="card">
+                                            <h5 class="card-header"><%- gallery[i].tbl_store.store_name %></h5>
+                                            <div class="card-body">
+                                                <div class="text-center">
+                                                    <img src="<%- domain %><%- gallery[i].img_store %>" class="rounded img-thumbnail img-gallery" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="card-footer bg-white">
+                                                <div class="row">
+                                                    <div class="divider-gallery col-6">
+                                                        <h6 class="mb-0">Store Code : <%- gallery[i].tbl_store.store_code %></h3>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <h6 class="mb-0">City : <%- gallery[i].tbl_store.city %></h3>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-2 row">
+                                                    <div class="col-12">
+                                                        <label class="mb-0 normal text-secondary"><%- formatDate(gallery[i].visit_date) %></label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="card-footer bg-white">
-                                        <div class="row">
-                                            <div class="divider-gallery col-6">
-                                                <h6 class="mb-0">Store Code : <%- gallery[i].tbl_store.store_code %></h3>
+                                <%  }
+                            } %>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="entryFixture" role="tabpanel" aria-labelledby="entryFixture">
+                        <div class="row">
+                            <% if (gallery) {
+                                for(var i = 0; i < gallery.length; i++) { %>
+                                    <div class="mb-4 col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                        <div class="card">
+                                            <h5 class="card-header"><%- gallery[i].tbl_store.store_name %></h5>
+                                            <div class="card-body">
+                                                <div class="text-center">
+                                                    <img src="<%- domain %><%- gallery[i].img_fixture_in %>" class="rounded img-thumbnail img-gallery" alt="">
+                                                </div>
                                             </div>
-                                            <div class="col-6">
-                                                <h6 class="mb-0">City : <%- gallery[i].tbl_store.city %></h3>
-                                            </div>
-                                        </div>
-                                        <div class="mt-2 row">
-                                            <div class="col-12">
-                                                <label class="mb-0 normal text-secondary"><%- formatDate(gallery[i].visit_date) %></label>
+                                            <div class="card-footer bg-white">
+                                                <div class="row">
+                                                    <div class="divider-gallery col-6">
+                                                        <h6 class="mb-0">Store Code : <%- gallery[i].tbl_store.store_code %></h3>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <h6 class="mb-0">City : <%- gallery[i].tbl_store.city %></h3>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-2 row">
+                                                    <div class="col-12">
+                                                        <label class="mb-0 normal text-secondary"><%- formatDate(gallery[i].visit_date) %></label>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                    <%  }
-                    } %>
+                                <%  }
+                            } %>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="exitFixture" role="tabpanel" aria-labelledby="exitFixture">
+                        <div class="row">
+                            <% if (gallery) {
+                                for(var i = 0; i < gallery.length; i++) { %>
+                                    <div class="mb-4 col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                        <div class="card">
+                                            <h5 class="card-header"><%- gallery[i].tbl_store.store_name %></h5>
+                                            <div class="card-body">
+                                                <div class="text-center">
+                                                    <img src="<%- domain %><%- gallery[i].img_fixture_out %>" class="rounded img-thumbnail img-gallery" alt="">
+                                                </div>
+                                            </div>
+                                            <div class="card-footer bg-white">
+                                                <div class="row">
+                                                    <div class="divider-gallery col-6">
+                                                        <h6 class="mb-0">Store Code : <%- gallery[i].tbl_store.store_code %></h3>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <h6 class="mb-0">City : <%- gallery[i].tbl_store.city %></h3>
+                                                    </div>
+                                                </div>
+                                                <div class="mt-2 row">
+                                                    <div class="col-12">
+                                                        <label class="mb-0 normal text-secondary"><%- formatDate(gallery[i].visit_date) %></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <%  }
+                            } %>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
