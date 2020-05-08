@@ -256,8 +256,10 @@
                                                 <th class="text-center">Date</th>
                                                 <th class="text-center">Retailer</th>
                                                 <th class="text-center">Store Code</th>
-                                                <th class="text-center">POP 1</th>
-                                                <th class="text-center">POP 2</th>
+                                                <th class="text-center">Entry POP 1</th>
+                                                <th class="text-center">Entry POP 2</th>
+                                                <th class="text-center">Exit POP 1</th>
+                                                <th class="text-center">Exit POP 2</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -998,7 +1000,7 @@
                 },
                 { data: null,
                     render : function (data, type, row) {
-                        if (row.entry_broken_hanger == null) {
+                        if (row.entry_peg_comp == true) {
                             return 'Yes'
                         } else {
                             return 'No'
@@ -1016,7 +1018,7 @@
                 },
                 { data: null,
                     render : function (data, type, row) {
-                        if (row.exit_broken_hanger == null) {
+                        if (row.exit_peg_comp == true) {
                             return 'Yes'
                         } else {
                             return 'No'
@@ -1049,7 +1051,7 @@
                 { data: 'tbl_store.store_code' },
                 { data: null,
                     render : function (data, type, row) {
-                        if(row.entry_pop_pic_1 == true && row.exit_pop_pic_1 == true) {
+                        if(row.entry_pop_pic_1 == true) {
                             return 'Yes'
                         } else {
                             return 'No'
@@ -1058,7 +1060,25 @@
                 },
                 { data: null,
                     render : function (data, type, row) {
-                        if(row.entry_pop_pic_2 == true && row.exit_pop_pic_2 == true) {
+                        if(row.entry_pop_pic_2 == true) {
+                            return 'Yes'
+                        } else {
+                            return 'No'
+                        }
+                    }
+                },
+                { data: null,
+                    render : function (data, type, row) {
+                        if(row.exit_pop_pic_1 == true) {
+                            return 'Yes'
+                        } else {
+                            return 'No'
+                        }
+                    }
+                },
+                { data: null,
+                    render : function (data, type, row) {
+                        if(row.exit_pop_pic_2 == true) {
                             return 'Yes'
                         } else {
                             return 'No'

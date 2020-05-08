@@ -71,6 +71,11 @@
     margin-left: 5px;
 }
 
+.parent:hover img {
+    transform: scale(1.1);
+    background-color: #007bff;
+}
+
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
     .sb-topnav .navbar-brand {

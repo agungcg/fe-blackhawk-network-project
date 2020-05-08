@@ -52,7 +52,9 @@
                                             <h5 class="card-header"><%- gallery[i].tbl_store.store_name %></h5>
                                             <div class="card-body">
                                                 <div class="text-center">
-                                                    <img src="<%- domain %><%- gallery[i].img_store %>" class="rounded img-thumbnail img-gallery" alt="">
+                                                    <a href="javascript:void(0)" class="parent" onclick="imgPop('<%- domain %><%- gallery[i].img_store %>', 'imgStore'+'<%- i %>')">
+                                                        <img id="imgStore<%- i %>" src="<%- domain %><%- gallery[i].img_store %>" class="rounded img-thumbnail img-gallery" alt="">
+                                                    </a>
                                                 </div>
                                             </div>
                                             <div class="card-footer bg-white">
@@ -85,7 +87,9 @@
                                             <h5 class="card-header"><%- gallery[i].tbl_store.store_name %></h5>
                                             <div class="card-body">
                                                 <div class="text-center">
-                                                    <img src="<%- domain %><%- gallery[i].img_fixture_in %>" class="rounded img-thumbnail img-gallery" alt="">
+                                                    <a href="javascript:void(0)" class="parent" onclick="imgPop('<%- domain %><%- gallery[i].img_fixture_in %>', 'imgEntryFixture'+'<%- i %>')">
+                                                        <img id="imgEntryFixture<%- i %>" src="<%- domain %><%- gallery[i].img_fixture_in %>" class="rounded img-thumbnail img-gallery" alt="">
+                                                    </a>
                                                 </div>
                                             </div>
                                             <div class="card-footer bg-white">
@@ -118,7 +122,9 @@
                                             <h5 class="card-header"><%- gallery[i].tbl_store.store_name %></h5>
                                             <div class="card-body">
                                                 <div class="text-center">
-                                                    <img src="<%- domain %><%- gallery[i].img_fixture_out %>" class="rounded img-thumbnail img-gallery" alt="">
+                                                    <a href="javascript:void(0)" class="parent" onclick="imgPop('<%- domain %><%- gallery[i].img_fixture_out %>', 'imgExitFixture'+'<%- i %>')">
+                                                        <img id="imgExitFixture<%- i %>" src="<%- domain %><%- gallery[i].img_fixture_out %>" class="rounded img-thumbnail img-gallery" alt="">
+                                                    </a>
                                                 </div>
                                             </div>
                                             <div class="card-footer bg-white">
@@ -166,6 +172,16 @@
         $(this).attr('src', '/images/image-solid.svg');
     });
 
+    function imgPop(imgUrl, id) {
+        Swal.fire({
+            imageUrl: imgUrl === 'http://212.237.35.40:3030/' ? '/images/image-solid.svg' : imgUrl,
+            imageWidth: document.getElementById(id).width * 2,
+            imageHeight: document.getElementById(id).height * 2,
+            showCloseButton: true,
+            showConfirmButton: false,
+            padding: '2em',
+        })
+    }
 </script>
 
 <%- include('../layout/footer') -%>
