@@ -21,4 +21,12 @@ router.get('/get-select-sidenav', async function(req, res, next) {
     }
 });
 
+router.post('/download-pop', async function(req, res, next) {
+    if (req.body) {
+        console.log(req.body.data)
+        console.log(Object.values(req.body))
+        res.send("ok")
+    }
+});
+
 module.exports = router;

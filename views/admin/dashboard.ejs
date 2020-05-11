@@ -131,7 +131,8 @@
                                                 <th class="text-center">Retailer</th>
                                                 <th class="text-center">Store Code</th>
                                                 <th class="text-center">Correct Fixture</th>
-                                                <th class="text-center">Status Visit</th>
+                                                <th class="text-center">Entry Status Visit</th>
+                                                <th class="text-center">Exit Status Visit</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -247,7 +248,10 @@
                     </div>
                     <div id="tablePOPCompliance" class="mb-4 col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8" style="display: none;">
                         <div class="card mb-4">
-                            <div class="card-header"><i class="fas fa-table mr-2"></i>Data POP Compliance</div>
+                            <div class="card-header">
+                                <i class="fas fa-table mr-2"></i>Data POP Compliance
+                                <!-- <button type="button" class="btn btn-sm btn-primary float-right" onclick="downloadPOP()">Dowload</button> -->
+                            </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered table-striped table-hover" id="dataTablePOPCompliance" width="100%" cellspacing="0">
@@ -299,8 +303,20 @@
                                                 <th class="text-center">Date</th>
                                                 <th class="text-center">Retailer</th>
                                                 <th class="text-center">Store Code</th>
-                                                <th class="text-center">Corect Fixture</th>
-                                                <th class="text-center">Status Visit</th>
+                                                <th class="text-center">Entry Google 50k</th>
+                                                <th class="text-center">Entry Google 100k</th>
+                                                <th class="text-center">Entry Google 150k</th>
+                                                <th class="text-center">Entry Google 300k</th>
+                                                <th class="text-center">Entry Google 500k</th>
+                                                <th class="text-center">Entry Spotify 1m</th>
+                                                <th class="text-center">Entry Spotify 3m</th>
+                                                <th class="text-center">Exit Google 50k</th>
+                                                <th class="text-center">Exit Google 100k</th>
+                                                <th class="text-center">Exit Google 150k</th>
+                                                <th class="text-center">Exit Google 300k</th>
+                                                <th class="text-center">Exit Google 500k</th>
+                                                <th class="text-center">Exit Spotify 1m</th>
+                                                <th class="text-center">Exit Spotify 3m</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -894,15 +910,20 @@
                 },
                 { data: 'tbl_store.tbl_retailer.retailer_name' },
                 { data: 'tbl_store.store_code' },
-                { data: null },
+                { data: 'entry_correct_fixture_id.fixture_type' },
                 { data: null,
                     render : function (data, type, row) {
-                        if(row.entry_fixture_comp == true && row.exit_fixture_comp == true) {
-                            return 'Entry & Exit'
-                        } else if (row.entry_fixture_comp == true) {
-                            return 'Entry'
-                        } else if (row.exit_fixture_comp == true) {
-                            return 'Exit'
+                        if (row.entry_fixture_comp == true) {
+                            return 'Yes'
+                        } else {
+                            return 'No'
+                        }
+                    }
+                },
+                { data: null,
+                    render : function (data, type, row) {
+                        if (row.exit_fixture_comp == true) {
+                            return 'Yes'
                         } else {
                             return 'No'
                         }
@@ -911,15 +932,11 @@
             ],
             columnDefs: [
                 {
-                    targets: [4],
-                    orderable: false,
-                },
-                {
-                    targets: [0, 1, 2, 3, 4],
+                    targets: [0, 1, 2, 3, 4, 5],
                     className: 'text-center'
                 },
-                {   width: '20%', 
-                    targets: [0, 1, 2, 3, 4]
+                {   width: '16.7%', 
+                    targets: [0, 1, 2, 3, 4, 5]
                 },
             ],
             order: [[0, 'asc']],
@@ -935,18 +952,10 @@
                 },
                 { data: 'tbl_store.tbl_retailer.retailer_name' },
                 { data: 'tbl_store.store_code' },
+                { data: 'entry_correct_pog' },
                 { data: null,
                     render : function (data, type, row) {
-                        if(row.entry_pog_comp == true && row.exit_pog_comp == true) {
-                            return 'Yes'
-                        } else {
-                            return 'No'
-                        } 
-                    }
-                },
-                { data: null,
-                    render : function (data, type, row) {
-                        if(row.entry_pog_comp == true && row.exit_pog_comp == true) {
+                        if (row.entry_pog_comp == true && row.exit_pog_comp == true) {
                             return 'Entry & Exit'
                         } else if (row.entry_pog_comp == true) {
                             return 'Entry'
@@ -959,10 +968,6 @@
                 },
             ],
             columnDefs: [
-                {
-                    targets: [4],
-                    orderable: false,
-                },
                 {
                     targets: [0, 1, 2, 3, 4],
                     className: 'text-center'
@@ -984,11 +989,7 @@
                 },
                 { data: 'tbl_store.tbl_retailer.retailer_name' },
                 { data: 'tbl_store.store_code' },
-                { data: null,
-                    render : function (data, type, row) {
-                        return 'data kosong'
-                    }
-                },
+                { data: 'tbl_store.fixtureType1.fixture_type'},
                 { data: null,
                     render : function (data, type, row) {
                         if (row.entry_broken_hanger == null) {
@@ -1110,38 +1111,138 @@
                 { data: 'tbl_store.store_code' },
                 { data: null,
                     render : function (data, type, row) {
-                        if(row.entry_fixture_comp == true && row.exit_fixture_comp == true) {
-                            return 'Yes'
+                        if(row.entry_google50k < 15) {
+                            return row.entry_google50k
                         } else {
-                            return 'No'
+                            return 'Yes'
                         }
                     }
                 },
                 { data: null,
                     render : function (data, type, row) {
-                        if(row.entry_fixture_comp == true && row.exit_fixture_comp == true) {
-                            return 'Entry & Exit'
-                        } else if (row.entry_fixture_comp == true) {
-                            return 'Entry'
-                        } else if (row.exit_fixture_comp == true) {
-                            return 'Exit'
+                        if(row.entry_google100k < 15) {
+                            return row.entry_google100k
                         } else {
-                            return 'No'
+                            return 'Yes'
+                        }
+                    }
+                },
+                { data: null,
+                    render : function (data, type, row) {
+                        if(row.entry_google150k < 15) {
+                            return row.entry_google150k
+                        } else {
+                            return 'Yes'
+                        }
+                    }
+                },
+                { data: null,
+                    render : function (data, type, row) {
+                        if(row.entry_google300k < 15) {
+                            return row.entry_google300k
+                        } else {
+                            return 'Yes'
+                        }
+                    }
+                },
+                { data: null,
+                    render : function (data, type, row) {
+                        if(row.entry_google500k < 15) {
+                            return row.entry_google500k
+                        } else {
+                            return 'Yes'
+                        }
+                    }
+                },
+                { data: null,
+                    render : function (data, type, row) {
+                        if(row.entry_spotify1M < 15) {
+                            return row.entry_spotify1M
+                        } else {
+                            return 'Yes'
+                        }
+                    }
+                },
+                { data: null,
+                    render : function (data, type, row) {
+                        if(row.entry_spotify3M < 15) {
+                            return row.entry_spotify3M
+                        } else {
+                            return 'Yes'
+                        }
+                    }
+                },
+                { data: null,
+                    render : function (data, type, row) {
+                        if(row.exit_google50k < 15) {
+                            return row.exit_google50k
+                        } else {
+                            return 'Yes'
+                        }
+                    }
+                },
+                { data: null,
+                    render : function (data, type, row) {
+                        if(row.exit_google100k < 15) {
+                            return row.exit_google100k
+                        } else {
+                            return 'Yes'
+                        }
+                    }
+                },
+                { data: null,
+                    render : function (data, type, row) {
+                        if(row.exit_google150k < 15) {
+                            return row.exit_google150k
+                        } else {
+                            return 'Yes'
+                        }
+                    }
+                },
+                { data: null,
+                    render : function (data, type, row) {
+                        if(row.exit_google300k < 15) {
+                            return row.exit_google300k
+                        } else {
+                            return 'Yes'
+                        }
+                    }
+                },
+                { data: null,
+                    render : function (data, type, row) {
+                        if(row.exit_google500k < 15) {
+                            return row.exit_google500k
+                        } else {
+                            return 'Yes'
+                        }
+                    }
+                },
+                { data: null,
+                    render : function (data, type, row) {
+                        if(row.exit_spotify1M < 15) {
+                            return row.exit_spotify1M
+                        } else {
+                            return 'Yes'
+                        }
+                    }
+                },
+                { data: null,
+                    render : function (data, type, row) {
+                        if(row.exit_spotify3M < 15) {
+                            return row.exit_spotify3M
+                        } else {
+                            return 'Yes'
                         }
                     }
                 },
             ],
             columnDefs: [
                 {
-                    targets: [4],
-                    orderable: false,
-                },
-                {
-                    targets: [0, 1, 2, 3, 4],
+                    targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
                     className: 'text-center'
                 },
-                {   width: '20%', 
-                    targets: [0, 1, 2, 3, 4]
+                {   width: '5.8%', 
+                    targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
                 },
             ],
             order: [[0, 'asc']],
@@ -1264,8 +1365,28 @@
 
         return [date, hourMinute].join(' ')
     }
+
+    // function downloadPOP(){
+    //     var data = <%- JSON.stringify(dashboard.POPCompliance.dataPOPCompliance) %>
+    //     data.map(obj => {
+    //         console.log(obj)
+    //     })
+    //     $.ajax({
+    //         url: '/function/download-pop' ,
+    //         method: 'post',
+    //         data: data.map(obj => {
+    //             return obj
+    //         }),
+    //         success: function(res){
+    //         },
+    //         error: function() {
+    //         }
+    //     });
+    // }
+
 </script>
 
 <script src="/js/upload.js"></script>
+<!-- <script src="/js/download.js"></script> -->
 
 <%- include('../layout/footer') -%>
