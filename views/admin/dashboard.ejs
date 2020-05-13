@@ -62,24 +62,24 @@
                     <a class="ml-auto align-self-center h6" href="/admin"><i class="fas fa-chevron-left mr-2 "></i>BACK</a>
                 </div>
                 <div class="row">
-                    <div id="diagramVisitCompliance" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                    <div id="diagramVisitCompliance" class="mb-4 col-12 col-sm-6 col-md-2 col-lg-2 col-xl-2">
                         <div class="card text-center">
-                            <h5 class="card-header">Visit Compliance</h5>
-                            <div class="card-body">
-                                <canvas class="mb-2" id="chartVisitCompliance" width="100%" height="100"></canvas>
+                            <h6 class="card-header">Visit Compliance</h6>
+                            <div class="card-body-dashboard">
+                                <canvas class="mb-2" id="chartVisitCompliance" width="100%" height="70"></canvas>
                                 <div class="row">
                                     <div class="col-12">
-                                        <h3 class="text-primary"><%- Math.round(dashboard.visitCompliance.persen) %></h3>
-                                        <h6 class="text-primary">Percent</h6>
+                                        <h6 class="text-primary mb-0"><%- Math.round(dashboard.visitCompliance.persen) %></h6>
+                                        <h6 class="text-primary mb-0">Percent</h6>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer bg-white">
-                                <a href="javascript: void(0)" onclick="detailsVisitCompliance()">SEE DETAILS</a>
+                            <div class="card-footer-dashboard bg-white">
+                                <a href="javascript: void(0)" onclick="detailsVisitCompliance()"><small>DETAILS</small></a>
                             </div>
                         </div>
                     </div>
-                    <div id="tableVisitCompliance" class="mb-4 col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8" style="display: none;">
+                    <div id="tableVisitCompliance" class="mb-4 col-12 col-sm-6 col-md-10 col-lg-10 col-xl-10" style="display: none;">
                         <div class="card mb-4">
                             <div class="card-header"><i class="fas fa-table mr-2"></i>Data Visit Compliance</div>
                             <div class="card-body">
@@ -98,28 +98,28 @@
                             </div>
                         </div>
                     </div>
-                    <div id="diagramFixtureCompliance" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                    <div id="diagramFixtureCompliance" class="mb-4 col-12 col-sm-6 col-md-2 col-lg-2 col-xl-2">
                         <div class="card text-center">
-                            <h5 class="card-header">Fixture Compliance</h5>
-                            <div class="card-body">
-                                <canvas class="mb-2" id="chartFixtureCompliance" width="100%" height="100"></canvas>
+                            <h6 class="card-header">Fixture Compliance</h6>
+                            <div class="card-body-dashboard">
+                                <canvas class="mb-2" id="chartFixtureCompliance" width="100%" height="70"></canvas>
                                 <div class="row">
                                     <div class="entry col-6">
-                                        <h3 class="text-primary"><%- Math.round(dashboard.fixtureCompliance.entry) %></h3>
-                                        <h6 class="text-primary">Entry</h6>
+                                        <h6 class="text-primary mb-0"><%- Math.round(dashboard.fixtureCompliance.entry) %></h6>
+                                        <h6 class="text-primary mb-0">Entry</h6>
                                     </div>
                                     <div class="exit col-6">
-                                        <h3 class="text-exit"><%- Math.round(dashboard.fixtureCompliance.exit) %></h3>
-                                        <h6 class="text-exit">Exit</h6>
+                                        <h6 class="text-exit mb-0"><%- Math.round(dashboard.fixtureCompliance.exit) %></h6>
+                                        <h6 class="text-exit mb-0">Exit</h6>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer bg-white">
-                                <a href="javascript: void(0)" onclick="detailsFixtureCompliance()">SEE DETAILS</a>
+                            <div class="card-footer-dashboard bg-white">
+                                <a href="javascript: void(0)" onclick="detailsFixtureCompliance()"><small>DETAILS</small></a>
                             </div>
                         </div>
                     </div>
-                    <div id="tableFixtureCompliance" class="mb-4 col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8" style="display: none;">
+                    <div id="tableFixtureCompliance" class="mb-4 col-12 col-sm-6 col-md-10 col-lg-10 col-xl-10" style="display: none;">
                         <div class="card mb-4">
                             <div class="card-header"><i class="fas fa-table mr-2"></i>Data Fixture Compliance</div>
                             <div class="card-body">
@@ -130,9 +130,9 @@
                                                 <th class="text-center">Date</th>
                                                 <th class="text-center">Retailer</th>
                                                 <th class="text-center">Store Code</th>
-                                                <th class="text-center">Correct Fixture</th>
-                                                <th class="text-center">Entry Status Visit</th>
-                                                <th class="text-center">Exit Status Visit</th>
+                                                <th class="text-center">Expected Fixture</th>
+                                                <th class="text-center">Entry</th>
+                                                <th class="text-center">Exit</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -140,28 +140,28 @@
                             </div>
                         </div>
                     </div>
-                    <div id="diagramPOGCompliance" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                    <div id="diagramPOGCompliance" class="mb-4 col-12 col-sm-6 col-md-2 col-lg-2 col-xl-2">
                         <div class="card text-center">
-                            <h5 class="card-header">POG Compliance</h5>
-                            <div class="card-body">
-                                <canvas class="mb-2" id="chartPOGCompliance" width="100%" height="100"></canvas>
+                            <h6 class="card-header">POG Compliance</h6>
+                            <div class="card-body-dashboard">
+                                <canvas class="mb-2" id="chartPOGCompliance" width="100%" height="70"></canvas>
                                 <div class="row">
                                     <div class="entry col-6">
-                                        <h3 class="text-primary"><%- Math.round(dashboard.POGCompliance.entry) %></h3>
-                                        <h6 class="text-primary">Entry</h6>
+                                        <h6 class="text-primary mb-0"><%- Math.round(dashboard.POGCompliance.entry) %></h6>
+                                        <h6 class="text-primary mb-0">Entry</h6>
                                     </div>
                                     <div class="exit col-6">
-                                        <h3 class="text-exit"><%- Math.round(dashboard.POGCompliance.exit) %></h3>
-                                        <h6 class="text-exit">Exit</h6>
+                                        <h6 class="text-exit mb-0"><%- Math.round(dashboard.POGCompliance.exit) %></h6>
+                                        <h6 class="text-exit mb-0">Exit</h6>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer bg-white">
-                                <a href="javascript: void(0)" onclick="detailsPOGCompliance()">SEE DETAILS</a>
+                            <div class="card-footer-dashboard bg-white">
+                                <a href="javascript: void(0)" onclick="detailsPOGCompliance()"><small>DETAILS</small></a>
                             </div>
                         </div>
                     </div>
-                    <div id="tablePOGCompliance" class="mb-4 col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8" style="display: none;">
+                    <div id="tablePOGCompliance" class="mb-4 col-12 col-sm-6 col-md-10 col-lg-10 col-xl-10" style="display: none;">
                         <div class="card mb-4">
                             <div class="card-header"><i class="fas fa-table mr-2"></i>Data POG Compliance</div>
                             <div class="card-body">
@@ -172,8 +172,8 @@
                                                 <th class="text-center">Date</th>
                                                 <th class="text-center">Retailer</th>
                                                 <th class="text-center">Store Code</th>
-                                                <th class="text-center">Correct POG</th>
-                                                <th class="text-center">Status Visit</th>
+                                                <th class="text-center">Entry</th>
+                                                <th class="text-center">Exit</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -181,28 +181,28 @@
                             </div>
                         </div>
                     </div>
-                    <div id="diagramPODCompliance" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                    <div id="diagramPODCompliance" class="mb-4 col-12 col-sm-6 col-md-2 col-lg-2 col-xl-2">
                         <div class="card text-center">
-                            <h5 class="card-header">POD Compliance</h5>
-                            <div class="card-body">
-                                <canvas class="mb-2" id="chartPODCompliance" width="100%" height="100"></canvas>
+                            <h6 class="card-header">POD Compliance</h6>
+                            <div class="card-body-dashboard">
+                                <canvas class="mb-2" id="chartPODCompliance" width="100%" height="70"></canvas>
                                 <div class="row">
                                     <div class="entry col-6">
-                                        <h3 class="text-primary"><%- Math.round(dashboard.PODCompliance.entry) %></h3>
-                                        <h6 class="text-primary">Entry</h6>
+                                        <h6 class="text-primary mb-0"><%- Math.round(dashboard.PODCompliance.entry) %></h6>
+                                        <h6 class="text-primary mb-0">Entry</h6>
                                     </div>
                                     <div class="exit col-6">
-                                        <h3 class="text-exit"><%- Math.round(dashboard.PODCompliance.exit) %></h3>
-                                        <h6 class="text-exit">Exit</h6>
+                                        <h6 class="text-exit mb-0"><%- Math.round(dashboard.PODCompliance.exit) %></h6>
+                                        <h6 class="text-exit mb-0">Exit</h6>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer bg-white">
-                                <a href="javascript: void(0)" onclick="detailsPODCompliance()">SEE DETAILS</a>
+                            <div class="card-footer-dashboard bg-white">
+                                <a href="javascript: void(0)" onclick="detailsPODCompliance()"><small>DETAILS</small></a>
                             </div>
                         </div>
                     </div>
-                    <div id="tablePODCompliance" class="mb-4 col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8" style="display: none;">
+                    <div id="tablePODCompliance" class="mb-4 col-12 col-sm-6 col-md-10 col-lg-10 col-xl-10" style="display: none;">
                         <div class="card mb-4">
                             <div class="card-header"><i class="fas fa-table mr-2"></i>Data POD Compliance</div>
                             <div class="card-body">
@@ -225,28 +225,28 @@
                             </div>
                         </div>
                     </div>
-                    <div id="diagramPOPCompliance" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                    <div id="diagramPOPCompliance" class="mb-4 col-12 col-sm-6 col-md-2 col-lg-2 col-xl-2">
                         <div class="card text-center">
-                            <h5 class="card-header">POP Compliance</h5>
-                            <div class="card-body">
-                                <canvas class="mb-2" id="chartPOPCompliance" width="100%" height="100"></canvas>
+                            <h6 class="card-header">POP Compliance</h6>
+                            <div class="card-body-dashboard">
+                                <canvas class="mb-2" id="chartPOPCompliance" width="100%" height="70"></canvas>
                                 <div class="row">
                                     <div class="entry col-6">
-                                        <h3 class="text-primary"><%- Math.round(dashboard.POPCompliance.entry) %></h3>
-                                        <h6 class="text-primary">Entry</h6>
+                                        <h6 class="text-primary mb-0"><%- Math.round(dashboard.POPCompliance.entry) %></h6>
+                                        <h6 class="text-primary mb-0">Entry</h6>
                                     </div>
                                     <div class="exit col-6">
-                                        <h3 class="text-exit"><%- Math.round(dashboard.POPCompliance.exit) %></h3>
-                                        <h6 class="text-exit">Exit</h6>
+                                        <h6 class="text-exit mb-0"><%- Math.round(dashboard.POPCompliance.exit) %></h6>
+                                        <h6 class="text-exit mb-0">Exit</h6>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer bg-white">
-                                <a href="javascript: void(0)" onclick="detailsPOPCompliance()">SEE DETAILS</a>
+                            <div class="card-footer-dashboard bg-white">
+                                <a href="javascript: void(0)" onclick="detailsPOPCompliance()"><small>DETAILS</small></a>
                             </div>
                         </div>
                     </div>
-                    <div id="tablePOPCompliance" class="mb-4 col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8" style="display: none;">
+                    <div id="tablePOPCompliance" class="mb-4 col-12 col-sm-6 col-md-10 col-lg-10 col-xl-10" style="display: none;">
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table mr-2"></i>Data POP Compliance
@@ -271,28 +271,28 @@
                             </div>
                         </div>
                     </div>
-                    <div id="diagramInStockCompliance" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                    <div id="diagramInStockCompliance" class="mb-4 col-12 col-sm-6 col-md-2 col-lg-2 col-xl-2">
                         <div class="card text-center">
-                            <h5 class="card-header">In-Stock Compliance</h5>
-                            <div class="card-body">
-                                <canvas class="mb-2" id="chartInStockCompliance" width="100%" height="100"></canvas>
+                            <h6 class="card-header">In-Stock Compliance</h6>
+                            <div class="card-body-dashboard">
+                                <canvas class="mb-2" id="chartInStockCompliance" width="100%" height="70"></canvas>
                                 <div class="row">
                                     <div class="entry col-6">
-                                        <h3 class="text-primary"><%- Math.round(dashboard.instockCompliance.entryInstockCompliance) %></h3>
-                                        <h6 class="text-primary">Entry</h6>
+                                        <h6 class="text-primary mb-0"><%- Math.round(dashboard.instockCompliance.entryInstockCompliance) %></h6>
+                                        <h6 class="text-primary mb-0">Entry</h6>
                                     </div>
                                     <div class="exit col-6">
-                                        <h3 class="text-exit"><%- Math.round(dashboard.instockCompliance.exitInstockCompliance) %></h3>
-                                        <h6 class="text-exit">Exit</h6>
+                                        <h6 class="text-exit mb-0"><%- Math.round(dashboard.instockCompliance.exitInstockCompliance) %></h6>
+                                        <h6 class="text-exit mb-0">Exit</h6>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer bg-white">
-                                <a href="javascript: void(0)" onclick="detailsInStockCompliance()">SEE DETAILS</a>
+                            <div class="card-footer-dashboard bg-white">
+                                <a href="javascript: void(0)" onclick="detailsInStockCompliance()"><small>DETAILS</small></a>
                             </div>
                         </div>
                     </div>
-                    <div id="tableInStockCompliance" class="mb-4 col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8" style="display: none;">
+                    <div id="tableInStockCompliance" class="mb-4 col-12 col-sm-6 col-md-10 col-lg-10 col-xl-10" style="display: none;">
                         <div class="card mb-4">
                             <div class="card-header"><i class="fas fa-table mr-2"></i>Data In-Stock Compliance</div>
                             <div class="card-body">
@@ -324,24 +324,24 @@
                             </div>
                         </div>
                     </div>
-                    <div id="diagramActivationKnowHow" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                    <div id="diagramActivationKnowHow" class="mb-4 col-12 col-sm-6 col-md-2 col-lg-2 col-xl-2">
                         <div class="card text-center">
-                            <h5 class="card-header">Activation know-how</h5>
-                            <div class="card-body">
-                                <canvas class="mb-2" id="chartActivationKnowHow" width="100%" height="100"></canvas>
+                            <h6 class="card-header">Activation know-how</h6>
+                            <div class="card-body-dashboard">
+                                <canvas class="mb-2" id="chartActivationKnowHow" width="100%" height="70"></canvas>
                                 <div class="row">
                                     <div class="col-12">
-                                        <h3 class="text-primary"><%- Math.round(dashboard.activationKnowHow.persen) %></h3>
-                                        <h6 class="text-primary">Percent</h6>
+                                        <h6 class="text-primary mb-0"><%- Math.round(dashboard.activationKnowHow.persen) %></h6>
+                                        <h6 class="text-primary mb-0">Percent</h6>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer bg-white">
-                                <a href="javascript: void(0)" onclick="detailsActivationKnowHow()">SEE DETAILS</a>
+                            <div class="card-footer-dashboard bg-white">
+                                <a href="javascript: void(0)" onclick="detailsActivationKnowHow()"><small>DETAILS</small></a>
                             </div>
                         </div>
                     </div>
-                    <div id="tableActivationKnowHow" class="mb-4 col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8" style="display: none;">
+                    <div id="tableActivationKnowHow" class="mb-4 col-12 col-sm-6 col-md-10 col-lg-10 col-xl-10" style="display: none;">
                         <div class="card mb-4">
                             <div class="card-header"><i class="fas fa-table mr-2"></i>Data Activation know-how</div>
                             <div class="card-body">
@@ -360,24 +360,24 @@
                             </div>
                         </div>
                     </div>
-                    <div id="diagramPromotionAwareness" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                    <div id="diagramPromotionAwareness" class="mb-4 col-12 col-sm-6 col-md-2 col-lg-2 col-xl-2">
                         <div class="card text-center">
-                            <h5 class="card-header">Promotion Awareness</h5>
-                            <div class="card-body">
-                                <canvas class="mb-2" id="chartPromotionAwareness" width="100%" height="100"></canvas>
+                            <h6 class="card-header">Promotion Awareness</h6>
+                            <div class="card-body-dashboard">
+                                <canvas class="mb-2" id="chartPromotionAwareness" width="100%" height="70"></canvas>
                                 <div class="row">
                                     <div class="col-12">
-                                        <h3 class="text-primary"><%- Math.round(dashboard.promotionAwareness.persen) %></h3>
-                                        <h6 class="text-primary">Percent</h6>
+                                        <h6 class="text-primary mb-0"><%- Math.round(dashboard.promotionAwareness.persen) %></h6>
+                                        <h6 class="text-primary mb-0">Percent</h6>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer bg-white">
-                                <a href="javascript: void(0)" onclick="detailsPromotionAwareness()">SEE DETAILS</a>
+                            <div class="card-footer-dashboard bg-white">
+                                <a href="javascript: void(0)" onclick="detailsPromotionAwareness()"><small>DETAILS</small></a>
                             </div>
                         </div>
                     </div>
-                    <div id="tablePromotionAwareness" class="mb-4 col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8" style="display: none;">
+                    <div id="tablePromotionAwareness" class="mb-4 col-12 col-sm-6 col-md-10 col-lg-10 col-xl-10" style="display: none;">
                         <div class="card mb-4">
                             <div class="card-header"><i class="fas fa-table mr-2"></i>Data Promotion Awareness</div>
                             <div class="card-body">
@@ -396,24 +396,24 @@
                             </div>
                         </div>
                     </div>
-                    <div id="diagramComplaintHandling" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                    <div id="diagramComplaintHandling" class="mb-4 col-12 col-sm-6 col-md-2 col-lg-2 col-xl-2">
                         <div class="card text-center">
-                            <h5 class="card-header">Complaint Handling</h5>
-                            <div class="card-body">
-                                <canvas class="mb-2" id="chartComplaintHandling" width="100%" height="100"></canvas>
+                            <h6 class="card-header">Complaint Handling</h6>
+                            <div class="card-body-dashboard">
+                                <canvas class="mb-2" id="chartComplaintHandling" width="100%" height="70"></canvas>
                                 <div class="row">
                                     <div class="col-12">
-                                        <h3 class="text-primary"><%- Math.round(dashboard.complaintHandling.persen) %></h3>
-                                        <h6 class="text-primary">Percent</h6>
+                                        <h6 class="text-primary mb-0"><%- Math.round(dashboard.complaintHandling.persen) %></h6>
+                                        <h6 class="text-primary mb-0">Percent</h6>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-footer bg-white">
-                                <a href="javascript: void(0)" onclick="detailsComplaintHandling()">SEE DETAILS</a>
+                            <div class="card-footer-dashboard bg-white">
+                                <a href="javascript: void(0)" onclick="detailsComplaintHandling()"><small>DETAILS</small></a>
                             </div>
                         </div>
                     </div>
-                    <div id="tableComplaintHandling" class="mb-4 col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8" style="display: none;">
+                    <div id="tableComplaintHandling" class="mb-4 col-12 col-sm-6 col-md-10 col-lg-10 col-xl-10" style="display: none;">
                         <div class="card mb-4">
                             <div class="card-header"><i class="fas fa-table mr-2"></i>Data Complaint Handling</div>
                             <div class="card-body">
@@ -910,13 +910,13 @@
                 },
                 { data: 'tbl_store.tbl_retailer.retailer_name' },
                 { data: 'tbl_store.store_code' },
-                { data: 'entry_correct_fixture_id.fixture_type' },
+                { data: 'tbl_store.fixtureType1.fixture_type' },
                 { data: null,
                     render : function (data, type, row) {
                         if (row.entry_fixture_comp == true) {
                             return 'Yes'
                         } else {
-                            return 'No'
+                            return row.entry_correct_fixture_id.fixture_type
                         }
                     }
                 },
@@ -925,7 +925,7 @@
                         if (row.exit_fixture_comp == true) {
                             return 'Yes'
                         } else {
-                            return 'No'
+                            return row.entry_correct_fixture_id.fixture_type
                         }
                     }
                 },
@@ -952,17 +952,21 @@
                 },
                 { data: 'tbl_store.tbl_retailer.retailer_name' },
                 { data: 'tbl_store.store_code' },
-                { data: 'entry_correct_pog' },
                 { data: null,
                     render : function (data, type, row) {
-                        if (row.entry_pog_comp == true && row.exit_pog_comp == true) {
-                            return 'Entry & Exit'
-                        } else if (row.entry_pog_comp == true) {
-                            return 'Entry'
-                        } else if (row.exit_pog_comp == true) {
-                            return 'Exit'
+                        if (row.entry_pog_comp == true) {
+                            return 'Yes'
                         } else {
-                            return 'No'
+                            return row.entry_correct_pog
+                        }
+                    }
+                },
+                { data: null,
+                    render : function (data, type, row) {
+                        if (row.exit_pog_comp == true) {
+                            return 'Yes'
+                        } else {
+                            return row.exit_correct_pog
                         }
                     }
                 },
@@ -989,7 +993,7 @@
                 },
                 { data: 'tbl_store.tbl_retailer.retailer_name' },
                 { data: 'tbl_store.store_code' },
-                { data: 'tbl_store.fixtureType1.fixture_type'},
+                { data: 'entry_correct_fixture_id.fixture_type'},
                 { data: null,
                     render : function (data, type, row) {
                         if (row.entry_broken_hanger == null) {

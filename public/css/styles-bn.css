@@ -76,6 +76,21 @@
     background-color: #007bff;
 }
 
+.card-body-dashboard {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 0.75rem;
+}
+
+.card-footer-dashboard {
+    padding: 0.5rem 1rem;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+.card-footer-dashboard:last-child {
+    border-radius: 0 0 calc(0.25rem - 1px) calc(0.25rem - 1px);
+}
+
 /* Extra small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) {
     .sb-topnav .navbar-brand {
