@@ -2,7 +2,7 @@
     <nav class="sb-sidenav accordion sb-sidenav-light bg-white shadow" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
-                <form method="POST" action="<%- sideNavPath %>">
+                <!-- <form method="POST" action="<%- sideNavPath %>"> -->
                 <div class="sb-sidenav-menu-heading">Filter</div>
                 <div class="nav-link d-block pb-0">
                     <div class="form-group">
@@ -74,11 +74,11 @@
                             <button type="button" class="btn btn-secondary btn-block" onclick="clearClick()">Clear</button>
                         </div>
                         <div class="mb-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                            <button type="submit" class="btn btn-primary btn-block">Filter</button>
+                            <button type="submit" class="btn btn-primary btn-block" onclick="filterClick()">Filter</button>
                         </div>
                     </div>
                 </div>
-                </form>
+                <!-- </form> -->
             </div>
         </div>
     </nav>
@@ -91,30 +91,35 @@
         $('#selectMonth').select2({
             theme: "bootstrap",
             placeholder: "Select Month",
+            data: <%- JSON.stringify(sidenav.month) %>
         })
 
         $('#selectBrand').select2({
             allowClear: true,
             theme: "bootstrap",
             placeholder: "Select Brand",
+            data: <%- JSON.stringify(sidenav.brand) %>
         });
 
         $('#selectFixtureType').select2({
             allowClear: true,
             theme: "bootstrap",
             placeholder: "Select Fixture Type",
+            data: <%- JSON.stringify(sidenav.fixtureType) %>
         });
 
         $('#selectStore').select2({
             allowClear: true,
             theme: "bootstrap",
             placeholder: "Select Store",
+            data: <%- JSON.stringify(sidenav.store) %>
         });
 
         $('#selectDC').select2({
             allowClear: true,
             theme: "bootstrap",
             placeholder: "Select DC",
+            data: <%- JSON.stringify(sidenav.dc) %>
         });
 
         $('#selectSupervisor').select2({
@@ -128,86 +133,96 @@
             allowClear: true,
             theme: "bootstrap",
             placeholder: "Select MD",
+            data: <%- JSON.stringify(sidenav.md) %>
         });
 
         $('#selectRetailer').select2({
             allowClear: true,
             theme: "bootstrap",
             placeholder: "Select Retailer",
+            data: <%- JSON.stringify(sidenav.retailer) %>
         });
 
-        $.ajax({
-            url: '/function/get-select-sidenav',
-            method: 'get',
-            dataType: 'json',
-            success: function (result) {
-                $('#selectMonth').select2({
-                    theme: "bootstrap",
-                    placeholder: "Select Month",
-                    data: result[0].month
-                });
+        $('#selectMonth').val('<%- month %>').trigger("change");
+        $('#selectBrand').val('<%- brand %>').trigger("change");
+        $('#selectFixtureType').val('<%- fixture %>').trigger("change");
+        $('#selectStore').val('<%- store %>').trigger("change");
+        $('#selectDC').val('<%- dc %>').trigger("change");
+        $('#selectMD').val('<%- md %>').trigger("change");
+        $('#selectRetailer').val('<%- retailer %>').trigger("change");
 
-                $('#selectBrand').select2({
-                    allowClear: true,
-                    theme: "bootstrap",
-                    placeholder: "Select Brand",
-                    data: result[1].brand
-                });
+        // $.ajax({
+        //     url: '/function/get-select-sidenav',
+        //     method: 'get',
+        //     dataType: 'json',
+        //     success: function (result) {
+        //         $('#selectMonth').select2({
+        //             theme: "bootstrap",
+        //             placeholder: "Select Month",
+        //             data: result[0].month
+        //         });
 
-                $('#selectFixtureType').select2({
-                    allowClear: true,
-                    theme: "bootstrap",
-                    placeholder: "Select Fixture Type",
-                    data: result[2].fixtureType
-                });
+        //         $('#selectBrand').select2({
+        //             allowClear: true,
+        //             theme: "bootstrap",
+        //             placeholder: "Select Brand",
+        //             data: result[1].brand
+        //         });
 
-                $('#selectStore').select2({
-                    allowClear: true,
-                    theme: "bootstrap",
-                    placeholder: "Select Store",
-                    data: result[3].store
-                });
+        //         $('#selectFixtureType').select2({
+        //             allowClear: true,
+        //             theme: "bootstrap",
+        //             placeholder: "Select Fixture Type",
+        //             data: result[2].fixtureType
+        //         });
 
-                $('#selectDC').select2({
-                    allowClear: true,
-                    theme: "bootstrap",
-                    placeholder: "Select DC",
-                    data: result[4].dc
-                });
+        //         $('#selectStore').select2({
+        //             allowClear: true,
+        //             theme: "bootstrap",
+        //             placeholder: "Select Store",
+        //             data: result[3].store
+        //         });
 
-                $('#selectSupervisor').select2({
-                    allowClear: true,
-                    theme: "bootstrap",
-                    placeholder: "Select Supervisor",
-                    data: ''
-                });
+        //         $('#selectDC').select2({
+        //             allowClear: true,
+        //             theme: "bootstrap",
+        //             placeholder: "Select DC",
+        //             data: result[4].dc
+        //         });
 
-                $('#selectMD').select2({
-                    allowClear: true,
-                    theme: "bootstrap",
-                    placeholder: "Select MD",
-                    data: result[5].md
-                });
+        //         $('#selectSupervisor').select2({
+        //             allowClear: true,
+        //             theme: "bootstrap",
+        //             placeholder: "Select Supervisor",
+        //             data: ''
+        //         });
 
-                $('#selectRetailer').select2({
-                    allowClear: true,
-                    theme: "bootstrap",
-                    placeholder: "Select Retailer",
-                    data: result[6].retailer
-                });
+        //         $('#selectMD').select2({
+        //             allowClear: true,
+        //             theme: "bootstrap",
+        //             placeholder: "Select MD",
+        //             data: result[5].md
+        //         });
 
-                $('#selectMonth').val('<%- month %>').trigger("change");
-                $('#selectBrand').val('<%- brand %>').trigger("change");
-                $('#selectFixtureType').val('<%- fixture %>').trigger("change");
-                $('#selectStore').val('<%- store %>').trigger("change");
-                $('#selectDC').val('<%- dc %>').trigger("change");
-                $('#selectMD').val('<%- md %>').trigger("change");
-                $('#selectRetailer').val('<%- retailer %>').trigger("change");
+        //         $('#selectRetailer').select2({
+        //             allowClear: true,
+        //             theme: "bootstrap",
+        //             placeholder: "Select Retailer",
+        //             data: result[6].retailer
+        //         });
 
-            }, error: function(error) {
-                console.log(error);
-            }
-        })
+        //         $('#selectMonth').val('<%- month %>').trigger("change");
+        //         $('#selectBrand').val('<%- brand %>').trigger("change");
+        //         $('#selectFixtureType').val('<%- fixture %>').trigger("change");
+        //         $('#selectStore').val('<%- store %>').trigger("change");
+        //         $('#selectDC').val('<%- dc %>').trigger("change");
+        //         $('#selectMD').val('<%- md %>').trigger("change");
+        //         $('#selectRetailer').val('<%- retailer %>').trigger("change");
+
+        //     }, error: function(error) {
+        //         console.log(error);
+        //     }
+        // })
     });
 
     function clearClick(){
@@ -221,5 +236,7 @@
         $('#selectRetailer').val('').trigger("change");
     }
 
-   
+    function filterClick() {
+        filter_box.action = '<%- sideNavPath %>'
+    }
 </script>

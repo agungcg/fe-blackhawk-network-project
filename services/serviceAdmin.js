@@ -106,6 +106,34 @@ const serviceAdmin = {
             });
         return temp;
     },
+    getDetail: async (Token, month, brand, retailer, fixture, store, dc, md, diagram) => {
+        console.log("asssss", diagram)
+        temp = {};
+        await axios.get(
+            consConfig.urlService + 'dashboard',
+            {
+                params: {
+                    month: month,
+                    brand: brand,
+                    retailer: retailer,
+                    fixture: fixture,
+                    store: store,
+                    dc: dc,
+                    md: md,
+                    diagram: diagram
+                },
+                headers: Token
+            })
+            .then(function(response) {
+                temp = response.data
+                console.log("success service getDetail")
+                
+            })
+            .catch(function (error) {
+                console.log("error service getDetail")
+            });
+        return temp;
+    },
     getGallery: async (Token, month, brand, retailer, fixture, store, dc, md) => {
         temp = {};
         await axios.get(

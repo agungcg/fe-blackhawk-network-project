@@ -1,0 +1,1165 @@
+<%- include('../layout/top-nav') -%>
+
+<div id="layoutSidenav">
+    <form id="filter_box" method="POST">
+        <input type="hidden" name="btnDetail" id="btnDetail" value="<%- trigger %>" >
+    <%- include('../layout/side-nav') -%>
+    </form>
+    <div id="layoutSidenav_content">
+        <main id="mainDiagram">
+            <div class="container-fluid">
+                <h1 class="mt-4">Detail Diagram</h1>
+                <div class="mb-4 row">
+                    <div class="col-12 ">
+                        <a class="float-right align-self-center h6" href="/admin"><i class="fas fa-chevron-left mr-2 "></i>BACK</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <% if (trigger === 'visit-compliance') { %>
+                        <div id="diagramVisitCompliance" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                            <div class="card text-center">
+                                <h6 class="card-header">Visit Compliance</h6>
+                                <div class="card-body-dashboard">
+                                    <canvas class="mb-2" id="chartVisitCompliance" width="100%" height="30"></canvas>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h6 class="text-primary mb-0"><%- Math.round(detail.persen) %></h6>
+                                            <h6 class="text-primary mb-0">Percent</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer-dashboard bg-white">
+                                    <button type="submit" class="btn btn-secondary btn-sm" disabled><small>Detail</small></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tableVisitCompliance" class="mb-4 col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+                            <div class="card mb-4">
+                                <div class="card-header"><i class="fas fa-table mr-2"></i>Data Visit Compliance</div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped table-hover" id="dataTableVisitCompliance" width="100%" cellspacing="0">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th class="text-center">Date</th>
+                                                    <th class="text-center">Retailer</th>
+                                                    <th class="text-center">Store Code</th>
+                                                    <th class="text-center">DC</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% } else if (trigger === 'fixture-compliance') { %>
+                        <div id="diagramFixtureCompliance" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                            <div class="card text-center">
+                                <h6 class="card-header">Fixture Compliance</h6>
+                                <div class="card-body-dashboard">
+                                    <canvas class="mb-2" id="chartFixtureCompliance" width="100%" height="30"></canvas>
+                                    <div class="row">
+                                        <div class="entry col-6">
+                                            <h6 class="text-primary mb-0"><%- Math.round(detail.entry) %></h6>
+                                            <h6 class="text-primary mb-0">Entry</h6>
+                                        </div>
+                                        <div class="exit col-6">
+                                            <h6 class="text-exit mb-0"><%- Math.round(detail.exit) %></h6>
+                                            <h6 class="text-exit mb-0">Exit</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer-dashboard bg-white">
+                                    <button type="submit" class="btn btn-secondary btn-sm" disabled><small>Detail</small></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tableFixtureCompliance" class="mb-4 col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+                            <div class="card mb-4">
+                                <div class="card-header"><i class="fas fa-table mr-2"></i>Data Fixture Compliance</div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped table-hover" id="dataTableFixtureCompliance" width="100%" cellspacing="0">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th class="text-center">Date</th>
+                                                    <th class="text-center">Retailer</th>
+                                                    <th class="text-center">Store Code</th>
+                                                    <th class="text-center">Expected Fixture</th>
+                                                    <th class="text-center">Entry</th>
+                                                    <th class="text-center">Exit</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% } else if (trigger === 'POG-compliance') { %>
+                        <div id="diagramPOGCompliance" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                            <div class="card text-center">
+                                <h6 class="card-header">POG Compliance</h6>
+                                <div class="card-body-dashboard">
+                                    <canvas class="mb-2" id="chartPOGCompliance" width="100%" height="30"></canvas>
+                                    <div class="row">
+                                        <div class="entry col-6">
+                                            <h6 class="text-primary mb-0"><%- Math.round(detail.entry) %></h6>
+                                            <h6 class="text-primary mb-0">Entry</h6>
+                                        </div>
+                                        <div class="exit col-6">
+                                            <h6 class="text-exit mb-0"><%- Math.round(detail.exit) %></h6>
+                                            <h6 class="text-exit mb-0">Exit</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer-dashboard bg-white">
+                                    <button type="submit" class="btn btn-secondary btn-sm" disabled><small>Detail</small></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tablePOGCompliance" class="mb-4 col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8">
+                            <div class="card mb-4">
+                                <div class="card-header"><i class="fas fa-table mr-2"></i>Data POG Compliance</div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped table-hover" id="dataTablePOGCompliance" width="100%" cellspacing="0">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th class="text-center">Date</th>
+                                                    <th class="text-center">Retailer</th>
+                                                    <th class="text-center">Store Code</th>
+                                                    <th class="text-center">Entry</th>
+                                                    <th class="text-center">Exit</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% } else if (trigger === 'POD-compliance') { %>
+                        <div id="diagramPODCompliance" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                            <div class="card text-center">
+                                <h6 class="card-header">POD Compliance</h6>
+                                <div class="card-body-dashboard">
+                                    <canvas class="mb-2" id="chartPODCompliance" width="100%" height="30"></canvas>
+                                    <div class="row">
+                                        <div class="entry col-6">
+                                            <h6 class="text-primary mb-0"><%- Math.round(detail.entry) %></h6>
+                                            <h6 class="text-primary mb-0">Entry</h6>
+                                        </div>
+                                        <div class="exit col-6">
+                                            <h6 class="text-exit mb-0"><%- Math.round(detail.exit) %></h6>
+                                            <h6 class="text-exit mb-0">Exit</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer-dashboard bg-white">
+                                    <button type="submit" class="btn btn-secondary btn-sm" disabled><small>Detail</small></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tablePODCompliance" class="mb-4 col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8"  >
+                            <div class="card mb-4">
+                                <div class="card-header"><i class="fas fa-table mr-2"></i>Data POD Compliance</div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped table-hover" id="dataTablePODCompliance" width="100%" cellspacing="0">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th class="text-center">Date</th>
+                                                    <th class="text-center">Retailer</th>
+                                                    <th class="text-center">Store Code</th>
+                                                    <th class="text-center">Fixture</th>
+                                                    <th class="text-center">Entry Broken Pegs</th>
+                                                    <th class="text-center">Entry POD Compliance</th>
+                                                    <th class="text-center">Exit Broken Pegs</th>
+                                                    <th class="text-center">Exit POD Compliance</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% } else if (trigger === 'POP-compliance') { %>
+                        <div id="diagramPOPCompliance" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                            <div class="card text-center">
+                                <h6 class="card-header">POP Compliance</h6>
+                                <div class="card-body-dashboard">
+                                    <canvas class="mb-2" id="chartPOPCompliance" width="100%" height="30"></canvas>
+                                    <div class="row">
+                                        <div class="entry col-6">
+                                            <h6 class="text-primary mb-0"><%- Math.round(detail.entry) %></h6>
+                                            <h6 class="text-primary mb-0">Entry</h6>
+                                        </div>
+                                        <div class="exit col-6">
+                                            <h6 class="text-exit mb-0"><%- Math.round(detail.exit) %></h6>
+                                            <h6 class="text-exit mb-0">Exit</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer-dashboard bg-white">
+                                    <button type="submit" class="btn btn-secondary btn-sm" disabled><small>Detail</small></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tablePOPCompliance" class="mb-4 col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8"  >
+                            <div class="card mb-4">
+                                <div class="card-header">
+                                    <i class="fas fa-table mr-2"></i>Data POP Compliance
+                                    <!-- <button type="button" class="btn btn-sm btn-primary float-right" onclick="downloadPOP()">Dowload</button> -->
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped table-hover" id="dataTablePOPCompliance" width="100%" cellspacing="0">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th class="text-center">Date</th>
+                                                    <th class="text-center">Retailer</th>
+                                                    <th class="text-center">Store Code</th>
+                                                    <th class="text-center">Entry POP 1</th>
+                                                    <th class="text-center">Entry POP 2</th>
+                                                    <th class="text-center">Exit POP 1</th>
+                                                    <th class="text-center">Exit POP 2</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% } else if (trigger === 'stock-compliance') { %>
+                        <div id="diagramInStockCompliance" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                            <div class="card text-center">
+                                <h6 class="card-header">In-Stock Compliance</h6>
+                                <div class="card-body-dashboard">
+                                    <canvas class="mb-2" id="chartInStockCompliance" width="100%" height="30"></canvas>
+                                    <div class="row">
+                                        <div class="entry col-6">
+                                            <h6 class="text-primary mb-0"><%- Math.round(detail.entryInstockCompliance) %></h6>
+                                            <h6 class="text-primary mb-0">Entry</h6>
+                                        </div>
+                                        <div class="exit col-6">
+                                            <h6 class="text-exit mb-0"><%- Math.round(detail.exitInstockCompliance) %></h6>
+                                            <h6 class="text-exit mb-0">Exit</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer-dashboard bg-white">
+                                    <button type="submit" class="btn btn-secondary btn-sm" disabled><small>Detail</small></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tableInStockCompliance" class="mb-4 col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8"  >
+                            <div class="card mb-4">
+                                <div class="card-header"><i class="fas fa-table mr-2"></i>Data In-Stock Compliance</div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped table-hover" id="dataTableInStockCompliance" width="100%" cellspacing="0">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th class="text-center">Date</th>
+                                                    <th class="text-center">Retailer</th>
+                                                    <th class="text-center">Store Code</th>
+                                                    <th class="text-center">Entry Google 50k</th>
+                                                    <th class="text-center">Entry Google 100k</th>
+                                                    <th class="text-center">Entry Google 150k</th>
+                                                    <th class="text-center">Entry Google 300k</th>
+                                                    <th class="text-center">Entry Google 500k</th>
+                                                    <th class="text-center">Entry Spotify 1m</th>
+                                                    <th class="text-center">Entry Spotify 3m</th>
+                                                    <th class="text-center">Exit Google 50k</th>
+                                                    <th class="text-center">Exit Google 100k</th>
+                                                    <th class="text-center">Exit Google 150k</th>
+                                                    <th class="text-center">Exit Google 300k</th>
+                                                    <th class="text-center">Exit Google 500k</th>
+                                                    <th class="text-center">Exit Spotify 1m</th>
+                                                    <th class="text-center">Exit Spotify 3m</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% } else if (trigger === 'activation-know-how') { %>
+                        <div id="diagramActivationKnowHow" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                            <div class="card text-center">
+                                <h6 class="card-header">Activation know-how</h6>
+                                <div class="card-body-dashboard">
+                                    <canvas class="mb-2" id="chartActivationKnowHow" width="100%" height="30"></canvas>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h6 class="text-primary mb-0"><%- Math.round(detail.persen) %></h6>
+                                            <h6 class="text-primary mb-0">Percent</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer-dashboard bg-white">
+                                    <button type="submit" class="btn btn-secondary btn-sm" disabled><small>Detail</small></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tableActivationKnowHow" class="mb-4 col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8"  >
+                            <div class="card mb-4">
+                                <div class="card-header"><i class="fas fa-table mr-2"></i>Data Activation know-how</div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped table-hover" id="dataTableActivationKnowHow" width="100%" cellspacing="0">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th class="text-center">Date</th>
+                                                    <th class="text-center">Retailer</th>
+                                                    <th class="text-center">Store Code</th>
+                                                    <th class="text-center">Activation</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% } else if (trigger === 'promotion-awareness') { %>
+                        <div id="diagramPromotionAwareness" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                            <div class="card text-center">
+                                <h6 class="card-header">Promotion Awareness</h6>
+                                <div class="card-body-dashboard">
+                                    <canvas class="mb-2" id="chartPromotionAwareness" width="100%" height="30"></canvas>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h6 class="text-primary mb-0"><%- Math.round(detail.persen) %></h6>
+                                            <h6 class="text-primary mb-0">Percent</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer-dashboard bg-white">
+                                    <button type="submit" class="btn btn-secondary btn-sm" disabled><small>Detail</small></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tablePromotionAwareness" class="mb-4 col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8"  >
+                            <div class="card mb-4">
+                                <div class="card-header"><i class="fas fa-table mr-2"></i>Data Promotion Awareness</div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped table-hover" id="dataTablePromotionAwareness" width="100%" cellspacing="0">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th class="text-center">Date</th>
+                                                    <th class="text-center">Retailer</th>
+                                                    <th class="text-center">Store Code</th>
+                                                    <th class="text-center">Promotion Awareness</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% } else if (trigger === 'complain-handling') { %>
+                        <div id="diagramComplaintHandling" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
+                            <div class="card text-center">
+                                <h6 class="card-header">Complaint Handling</h6>
+                                <div class="card-body-dashboard">
+                                    <canvas class="mb-2" id="chartComplaintHandling" width="100%" height="30"></canvas>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h6 class="text-primary mb-0"><%- Math.round(detail.persen) %></h6>
+                                            <h6 class="text-primary mb-0">Percent</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer-dashboard bg-white">
+                                    <button type="submit" class="btn btn-secondary btn-sm" disabled><small>Detail</small></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tableComplaintHandling" class="mb-4 col-12 col-sm-6 col-md-8 col-lg-8 col-xl-8"  >
+                            <div class="card mb-4">
+                                <div class="card-header"><i class="fas fa-table mr-2"></i>Data Complaint Handling</div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped table-hover" id="dataTableComplaintHandling" width="100%" cellspacing="0">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th class="text-center">Date</th>
+                                                    <th class="text-center">Retailer</th>
+                                                    <th class="text-center">Store Code</th>
+                                                    <th class="text-center">Complain Handling</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+</div>
+
+<script type='text/javascript'>
+    Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+    Chart.defaults.global.defaultFontColor = '#292b2c';
+    
+    var chartVisitCompliance = document.getElementById("chartVisitCompliance");
+    var chartFixtureCompliance = document.getElementById("chartFixtureCompliance");
+    var chartPOGCompliance = document.getElementById("chartPOGCompliance");
+    var chartPODCompliance = document.getElementById("chartPODCompliance");
+    var chartPOPCompliance = document.getElementById("chartPOPCompliance");
+    var chartInStockCompliance = document.getElementById("chartInStockCompliance");
+    var chartActivationKnowHow = document.getElementById("chartActivationKnowHow");
+    var chartPromotionAwareness = document.getElementById("chartPromotionAwareness");
+    var chartComplaintHandling = document.getElementById("chartComplaintHandling");
+
+    if ('<%- trigger %>' === 'visit-compliance') {
+        var configChartVisitCompliance = new Chart(chartVisitCompliance, {
+            type: 'bar',
+            data: {
+                labels: ['Percent'],
+                datasets: [{
+                    label: null,
+                    data: ['<%- Math.round(detail.persen) %>'],
+                    backgroundColor: ['#007bff'],
+                }],
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            max: 100,
+                            maxTicksLimit: 20,
+                        }
+                    }]
+                },
+                legend :{
+                    display : false
+                }
+            }
+        });
+        $(document).ready(function() {
+            $('#dataTableVisitCompliance').DataTable({
+                data: JSON.parse('<%- JSON.stringify(detail.allDataVisit) %>'),
+                columns: [
+                    { data: 'visit_date',
+                        render : function (data, type, row) {
+                            return formatDate(data)
+                        }
+                    },
+                    { data: 'tbl_store.tbl_retailer.retailer_name' },
+                    { data: 'tbl_store.store_code' },
+                    { data: 'tbl_store.tbl_dc.DC_name' },
+                ],
+                columnDefs: [
+                    {
+                        targets: [0, 1, 2, 3],
+                        className: 'text-center'
+                    },
+                    {   width: '25%', 
+                        targets: [0, 1, 2, 3]
+                    },
+                ], 
+                order: [[0, 'asc']],
+            });
+        });
+    } else if ('<%- trigger %>' === 'fixture-compliance') {
+        var configChartFixtureCompliance = new Chart(chartFixtureCompliance, {
+            type: 'bar',
+            data: {
+                labels: ['Entry', 'Exit'],
+                datasets: [{
+                    data: ['<%- Math.round(detail.entry) %>', '<%- Math.round(detail.exit) %>'],
+                    backgroundColor: ['#007bff', '#00cec9'],
+                }],
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            max: 100,
+                            maxTicksLimit: 20,
+                        }
+                    }]
+                },
+                legend :{
+                    display : false
+                }
+            }
+        });
+        $(document).ready(function() {
+            var table = $('#dataTableFixtureCompliance').DataTable({
+                data: JSON.parse('<%- JSON.stringify(detail.dataFixComp) %>'),
+                columns: [
+                    { data: 'visit_date',
+                        render : function (data, type, row) {
+                            return formatDate(data)
+                        }
+                    },
+                    { data: 'tbl_store.tbl_retailer.retailer_name' },
+                    { data: 'tbl_store.store_code' },
+                    { data: 'tbl_store.fixtureType1.fixture_type' },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if (row.entry_fixture_comp == true) {
+                                return 'Yes'
+                            } else {
+                                if (row.entry_correct_fixture_id != null){
+                                    return row.entry_correct_fixture_id.fixture_type
+                                } else {
+                                    return 'null'
+                                }
+                            }
+                        }
+                    },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if (row.exit_fixture_comp == true) {
+                                return 'Yes'
+                            } else {
+                                if (row.exit_correct_fixture_id != null){
+                                    return row.exit_correct_fixture_id.fixture_type
+                                } else {
+                                    return 'null'
+                                }
+                            }
+                        }
+                    },
+                ],
+                columnDefs: [
+                    {
+                        targets: [0, 1, 2, 3, 4, 5],
+                        className: 'text-center'
+                    },
+                    {   width: '16.7%', 
+                        targets: [0, 1, 2, 3, 4, 5]
+                    },
+                ],
+                order: [[0, 'asc']],
+            });
+        });
+    } else if ('<%- trigger %>' === 'POG-compliance') {
+        var configChartPOGCompliance = new Chart(chartPOGCompliance, {
+            type: 'bar',
+            data: {
+                labels: ['Entry', 'Exit'],
+                datasets: [{
+                    data: ['<%- Math.round(detail.entry) %>', '<%- Math.round(detail.exit) %>'],
+                    backgroundColor: ['#007bff', '#00cec9'],
+                }],
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            max: 100,
+                            maxTicksLimit: 20,
+                        }
+                    }]
+                },
+                legend :{
+                    display : false
+                }
+            }
+        });
+        $(document).ready(function() {
+            $('#dataTablePOGCompliance').DataTable({
+                data: JSON.parse('<%- JSON.stringify(detail.dataPOGComp) %>'),
+                columns: [
+                    { data: 'visit_date',
+                        render : function (data, type, row) {
+                            return formatDate(data)
+                        }
+                    },
+                    { data: 'tbl_store.tbl_retailer.retailer_name' },
+                    { data: 'tbl_store.store_code' },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if (row.entry_pog_comp == true) {
+                                return 'Yes'
+                            } else {
+                                return row.entry_correct_pog
+                            }
+                        }
+                    },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if (row.exit_pog_comp == true) {
+                                return 'Yes'
+                            } else {
+                                return row.exit_correct_pog
+                            }
+                        }
+                    },
+                ],
+                columnDefs: [
+                    {
+                        targets: [0, 1, 2, 3, 4],
+                        className: 'text-center'
+                    },
+                    {   width: '20%', 
+                        targets: [0, 1, 2, 3, 4]
+                    },
+                ],
+                order: [[0, 'asc']],
+            });
+        });
+    } else if ('<%- trigger %>' === 'POD-compliance') {
+        var configChartPODCompliance = new Chart(chartPODCompliance, {
+            type: 'bar',
+            data: {
+                labels: ['Entry', 'Exit'],
+                datasets: [{
+                    data: ['<%- Math.round(detail.entry) %>', '<%- Math.round(detail.exit) %>'],
+                    backgroundColor: ['#007bff', '#00cec9'],
+                }],
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            max: 100,
+                            maxTicksLimit: 20,
+                        }
+                    }]
+                },
+                legend :{
+                    display : false
+                }
+            }
+        });
+        $(document).ready(function() {
+            $('#dataTablePODCompliance').DataTable({
+                data: JSON.parse('<%- JSON.stringify(detail.dataPODCompliance) %>'),
+                columns: [
+                    { data: 'visit_date',
+                        render : function (data, type, row) {
+                            return formatDate(data)
+                        }
+                    },
+                    { data: 'tbl_store.tbl_retailer.retailer_name' },
+                    { data: 'tbl_store.store_code' },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if (row.entry_correct_fixture_id != null) {
+                                return row.entry_correct_fixture_id.fixture_type
+                            } else {
+                                return 'null'
+                            }
+                        
+                        }
+                    },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if (row.entry_broken_hanger == null) {
+                                return 0
+                            } else {
+                                return row.entry_broken_hanger
+                            }
+                        }
+                    },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if (row.entry_peg_comp == true) {
+                                return 'Yes'
+                            } else {
+                                return 'No'
+                            }
+                        }
+                    },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if (row.exit_broken_hanger == null) {
+                                return 0
+                            } else {
+                                return row.exit_broken_hanger
+                            }
+                        }
+                    },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if (row.exit_peg_comp == true) {
+                                return 'Yes'
+                            } else {
+                                return 'No'
+                            }
+                        }
+                    },
+                    
+                ],
+                columnDefs: [
+                    {
+                        targets: [0, 1, 2, 3, 4, 5, 6, 7],
+                        className: 'text-center'
+                    },
+                    {   width: '14.3%', 
+                        targets: [0, 1, 2, 3, 4, 5, 6, 7]
+                    },
+                ],
+                order: [[0, 'asc']],
+            });
+        });
+    } else if ('<%- trigger %>' === 'POP-compliance') {
+        var configConfigChartPOPCompliance = new Chart(chartPOPCompliance, {
+            type: 'bar',
+            data: {
+                labels: ['Entry', 'Exit'],
+                datasets: [{
+                    data: ['<%- Math.round(detail.entry) %>', '<%- Math.round(detail.exit) %>'],
+                    backgroundColor: ['#007bff', '#00cec9'],
+                }],
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            max: 100,
+                            maxTicksLimit: 20,
+                        }
+                    }]
+                },
+                legend :{
+                    display : false
+                }
+            }
+        });
+        $(document).ready(function() {
+            $('#dataTablePOPCompliance').DataTable({
+                data: JSON.parse('<%- JSON.stringify(detail.dataPOPCompliance) %>'),
+                columns: [
+                    { data: 'visit_date',
+                        render : function (data, type, row) {
+                            return formatDate(data)
+                        }
+                    },
+                    { data: 'tbl_store.tbl_retailer.retailer_name' },
+                    { data: 'tbl_store.store_code' },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if(row.entry_pop_pic_1 == true) {
+                                return 'Yes'
+                            } else {
+                                return 'No'
+                            }
+                        }
+                    },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if(row.entry_pop_pic_2 == true) {
+                                return 'Yes'
+                            } else {
+                                return 'No'
+                            }
+                        }
+                    },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if(row.exit_pop_pic_1 == true) {
+                                return 'Yes'
+                            } else {
+                                return 'No'
+                            }
+                        }
+                    },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if(row.exit_pop_pic_2 == true) {
+                                return 'Yes'
+                            } else {
+                                return 'No'
+                            }
+                        }
+                    },
+                ],
+                columnDefs: [
+                    {
+                        targets: [0, 1, 2, 3, 4],
+                        className: 'text-center'
+                    },
+                    {   width: '20%', 
+                        targets: [0, 1, 2, 3, 4]
+                    },
+                ],
+                order: [[0, 'asc']],
+            });
+        });
+    } else if ('<%- trigger %>' === 'stock-compliance') {
+        var configChartInStockCompliance = new Chart(chartInStockCompliance, {
+            type: 'bar',
+            data: {
+                labels: ['Entry', 'Exit'],
+                datasets: [{
+                    data: ['<%- Math.round(detail.entryInstockCompliance) %>', '<%- Math.round(detail.exitInstockCompliance) %>'],
+                    backgroundColor: ['#007bff', '#00cec9'],
+                }],
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            max: 100,
+                            maxTicksLimit: 20,
+                        }
+                    }]
+                },
+                legend :{
+                    display : false
+                }
+            }
+        });
+        $(document).ready(function() {
+            $('#dataTableInStockCompliance').DataTable({
+                data: JSON.parse('<%- JSON.stringify(detail.dataInstockCompliance) %>'),
+                columns: [
+                    { data: 'visit_date',
+                        render : function (data, type, row) {
+                            return formatDate(data)
+                        }
+                    },
+                    { data: 'tbl_store.tbl_retailer.retailer_name' },
+                    { data: 'tbl_store.store_code' },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if(row.entry_google50k < 15) {
+                                return row.entry_google50k
+                            } else {
+                                return 'Yes'
+                            }
+                        }
+                    },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if(row.entry_google100k < 15) {
+                                return row.entry_google100k
+                            } else {
+                                return 'Yes'
+                            }
+                        }
+                    },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if(row.entry_google150k < 15) {
+                                return row.entry_google150k
+                            } else {
+                                return 'Yes'
+                            }
+                        }
+                    },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if(row.entry_google300k < 15) {
+                                return row.entry_google300k
+                            } else {
+                                return 'Yes'
+                            }
+                        }
+                    },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if(row.entry_google500k < 15) {
+                                return row.entry_google500k
+                            } else {
+                                return 'Yes'
+                            }
+                        }
+                    },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if(row.entry_spotify1M < 15) {
+                                return row.entry_spotify1M
+                            } else {
+                                return 'Yes'
+                            }
+                        }
+                    },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if(row.entry_spotify3M < 15) {
+                                return row.entry_spotify3M
+                            } else {
+                                return 'Yes'
+                            }
+                        }
+                    },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if(row.exit_google50k < 15) {
+                                return row.exit_google50k
+                            } else {
+                                return 'Yes'
+                            }
+                        }
+                    },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if(row.exit_google100k < 15) {
+                                return row.exit_google100k
+                            } else {
+                                return 'Yes'
+                            }
+                        }
+                    },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if(row.exit_google150k < 15) {
+                                return row.exit_google150k
+                            } else {
+                                return 'Yes'
+                            }
+                        }
+                    },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if(row.exit_google300k < 15) {
+                                return row.exit_google300k
+                            } else {
+                                return 'Yes'
+                            }
+                        }
+                    },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if(row.exit_google500k < 15) {
+                                return row.exit_google500k
+                            } else {
+                                return 'Yes'
+                            }
+                        }
+                    },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if(row.exit_spotify1M < 15) {
+                                return row.exit_spotify1M
+                            } else {
+                                return 'Yes'
+                            }
+                        }
+                    },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if(row.exit_spotify3M < 15) {
+                                return row.exit_spotify3M
+                            } else {
+                                return 'Yes'
+                            }
+                        }
+                    },
+                ],
+                columnDefs: [
+                    {
+                        targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                        className: 'text-center'
+                    },
+                    {   width: '5.8%', 
+                        targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                    },
+                ],
+                order: [[0, 'asc']],
+            });
+        });
+    } else if ('<%- trigger %>' === 'activation-know-how') {
+        var configChartActivationKnowHow = new Chart(chartActivationKnowHow, {
+            type: 'bar',
+            data: {
+                labels: ['Percent'],
+                datasets: [{
+                    data: ['<%- Math.round(detail.persen) %>'],
+                    backgroundColor: ['#007bff'],
+                }],
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            max: 100,
+                            maxTicksLimit: 20,
+                        }
+                    }]
+                },
+                legend :{
+                    display : false
+                }
+            }
+        });
+        $(document).ready(function() {
+            $('#dataTableActivationKnowHow').DataTable({
+                data: JSON.parse('<%- JSON.stringify(detail.dataActivationKnowHow) %>'),
+                columns: [
+                    { data: 'visit_date',
+                        render : function (data, type, row) {
+                            return formatDate(data)
+                        }
+                    },
+                    { data: 'tbl_store.tbl_retailer.retailer_name' },
+                    { data: 'tbl_store.store_code' },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if(row.q1 == true) {
+                                return 'Yes'
+                            } else {
+                                return 'No'
+                            }
+                        }
+                    },
+                ],
+                columnDefs: [
+                    {
+                        targets: [0, 1, 2, 3],
+                        className: 'text-center'
+                    },
+                    {   width: '25%', 
+                        targets: [0, 1, 2, 3]
+                    },
+                ],
+                order: [[0, 'asc']],
+            });
+        });
+    } else if ('<%- trigger %>' === 'promotion-awareness') {
+        var configChartPromotionAwareness = new Chart(chartPromotionAwareness, {
+            type: 'bar',
+            data: {
+                labels: ['Percent'],
+                datasets: [{
+                    data: ['<%- Math.round(detail.persen) %>'],
+                    backgroundColor: ['#007bff'],
+                }],
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            max: 100,
+                            maxTicksLimit: 20,
+                        }
+                    }]
+                },
+                legend :{
+                    display : false
+                }
+            }
+        });
+        $(document).ready(function() {
+            $('#dataTablePromotionAwareness').DataTable({
+                data: JSON.parse('<%- JSON.stringify(detail.dataPromotionAwareness) %>'),
+                columns: [
+                    { data: 'visit_date',
+                        render : function (data, type, row) {
+                            return formatDate(data)
+                        }
+                    },
+                    { data: 'tbl_store.tbl_retailer.retailer_name' },
+                    { data: 'tbl_store.store_code' },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if(row.q2 == true) {
+                                return 'Yes'
+                            } else {
+                                return 'No'
+                            }
+                        }
+                    },
+                ],
+                columnDefs: [
+                    {
+                        targets: [0, 1, 2, 3],
+                        className: 'text-center'
+                    },
+                    {   width: '25%', 
+                        targets: [0, 1, 2, 3]
+                    },
+                ],
+                order: [[0, 'asc']],
+            });
+        });
+    } else if ('<%- trigger %>' === 'complain-handling') {
+        var configChartComplaintHandling = new Chart(chartComplaintHandling, {
+            type: 'bar',
+            data: {
+                labels: ['Percent'],
+                datasets: [{
+                    data: ['<%- Math.round(detail.persen) %>'],
+                    backgroundColor: ['#007bff'],
+                }],
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true,
+                            max: 100,
+                            maxTicksLimit: 20,
+                        }
+                    }]
+                },
+                legend :{
+                    display : false
+                }
+            }
+        });
+        $(document).ready(function() {
+            $('#dataTableComplaintHandling').DataTable({
+                data: JSON.parse('<%- JSON.stringify(detail.dataComplaintHandling) %>'),
+                columns: [
+                    { data: 'visit_date',
+                        render : function (data, type, row) {
+                            return formatDate(data)
+                        }
+                    },
+                    { data: 'tbl_store.tbl_retailer.retailer_name' },
+                    { data: 'tbl_store.store_code' },
+                    { data: null,
+                        render : function (data, type, row) {
+                            if (row.q3 == true) {
+                                return 'Yes'
+                            } else {
+                                return 'No'
+                            }
+                        }
+                    },
+                ],
+                columnDefs: [
+                    {
+                        targets: [0, 1, 2, 3],
+                        className: 'text-center'
+                    },
+                    {   width: '25%', 
+                        targets: [0, 1, 2, 3]
+                    },
+                ],
+                order: [[0, 'asc']],
+            });
+        });
+    }
+
+    formatDate = function(date) {
+        var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+        hour = d.getHours();
+        minute = d.getMinutes();
+        
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+        
+        var date = [year, month, day].join('-');
+        var hourMinute = [hour, minute].join(':')
+
+        return [date, hourMinute].join(' ')
+    }
+</script>
+
+<%- include('../layout/footer') -%>

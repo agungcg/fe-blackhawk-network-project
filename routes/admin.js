@@ -4,19 +4,27 @@ const excel = require('node-excel-export');
 
 var serviceAdmin = require('../services/serviceAdmin');
 var consConfig = require("../configs/constants");
+var serviceGlobal = require('../services/serviceGlobal');
 
 var date = new Date();
 
-router.get('/', async function(req, res, next) {
+router.get('/', async function (req, res, next) {
     sess = req.session;
-    if (sess.token){
-        const month = date.getMonth() + 1;
-        const dashboard = await serviceAdmin.getDashboard(sess.token, month)
+    if (sess.token) {
+        const monthNow = date.getMonth() + 1;
+        const dashboard = await serviceAdmin.getDashboard(sess.token, monthNow)
         const file = await serviceAdmin.getFile(sess.token)
-        res.render('admin/dashboard',{
-            "titlePage" : "Dashboard",
-            "month" : month,
-            "dashboard" : dashboard,
+        const month = await serviceGlobal.getAllSelectMonth()
+        const brand = await serviceGlobal.getAllSelectBrand()
+        const fixtureType = await serviceGlobal.getAllSelectFixtureType(sess.token)
+        const store = await serviceGlobal.getAllSelectStore(sess.token)
+        const dc = await serviceGlobal.getAllSelectDC(sess.token)
+        const md = await serviceGlobal.getAllSelectMD(sess.token)
+        const retailer = await serviceGlobal.getAllSelectRetailer(sess.token)
+        res.render('admin/dashboard', {
+            "titlePage": "Dashboard",
+            "month": monthNow,
+            "dashboard": dashboard,
             "brand": '',
             "retailer": '',
             "fixture": '',
@@ -26,22 +34,38 @@ router.get('/', async function(req, res, next) {
             "sideNavPath": "/admin/filter",
             "domain": consConfig.urlService,
             "file": file,
-            "token": sess.token
+            "token": sess.token,
+            "sidenav": {
+                month: month,
+                brand: brand,
+                fixtureType: fixtureType,
+                store: store,
+                dc: dc,
+                md: md,
+                retailer: retailer
+            }
         });
     } else {
         res.redirect('/')
     }
 });
 
-router.use('/filter', async function(req, res, next) {
+router.use('/filter', async function (req, res, next) {
     sess = req.session;
-    if (sess.token){
+    if (sess.token) {
         const dashboard = await serviceAdmin.getDashboard(sess.token, req.body.selectMonth, req.body.selectBrand, req.body.selectRetailer, req.body.selectFixtureType, req.body.selectStore, req.body.selectDC, req.body.selectMD)
         const file = await serviceAdmin.getFile(sess.token)
-        res.render('admin/dashboard',{
-            "titlePage" : "Dashboard",
-            "month" : req.body.selectMonth,
-            "dashboard" : dashboard,
+        const month = await serviceGlobal.getAllSelectMonth()
+        const brand = await serviceGlobal.getAllSelectBrand()
+        const fixtureType = await serviceGlobal.getAllSelectFixtureType(sess.token)
+        const store = await serviceGlobal.getAllSelectStore(sess.token)
+        const dc = await serviceGlobal.getAllSelectDC(sess.token)
+        const md = await serviceGlobal.getAllSelectMD(sess.token)
+        const retailer = await serviceGlobal.getAllSelectRetailer(sess.token)
+        res.render('admin/dashboard', {
+            "titlePage": "Dashboard",
+            "month": req.body.selectMonth,
+            "dashboard": dashboard,
             "brand": req.body.selectBrand,
             "retailer": req.body.selectRetailer,
             "fixture": req.body.selectFixtureType,
@@ -51,22 +75,112 @@ router.use('/filter', async function(req, res, next) {
             "sideNavPath": "/admin/filter",
             "domain": consConfig.urlService,
             "file": file,
-            "token": sess.token
+            "token": sess.token,
+            "sidenav": {
+                month: month,
+                brand: brand,
+                fixtureType: fixtureType,
+                store: store,
+                dc: dc,
+                md: md,
+                retailer: retailer
+            }
         });
     } else {
         res.redirect('/')
     }
 });
 
-router.get('/gallery', async function(req, res, next) {
+router.use('/detail', async function (req, res, next) {
     sess = req.session;
-    if (sess.token){
+    if (sess.token && req.body.btnDetail != undefined) {
+        const detail = await serviceAdmin.getDetail(sess.token, req.body.selectMonth, req.body.selectBrand, req.body.selectRetailer, req.body.selectFixtureType, req.body.selectStore, req.body.selectDC, req.body.selectMD, req.body.btnDetail)
+        const month = await serviceGlobal.getAllSelectMonth()
+        const brand = await serviceGlobal.getAllSelectBrand()
+        const fixtureType = await serviceGlobal.getAllSelectFixtureType(sess.token)
+        const store = await serviceGlobal.getAllSelectStore(sess.token)
+        const dc = await serviceGlobal.getAllSelectDC(sess.token)
+        const md = await serviceGlobal.getAllSelectMD(sess.token)
+        const retailer = await serviceGlobal.getAllSelectRetailer(sess.token)
+        res.render('admin/detail', {
+            "titlePage": "Detail Diagram",
+            "month": req.body.selectMonth,
+            "detail": detail,
+            "brand": req.body.selectBrand,
+            "retailer": req.body.selectRetailer,
+            "fixture": req.body.selectFixtureType,
+            "store": req.body.selectStore,
+            "dc": req.body.selectDC,
+            "md": req.body.selectMD,
+            "sideNavPath": "/admin/detail/filter",
+            "domain": consConfig.urlService,
+            "token": sess.token,
+            "sidenav": {
+                month: month,
+                brand: brand,
+                fixtureType: fixtureType,
+                store: store,
+                dc: dc,
+                md: md,
+                retailer: retailer
+            },
+            "trigger": req.body.btnDetail
+        });
+    } else {
+        res.redirect('/admin')
+    }
+});
+
+router.use('/detail/filter', async function (req, res, next) {
+    sess = req.session;
+    console.log("asuuu", req.body.btnDetail)
+    if (sess.token && req.body.btnDetail != undefined) {
+        const detail = await serviceAdmin.getDetail(sess.token, req.body.selectMonth, req.body.selectBrand, req.body.selectRetailer, req.body.selectFixtureType, req.body.selectStore, req.body.selectDC, req.body.selectMD, req.body.btnDetail)
+        const month = await serviceGlobal.getAllSelectMonth()
+        const brand = await serviceGlobal.getAllSelectBrand()
+        const fixtureType = await serviceGlobal.getAllSelectFixtureType(sess.token)
+        const store = await serviceGlobal.getAllSelectStore(sess.token)
+        const dc = await serviceGlobal.getAllSelectDC(sess.token)
+        const md = await serviceGlobal.getAllSelectMD(sess.token)
+        const retailer = await serviceGlobal.getAllSelectRetailer(sess.token)
+        res.render('admin/detail', {
+            "titlePage": "Detail Diagram",
+            "month": req.body.selectMonth,
+            "detail": detail,
+            "brand": req.body.selectBrand,
+            "retailer": req.body.selectRetailer,
+            "fixture": req.body.selectFixtureType,
+            "store": req.body.selectStore,
+            "dc": req.body.selectDC,
+            "md": req.body.selectMD,
+            "sideNavPath": "/admin/detail/filter",
+            "domain": consConfig.urlService,
+            "token": sess.token,
+            "sidenav": {
+                month: month,
+                brand: brand,
+                fixtureType: fixtureType,
+                store: store,
+                dc: dc,
+                md: md,
+                retailer: retailer
+            },
+            "trigger": req.body.btnDetail
+        });
+    } else {
+        res.redirect('/admin')
+    }
+});
+
+router.get('/gallery', async function (req, res, next) {
+    sess = req.session;
+    if (sess.token) {
         const month = date.getMonth() + 1;
         const gallery = await serviceAdmin.getGallery(sess.token, month)
-        res.render('admin/gallery',{
-            "titlePage" : "Gallery",
-            "month" : month,
-            "gallery" : gallery,
+        res.render('admin/gallery', {
+            "titlePage": "Gallery",
+            "month": month,
+            "gallery": gallery,
             "brand": '',
             "retailer": '',
             "fixture": '',
@@ -81,14 +195,14 @@ router.get('/gallery', async function(req, res, next) {
     }
 });
 
-router.use('/gallery/filter', async function(req, res, next) {
+router.use('/gallery/filter', async function (req, res, next) {
     sess = req.session;
-    if (sess.token){
+    if (sess.token) {
         const gallery = await serviceAdmin.getGallery(sess.token, req.body.selectMonth, req.body.selectBrand, req.body.selectRetailer, req.body.selectFixtureType, req.body.selectStore, req.body.selectDC, req.body.selectMD)
-        res.render('admin/gallery',{
-            "titlePage" : "Gallery",
-            "month" : req.body.selectMonth,
-            "gallery" : gallery,
+        res.render('admin/gallery', {
+            "titlePage": "Gallery",
+            "month": req.body.selectMonth,
+            "gallery": gallery,
             "brand": req.body.selectBrand,
             "retailer": req.body.selectRetailer,
             "fixture": req.body.selectFixtureType,
@@ -103,20 +217,20 @@ router.use('/gallery/filter', async function(req, res, next) {
     }
 });
 
-router.get('/md', async function(req, res, next) {
+router.get('/md', async function (req, res, next) {
     sess = req.session;
-    if (sess.token){
+    if (sess.token) {
         const user = await serviceAdmin.findAllUser(sess.token)
-        res.render('admin/md',{
-            "titlePage" : "MD",
-            "user" : user
+        res.render('admin/md', {
+            "titlePage": "MD",
+            "user": user
         });
     } else {
         res.redirect('/')
     }
 });
 
-router.post('/md/process/delete/:id', async function(req, res, next) {
+router.post('/md/process/delete/:id', async function (req, res, next) {
     sess = req.session;
     const status = await serviceAdmin.deleteUser(sess.token, req.params.id)
     if (status.message === "Success") {
@@ -124,10 +238,10 @@ router.post('/md/process/delete/:id', async function(req, res, next) {
     } else {
         const status = ''
         res.json(status)
-    } 
+    }
 });
 
-router.post('/md/process/edit/:id', async function(req, res, next) {
+router.post('/md/process/edit/:id', async function (req, res, next) {
     sess = req.session;
     const status = await serviceAdmin.editUser(sess.token, req.params.id, req.body.password)
     if (status.message === "Success") {
@@ -138,7 +252,7 @@ router.post('/md/process/edit/:id', async function(req, res, next) {
     }
 });
 
-router.post('/md/process/add', async function(req, res, next) {
+router.post('/md/process/add', async function (req, res, next) {
     sess = req.session;
     if (req.body.nik && req.body.name && req.body.email && req.body.password) {
         const statusSuccess = await serviceAdmin.signup(sess.token, req.body.nik, req.body.name, req.body.email, req.body.password, "2")
@@ -149,68 +263,68 @@ router.post('/md/process/add', async function(req, res, next) {
     }
 });
 
-router.get('/report', async function(req, res, next) {
-  sess = req.session;
-  if (sess.token){
-      res.render('admin/report',{
-          "titlePage" : "Report",
-      });
-  } else {
-      res.redirect('/')
-  }
+router.get('/report', async function (req, res, next) {
+    sess = req.session;
+    if (sess.token) {
+        res.render('admin/report', {
+            "titlePage": "Report",
+        });
+    } else {
+        res.redirect('/')
+    }
 });
 
-router.post('/report/process/export-excel', async function(req, res, next) {
-  sess = req.session;
-  const dataReport = await serviceAdmin.getReport(sess.token, req.body.radioFilter, req.body.inputDate)
-  
-  const styles = {
-    headerPrimary: {
-      fill: {
-        fgColor: {
-          rgb: '007bff'
-        }
-      },
-      font: {
-        color: {
-          rgb: 'ffffff'
+router.post('/report/process/export-excel', async function (req, res, next) {
+    sess = req.session;
+    const dataReport = await serviceAdmin.getReport(sess.token, req.body.radioFilter, req.body.inputDate)
+
+    const styles = {
+        headerPrimary: {
+            fill: {
+                fgColor: {
+                    rgb: '007bff'
+                }
+            },
+            font: {
+                color: {
+                    rgb: 'ffffff'
+                },
+                sz: 14
+            }
         },
-        sz: 14
-      }
-    },
-  };
+    };
 
-  const heading = [
-    ['Report ' + req.body.radioFilter + ' ' + req.body.inputDate, ' ']
-  ];
+    const heading = [
+        ['Report ' + req.body.radioFilter + ' ' + req.body.inputDate, ' ']
+    ];
 
-  const specification = {}
-  for(var k in dataReport.data[0]){ 
-    specification[k] =  {
-                displayName: k,
-                headerStyle: styles.headerPrimary,
-                width: 120
-              }
-  }
-   
-  const merges = [
-    { start: { row: 1, column: 1 }, end: { row: 1, column: 5 } }
-  ]
-   
-  const report = excel.buildExport(
-    [
-      {
-        name: req.body.radioFilter + '-' + req.body.inputDate,
-        heading: heading,
-        merges: merges,
-        specification: specification,
-        data: dataReport.data
-      }
+    const specification = {}
+    for (var k in dataReport.data[0]) {
+        specification[k] = {
+            displayName: k,
+            headerStyle: styles.headerPrimary,
+            width: 120
+        }
+    }
+
+    const merges = [
+        { start: { row: 1, column: 1 }, end: { row: 1, column: 5 } }
     ]
-  );
 
-  res.attachment(req.body.radioFilter + '-' + req.body.inputDate + '.xlsx');
-  return res.send(report);
+    const report = excel.buildExport(
+        [
+            {
+                name: req.body.radioFilter + '-' + req.body.inputDate,
+                heading: heading,
+                merges: merges,
+                specification: specification,
+                data: dataReport.data
+            }
+        ]
+    );
+
+    res.attachment(req.body.radioFilter + '-' + req.body.inputDate + '.xlsx');
+    return res.send(report);
 });
 
 module.exports = router;
