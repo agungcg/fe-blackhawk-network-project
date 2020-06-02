@@ -175,11 +175,18 @@ router.use('/detail/filter', async function (req, res, next) {
 router.get('/gallery', async function (req, res, next) {
     sess = req.session;
     if (sess.token) {
-        const month = date.getMonth() + 1;
-        const gallery = await serviceAdmin.getGallery(sess.token, month)
+        const monthNow = date.getMonth() + 1;
+        const gallery = await serviceAdmin.getGallery(sess.token, monthNow)
+        const month = await serviceGlobal.getAllSelectMonth()
+        const brand = await serviceGlobal.getAllSelectBrand()
+        const fixtureType = await serviceGlobal.getAllSelectFixtureType(sess.token)
+        const store = await serviceGlobal.getAllSelectStore(sess.token)
+        const dc = await serviceGlobal.getAllSelectDC(sess.token)
+        const md = await serviceGlobal.getAllSelectMD(sess.token)
+        const retailer = await serviceGlobal.getAllSelectRetailer(sess.token)
         res.render('admin/gallery', {
             "titlePage": "Gallery",
-            "month": month,
+            "month": monthNow,
             "gallery": gallery,
             "brand": '',
             "retailer": '',
@@ -188,7 +195,16 @@ router.get('/gallery', async function (req, res, next) {
             "dc": '',
             "md": '',
             "sideNavPath": "/admin/gallery/filter",
-            "domain": consConfig.urlService
+            "domain": consConfig.urlService,
+            "sidenav": {
+                month: month,
+                brand: brand,
+                fixtureType: fixtureType,
+                store: store,
+                dc: dc,
+                md: md,
+                retailer: retailer
+            }
         });
     } else {
         res.redirect('/')
@@ -199,6 +215,13 @@ router.use('/gallery/filter', async function (req, res, next) {
     sess = req.session;
     if (sess.token) {
         const gallery = await serviceAdmin.getGallery(sess.token, req.body.selectMonth, req.body.selectBrand, req.body.selectRetailer, req.body.selectFixtureType, req.body.selectStore, req.body.selectDC, req.body.selectMD)
+        const month = await serviceGlobal.getAllSelectMonth()
+        const brand = await serviceGlobal.getAllSelectBrand()
+        const fixtureType = await serviceGlobal.getAllSelectFixtureType(sess.token)
+        const store = await serviceGlobal.getAllSelectStore(sess.token)
+        const dc = await serviceGlobal.getAllSelectDC(sess.token)
+        const md = await serviceGlobal.getAllSelectMD(sess.token)
+        const retailer = await serviceGlobal.getAllSelectRetailer(sess.token)
         res.render('admin/gallery', {
             "titlePage": "Gallery",
             "month": req.body.selectMonth,
@@ -210,7 +233,16 @@ router.use('/gallery/filter', async function (req, res, next) {
             "dc": req.body.selectDC,
             "md": req.body.selectMD,
             "sideNavPath": "/admin/gallery/filter",
-            "domain": consConfig.urlService
+            "domain": consConfig.urlService,
+            "sidenav": {
+                month: month,
+                brand: brand,
+                fixtureType: fixtureType,
+                store: store,
+                dc: dc,
+                md: md,
+                retailer: retailer
+            },
         });
     } else {
         res.redirect('/')
