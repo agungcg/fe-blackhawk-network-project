@@ -1,5 +1,7 @@
 <%- include('../layout/top-nav') -%>
 
+
+
 <div id="layoutSidenav">
     <form id="filter_box" method="POST">
     <%- include('../layout/side-nav') -%>
@@ -64,16 +66,16 @@
                 </div>
                 <div class="row">
                     <div id="diagramVisitCompliance" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                        <div class="card text-center">
+                        <div class="card text-center" style="height: 300px;">
                             <h6 class="card-header">Visit Compliance</h6>
                             <div class="card-body-dashboard">
-                                <canvas class="mb-2" id="chartVisitCompliance" width="100%" height="30"></canvas>
-                                <div class="row">
+                                <div id="chartVisitCompliance"></div>
+                                <!-- <div class="row">
                                     <div class="col-12">
-                                        <h6 class="text-primary mb-0"><%- Math.round(dashboard.visitCompliance.persen) %></h6>
+                                        <h6 class="text-primary mb-0"><%- /* Math.round(dashboard.visitCompliance.persen) */ %></h6>
                                         <h6 class="text-primary mb-0">Percent</h6>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="card-footer-dashboard bg-white">
                                 <button type="submit" class="btn btn-primary btn-sm" name="btnDetail" value="visit-compliance" onclick="detailClick()"><small>Detail</small></button>
@@ -82,20 +84,20 @@
                         </div>
                     </div>
                     <div id="diagramFixtureCompliance" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                        <div class="card text-center">
+                        <div class="card text-center" style="height: 300px;">
                             <h6 class="card-header">Fixture Compliance</h6>
                             <div class="card-body-dashboard">
-                                <canvas class="mb-2" id="chartFixtureCompliance" width="100%" height="30"></canvas>
-                                <div class="row">
+                                <div id="chartFixtureCompliance"></div>
+                                <!-- <div class="row">
                                     <div class="entry col-6">
-                                        <h6 class="text-primary mb-0"><%- Math.round(dashboard.fixtureCompliance.entry) %></h6>
+                                        <h6 class="text-primary mb-0"><%- /* Math.round(dashboard.fixtureCompliance.entry) */ %></h6>
                                         <h6 class="text-primary mb-0">Entry</h6>
                                     </div>
                                     <div class="exit col-6">
-                                        <h6 class="text-exit mb-0"><%- Math.round(dashboard.fixtureCompliance.exit) %></h6>
+                                        <h6 class="text-exit mb-0"><%- /* Math.round(dashboard.fixtureCompliance.exit) */ %></h6>
                                         <h6 class="text-exit mb-0">Exit</h6>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="card-footer-dashboard bg-white">
                                 <button type="submit" class="btn btn-primary btn-sm" name="btnDetail" value="fixture-compliance" onclick="detailClick()"><small>Detail</small></button>
@@ -103,20 +105,20 @@
                         </div>
                     </div>
                     <div id="diagramPOGCompliance" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                        <div class="card text-center">
+                        <div class="card text-center" style="height: 300px;">
                             <h6 class="card-header">POG Compliance</h6>
                             <div class="card-body-dashboard">
-                                <canvas class="mb-2" id="chartPOGCompliance" width="100%" height="30"></canvas>
-                                <div class="row">
+                                <div id="chartPOGCompliance"></div>
+                                <!-- <div class="row">
                                     <div class="entry col-6">
-                                        <h6 class="text-primary mb-0"><%- Math.round(dashboard.POGCompliance.entry) %></h6>
+                                        <h6 class="text-primary mb-0"><%- /* Math.round(dashboard.POGCompliance.entry) */ %></h6>
                                         <h6 class="text-primary mb-0">Entry</h6>
                                     </div>
                                     <div class="exit col-6">
-                                        <h6 class="text-exit mb-0"><%- Math.round(dashboard.POGCompliance.exit) %></h6>
+                                        <h6 class="text-exit mb-0"><%- /* Math.round(dashboard.POGCompliance.exit) */ %></h6>
                                         <h6 class="text-exit mb-0">Exit</h6>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="card-footer-dashboard bg-white">
                                 <button type="submit" class="btn btn-primary btn-sm" name="btnDetail" value="POG-compliance" onclick="detailClick()"><small>Detail</small></button>
@@ -124,20 +126,20 @@
                         </div>
                     </div>
                     <div id="diagramPODCompliance" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                        <div class="card text-center">
+                        <div class="card text-center" style="height: 300px;">
                             <h6 class="card-header">POD Compliance</h6>
                             <div class="card-body-dashboard">
-                                <canvas class="mb-2" id="chartPODCompliance" width="100%" height="30"></canvas>
-                                <div class="row">
+                                <div id="chartPODCompliance"></div>
+                                <!-- <div class="row">
                                     <div class="entry col-6">
-                                        <h6 class="text-primary mb-0"><%- Math.round(dashboard.PODCompliance.entry) %></h6>
+                                        <h6 class="text-primary mb-0"><%- /* Math.round(dashboard.PODCompliance.entry) */ %></h6>
                                         <h6 class="text-primary mb-0">Entry</h6>
                                     </div>
                                     <div class="exit col-6">
-                                        <h6 class="text-exit mb-0"><%- Math.round(dashboard.PODCompliance.exit) %></h6>
+                                        <h6 class="text-exit mb-0"><%- /* Math.round(dashboard.PODCompliance.exit) */ %></h6>
                                         <h6 class="text-exit mb-0">Exit</h6>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="card-footer-dashboard bg-white">
                                 <button type="submit" class="btn btn-primary btn-sm" name="btnDetail" value="POD-compliance" onclick="detailClick()"><small>Detail</small></button>
@@ -145,20 +147,20 @@
                         </div>
                     </div>
                     <div id="diagramPOPCompliance" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                        <div class="card text-center">
+                        <div class="card text-center" style="height: 300px;">
                             <h6 class="card-header">POP Compliance</h6>
                             <div class="card-body-dashboard">
-                                <canvas class="mb-2" id="chartPOPCompliance" width="100%" height="30"></canvas>
-                                <div class="row">
+                                <div id="chartPOPCompliance"></div>
+                                <!-- <div class="row">
                                     <div class="entry col-6">
-                                        <h6 class="text-primary mb-0"><%- Math.round(dashboard.POPCompliance.entry) %></h6>
+                                        <h6 class="text-primary mb-0"><%- /* Math.round(dashboard.POPCompliance.entry) */ %></h6>
                                         <h6 class="text-primary mb-0">Entry</h6>
                                     </div>
                                     <div class="exit col-6">
-                                        <h6 class="text-exit mb-0"><%- Math.round(dashboard.POPCompliance.exit) %></h6>
+                                        <h6 class="text-exit mb-0"><%- /* Math.round(dashboard.POPCompliance.exit) */ %></h6>
                                         <h6 class="text-exit mb-0">Exit</h6>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="card-footer-dashboard bg-white">
                                 <button type="submit" class="btn btn-primary btn-sm" name="btnDetail" value="POP-compliance" onclick="detailClick()"><small>Detail</small></button>
@@ -166,20 +168,20 @@
                         </div>
                     </div>
                     <div id="diagramInStockCompliance" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                        <div class="card text-center">
+                        <div class="card text-center" style="height: 300px;">
                             <h6 class="card-header">In-Stock Compliance</h6>
                             <div class="card-body-dashboard">
-                                <canvas class="mb-2" id="chartInStockCompliance" width="100%" height="30"></canvas>
-                                <div class="row">
+                                <div id="chartInStockCompliance"></div>
+                                <!-- <div class="row">
                                     <div class="entry col-6">
-                                        <h6 class="text-primary mb-0"><%- Math.round(dashboard.instockCompliance.entryInstockCompliance) %></h6>
+                                        <h6 class="text-primary mb-0"><%- /* Math.round(dashboard.instockCompliance.entryInstockCompliance) */ %></h6>
                                         <h6 class="text-primary mb-0">Entry</h6>
                                     </div>
                                     <div class="exit col-6">
-                                        <h6 class="text-exit mb-0"><%- Math.round(dashboard.instockCompliance.exitInstockCompliance) %></h6>
+                                        <h6 class="text-exit mb-0"><%- /* Math.round(dashboard.instockCompliance.exitInstockCompliance) */ %></h6>
                                         <h6 class="text-exit mb-0">Exit</h6>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="card-footer-dashboard bg-white">
                                 <button type="submit" class="btn btn-primary btn-sm" name="btnDetail" value="stock-compliance" onclick="detailClick()"><small>Detail</small></button>
@@ -187,15 +189,15 @@
                         </div>
                     </div>
                     <div id="diagramActivationKnowHow" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                        <div class="card text-center">
+                        <div class="card text-center" style="height: 300px;">
                             <h6 class="card-header">Activation know-how</h6>
                             <div class="card-body-dashboard">
-                                <canvas class="mb-2" id="chartActivationKnowHow" width="100%" height="30"></canvas>
+                                <div id="chartActivationKnowHow"></div>
                                 <div class="row">
-                                    <div class="col-12">
-                                        <h6 class="text-primary mb-0"><%- Math.round(dashboard.activationKnowHow.persen) %></h6>
+                                    <!-- <div class="col-12">
+                                        <h6 class="text-primary mb-0"><%- /* Math.round(dashboard.activationKnowHow.persen) */ %></h6>
                                         <h6 class="text-primary mb-0">Percent</h6>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="card-footer-dashboard bg-white">
@@ -204,15 +206,15 @@
                         </div>
                     </div>
                     <div id="diagramPromotionAwareness" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                        <div class="card text-center">
+                        <div class="card text-center" style="height: 300px;">
                             <h6 class="card-header">Promotion Awareness</h6>
                             <div class="card-body-dashboard">
-                                <canvas class="mb-2" id="chartPromotionAwareness" width="100%" height="30"></canvas>
+                                <div id="chartPromotionAwareness"></div>
                                 <div class="row">
-                                    <div class="col-12">
-                                        <h6 class="text-primary mb-0"><%- Math.round(dashboard.promotionAwareness.persen) %></h6>
+                                    <!-- <div class="col-12">
+                                        <h6 class="text-primary mb-0"><%- /* Math.round(dashboard.promotionAwareness.persen) */ %></h6>
                                         <h6 class="text-primary mb-0">Percent</h6>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="card-footer-dashboard bg-white">
@@ -221,16 +223,16 @@
                         </div>
                     </div>
                     <div id="diagramComplaintHandling" class="mb-4 col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4">
-                        <div class="card text-center">
+                        <div class="card text-center" style="height: 300px;">
                             <h6 class="card-header">Complaint Handling</h6>
                             <div class="card-body-dashboard">
-                                <canvas class="mb-2" id="chartComplaintHandling" width="100%" height="30"></canvas>
-                                <div class="row">
+                                <div id="chartComplaintHandling"></div>
+                                <!-- <div class="row">
                                     <div class="col-12">
-                                        <h6 class="text-primary mb-0"><%- Math.round(dashboard.complaintHandling.persen) %></h6>
+                                        <h6 class="text-primary mb-0"><%- /* Math.round(dashboard.complaintHandling.persen) */ %></h6>
                                         <h6 class="text-primary mb-0">Percent</h6>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="card-footer-dashboard bg-white">
                                 <button type="submit" class="btn btn-primary btn-sm" name="btnDetail" value="complain-handling" onclick="detailClick()"><small>Detail</small></button>
@@ -265,248 +267,467 @@
     var domain = <%- JSON.stringify(domain) %>
     var token = <%- JSON.stringify(token) %>
 
-    Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
-    Chart.defaults.global.defaultFontColor = '#292b2c';
-
-    var chartVisitCompliance = document.getElementById("chartVisitCompliance");
-    var chartFixtureCompliance = document.getElementById("chartFixtureCompliance");
-    var chartPOGCompliance = document.getElementById("chartPOGCompliance");
-    var chartPODCompliance = document.getElementById("chartPODCompliance");
-    var chartPOPCompliance = document.getElementById("chartPOPCompliance");
-    var chartInStockCompliance = document.getElementById("chartInStockCompliance");
-    var chartActivationKnowHow = document.getElementById("chartActivationKnowHow");
-    var chartPromotionAwareness = document.getElementById("chartPromotionAwareness");
-    var chartComplaintHandling = document.getElementById("chartComplaintHandling");
-    
-    var configChartVisitCompliance = new Chart(chartVisitCompliance, {
-        type: 'bar',
-        data: {
-            labels: ['Percent'],
-            datasets: [{
-                label: null,
-                data: ['<%- Math.round(dashboard.visitCompliance.persen) %>'],
-                backgroundColor: ['#007bff'],
-            }],
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                        max: 100,
-                        maxTicksLimit: 20,
-                    }
-                }]
-            },
-            legend :{
-                display : false
-            }
-        }
-    });
-
-    var configChartFixtureCompliance = new Chart(chartFixtureCompliance, {
-        type: 'bar',
-        data: {
-            labels: ['Entry', 'Exit'],
-            datasets: [{
-                data: ['<%- Math.round(dashboard.fixtureCompliance.entry) %>', '<%- Math.round(dashboard.fixtureCompliance.exit) %>'],
-                backgroundColor: ['#007bff', '#00cec9'],
-            }],
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                        max: 100,
-                        maxTicksLimit: 20,
-                    }
-                }]
-            },
-            legend :{
-                display : false
-            }
-        }
-    });
-
-    var configChartPOGCompliance = new Chart(chartPOGCompliance, {
-        type: 'bar',
-        data: {
-            labels: ['Entry', 'Exit'],
-            datasets: [{
-                data: ['<%- Math.round(dashboard.POGCompliance.entry) %>', '<%- Math.round(dashboard.POGCompliance.exit) %>'],
-                backgroundColor: ['#007bff', '#00cec9'],
-            }],
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                        max: 100,
-                        maxTicksLimit: 20,
-                    }
-                }]
-            },
-            legend :{
-                display : false
-            }
-        }
-    });
-
-    var configChartPODCompliance = new Chart(chartPODCompliance, {
-        type: 'bar',
-        data: {
-            labels: ['Entry', 'Exit'],
-            datasets: [{
-                data: ['<%- Math.round(dashboard.PODCompliance.entry) %>', '<%- Math.round(dashboard.PODCompliance.exit) %>'],
-                backgroundColor: ['#007bff', '#00cec9'],
-            }],
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                        max: 100,
-                        maxTicksLimit: 20,
-                    }
-                }]
-            },
-            legend :{
-                display : false
-            }
-        }
-    });
-
-    var configConfigChartPOPCompliance = new Chart(chartPOPCompliance, {
-        type: 'bar',
-        data: {
-            labels: ['Entry', 'Exit'],
-            datasets: [{
-                data: ['<%- Math.round(dashboard.POPCompliance.entry) %>', '<%- Math.round(dashboard.POPCompliance.exit) %>'],
-                backgroundColor: ['#007bff', '#00cec9'],
-            }],
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                        max: 100,
-                        maxTicksLimit: 20,
-                    }
-                }]
-            },
-            legend :{
-                display : false
-            }
-        }
-    });
-
-    var configChartInStockCompliance = new Chart(chartInStockCompliance, {
-        type: 'bar',
-        data: {
-            labels: ['Entry', 'Exit'],
-            datasets: [{
-                data: ['<%- Math.round(dashboard.instockCompliance.entryInstockCompliance) %>', '<%- Math.round(dashboard.instockCompliance.exitInstockCompliance) %>'],
-                backgroundColor: ['#007bff', '#00cec9'],
-            }],
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                        max: 100,
-                        maxTicksLimit: 20,
-                    }
-                }]
-            },
-            legend :{
-                display : false
-            }
-        }
-    });
-
-    var configChartActivationKnowHow = new Chart(chartActivationKnowHow, {
-        type: 'bar',
-        data: {
-            labels: ['Percent'],
-            datasets: [{
-                data: ['<%- Math.round(dashboard.activationKnowHow.persen) %>'],
-                backgroundColor: ['#007bff'],
-            }],
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                        max: 100,
-                        maxTicksLimit: 20,
-                    }
-                }]
-            },
-            legend :{
-                display : false
-            }
-        }
-    });
-
-    var configChartPromotionAwareness = new Chart(chartPromotionAwareness, {
-        type: 'bar',
-        data: {
-            labels: ['Percent'],
-            datasets: [{
-                data: ['<%- Math.round(dashboard.promotionAwareness.persen) %>'],
-                backgroundColor: ['#007bff'],
-            }],
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                        max: 100,
-                        maxTicksLimit: 20,
-                    }
-                }]
-            },
-            legend :{
-                display : false
-            }
-        }
-    });
-
-    var configChartComplaintHandling = new Chart(chartComplaintHandling, {
-        type: 'bar',
-        data: {
-            labels: ['Percent'],
-            datasets: [{
-                data: ['<%- Math.round(dashboard.complaintHandling.persen) %>'],
-                backgroundColor: ['#007bff'],
-            }],
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true,
-                        max: 100,
-                        maxTicksLimit: 20,
-                    }
-                }]
-            },
-            legend :{
-                display : false
-            }
-        }
-    });
-
     function detailClick(){
         filter_box.action = '/admin/detail'
     }
+
+    var optionsChartVisitCompliance = {
+        series: ['<%-  Math.round(dashboard.visitCompliance.persen) %>'],
+        chart: {
+            height: 250,
+            type: 'radialBar',
+            offsetY: -20
+        },
+        colors: ['#007bff'],
+        plotOptions: {
+            radialBar: {
+                startAngle: -135,
+                endAngle: 135,
+                hollow: {
+                    size: '60%',
+                },
+                dataLabels: {
+                    show: true,
+                    name: {
+                        show: true,
+                        fontSize: "16px",
+                        fontWeight: 600,
+                        formatter(val, show, opts) {
+                            return [opts.globals.seriesNames[0], opts.globals.series[0]];
+                        }
+                    },
+                    value: {
+                        show: false,
+                    },
+                    
+                    total: {
+                        show: true,
+                        fontSize: "16px",
+                        fontWeight: 600,
+                        color: "#2688EF",
+                        formatter(opts) {
+                            return [opts.globals.series[00], opts.globals.seriesNames[0]];
+                        }
+                    }
+                }
+            }
+        },
+        stroke: {
+          lineCap: 'round'
+        },
+        labels: ['Percent'],
+    };
+
+    var optionsChartFixtureCompliance = {
+        series: ['<%- Math.round(dashboard.fixtureCompliance.entry) %>', '<%- Math.round(dashboard.fixtureCompliance.exit) %>'],
+        chart: {
+            height: 250,
+            type: "radialBar",
+            offsetY: -20
+        },
+        colors: ["#007bff", "#00cec9"],
+        plotOptions: {
+            radialBar: {
+                startAngle: -135,
+                endAngle: 135,
+                hollow: {
+                    size: '60%',
+                },
+                dataLabels: {
+                    show: true,
+                    name: {
+                        show: true,
+                        fontSize: "16px",
+                        fontWeight: 600,
+                        offsetY: -30,
+                        formatter(val, show, opts) {
+                            return [opts.globals.seriesNames[0], opts.globals.series[0]];
+                        }
+                    },
+                    value: {
+                        show: true,
+                        fontWeight: 600,
+                        color: "#00cec9",
+                        fontSize: "16px"
+                    },
+                    total: {
+                        show: true,
+                        fontSize: "16px",
+                        fontWeight: 600,
+                        color: "#2688EF",
+                        formatter(opts) {
+                            return [opts.globals.series[1], opts.globals.seriesNames[1]];
+                        }
+                    }
+                }
+            }
+        },
+        stroke: {
+          lineCap: 'round'
+        },
+        labels: ["Entry", "Exit"]
+    };
+
+    var optionsChartPOGCompliance = {
+        series: ['<%- Math.round(dashboard.POGCompliance.entry) %>', '<%- Math.round(dashboard.POGCompliance.exit) %>'],
+        chart: {
+            height: 250,
+            type: "radialBar",
+            offsetY: -20
+        },
+        colors: ["#007bff", "#00cec9"],
+        plotOptions: {
+            radialBar: {
+                startAngle: -135,
+                endAngle: 135,
+                hollow: {
+                    size: '60%',
+                },
+                dataLabels: {
+                    show: true,
+                    name: {
+                        show: true,
+                        fontSize: "16px",
+                        fontWeight: 600,
+                        offsetY: -30,
+                        formatter(val, show, opts) {
+                            return [opts.globals.seriesNames[0], opts.globals.series[0]];
+                        }
+                    },
+                    value: {
+                        show: true,
+                        fontWeight: 600,
+                        color: "#00cec9",
+                        fontSize: "16px"
+                    },
+                    total: {
+                        show: true,
+                        fontSize: "16px",
+                        fontWeight: 600,
+                        color: "#2688EF",
+                        formatter(opts) {
+                            return [opts.globals.series[1], opts.globals.seriesNames[1]];
+                        }
+                    }
+                }
+            }
+        },
+        stroke: {
+          lineCap: 'round'
+        },
+        labels: ["Entry", "Exit"]
+    };
+
+    var optionsChartPODCompliance = {
+        series: ['<%- Math.round(dashboard.PODCompliance.entry) %>', '<%- Math.round(dashboard.PODCompliance.exit) %>'],
+        chart: {
+            height: 250,
+            type: "radialBar",
+            offsetY: -20
+        },
+        colors: ["#007bff", "#00cec9"],
+        plotOptions: {
+            radialBar: {
+                startAngle: -135,
+                endAngle: 135,
+                hollow: {
+                    size: '60%',
+                },
+                dataLabels: {
+                    show: true,
+                    name: {
+                        show: true,
+                        fontSize: "16px",
+                        fontWeight: 600,
+                        offsetY: -30,
+                        formatter(val, show, opts) {
+                            return [opts.globals.seriesNames[0], opts.globals.series[0]];
+                        }
+                    },
+                    value: {
+                        show: true,
+                        fontWeight: 600,
+                        color: "#00cec9",
+                        fontSize: "16px"
+                    },
+                    total: {
+                        show: true,
+                        fontSize: "16px",
+                        fontWeight: 600,
+                        color: "#2688EF",
+                        formatter(opts) {
+                            return [opts.globals.series[1], opts.globals.seriesNames[1]];
+                        }
+                    }
+                }
+            }
+        },
+        stroke: {
+          lineCap: 'round'
+        },
+        labels: ["Entry", "Exit"]
+    };
+
+    var optionsChartPOPCompliance = {
+        series: ['<%- Math.round(dashboard.POPCompliance.entry) %>', '<%- Math.round(dashboard.POPCompliance.exit) %>'],
+        chart: {
+            height: 250,
+            type: "radialBar",
+            offsetY: -20
+        },
+        colors: ["#007bff", "#00cec9"],
+        plotOptions: {
+            radialBar: {
+                startAngle: -135,
+                endAngle: 135,
+                hollow: {
+                    size: '60%',
+                },
+                dataLabels: {
+                    show: true,
+                    name: {
+                        show: true,
+                        fontSize: "16px",
+                        fontWeight: 600,
+                        offsetY: -30,
+                        formatter(val, show, opts) {
+                            return [opts.globals.seriesNames[0], opts.globals.series[0]];
+                        }
+                    },
+                    value: {
+                        show: true,
+                        fontWeight: 600,
+                        color: "#00cec9",
+                        fontSize: "16px"
+                    },
+                    total: {
+                        show: true,
+                        fontSize: "16px",
+                        fontWeight: 600,
+                        color: "#2688EF",
+                        formatter(opts) {
+                            return [opts.globals.series[1], opts.globals.seriesNames[1]];
+                        }
+                    }
+                }
+            }
+        },
+        stroke: {
+          lineCap: 'round'
+        },
+        labels: ["Entry", "Exit"]
+    };
+
+    var optionsChartInStockCompliance = {
+        series: ['<%- Math.round(dashboard.instockCompliance.entryInstockCompliance) %>', '<%- Math.round(dashboard.instockCompliance.exitInstockCompliance) %>'],
+        chart: {
+            height: 250,
+            type: "radialBar",
+            offsetY: -20
+        },
+        colors: ["#007bff", "#00cec9"],
+        plotOptions: {
+            radialBar: {
+                startAngle: -135,
+                endAngle: 135,
+                hollow: {
+                    size: '60%',
+                },
+                dataLabels: {
+                    show: true,
+                    name: {
+                        show: true,
+                        fontSize: "16px",
+                        fontWeight: 600,
+                        offsetY: -30,
+                        formatter(val, show, opts) {
+                            return [opts.globals.seriesNames[0], opts.globals.series[0]];
+                        }
+                    },
+                    value: {
+                        show: true,
+                        fontWeight: 600,
+                        color: "#00cec9",
+                        fontSize: "16px"
+                    },
+                    total: {
+                        show: true,
+                        fontSize: "16px",
+                        fontWeight: 600,
+                        color: "#2688EF",
+                        formatter(opts) {
+                            return [opts.globals.series[1], opts.globals.seriesNames[1]];
+                        }
+                    }
+                }
+            }
+        },
+        stroke: {
+          lineCap: 'round'
+        },
+        labels: ["Entry", "Exit"]
+    };
+
+    var optionsChartActivationKnowHow = {
+        series: ['<%-  Math.round(dashboard.activationKnowHow.persen) %>'],
+        chart: {
+            height: 250,
+            type: 'radialBar',
+            offsetY: -20
+        },
+        colors: ['#007bff'],
+        plotOptions: {
+            radialBar: {
+                startAngle: -135,
+                endAngle: 135,
+                hollow: {
+                    size: '60%',
+                },
+                dataLabels: {
+                    show: true,
+                    name: {
+                        show: true,
+                        fontSize: "16px",
+                        fontWeight: 600,
+                        formatter(val, show, opts) {
+                            return [opts.globals.seriesNames[0], opts.globals.series[0]];
+                        }
+                    },
+                    value: {
+                        show: false,
+                    },
+                    
+                    total: {
+                        show: true,
+                        fontSize: "16px",
+                        fontWeight: 600,
+                        color: "#2688EF",
+                        formatter(opts) {
+                            return [opts.globals.series[00], opts.globals.seriesNames[0]];
+                        }
+                    }
+                }
+            }
+        },
+        stroke: {
+          lineCap: 'round'
+        },
+        labels: ['Percent'],
+    };
+
+    var optionsChartPromotionAwareness = {
+        series: ['<%-  Math.round(dashboard.promotionAwareness.persen) %>'],
+        chart: {
+            height: 250,
+            type: 'radialBar',
+            offsetY: -20
+        },
+        colors: ['#007bff'],
+        plotOptions: {
+            radialBar: {
+                startAngle: -135,
+                endAngle: 135,
+                hollow: {
+                    size: '60%',
+                },
+                dataLabels: {
+                    show: true,
+                    name: {
+                        show: true,
+                        fontSize: "16px",
+                        fontWeight: 600,
+                        formatter(val, show, opts) {
+                            return [opts.globals.seriesNames[0], opts.globals.series[0]];
+                        }
+                    },
+                    value: {
+                        show: false,
+                    },
+                    
+                    total: {
+                        show: true,
+                        fontSize: "16px",
+                        fontWeight: 600,
+                        color: "#2688EF",
+                        formatter(opts) {
+                            return [opts.globals.series[00], opts.globals.seriesNames[0]];
+                        }
+                    }
+                }
+            }
+        },
+        stroke: {
+          lineCap: 'round'
+        },
+        labels: ['Percent'],
+    };
+
+    var optionsChartComplaintHandling = {
+        series: ['<%-  Math.round(dashboard.complaintHandling.persen) %>'],
+        chart: {
+            height: 250,
+            type: 'radialBar',
+            offsetY: -20
+        },
+        colors: ['#007bff'],
+        plotOptions: {
+            radialBar: {
+                startAngle: -135,
+                endAngle: 135,
+                hollow: {
+                    size: '60%',
+                },
+                dataLabels: {
+                    show: true,
+                    name: {
+                        show: true,
+                        fontSize: "16px",
+                        fontWeight: 600,
+                        formatter(val, show, opts) {
+                            return [opts.globals.seriesNames[0], opts.globals.series[0]];
+                        }
+                    },
+                    value: {
+                        show: false,
+                    },
+                    
+                    total: {
+                        show: true,
+                        fontSize: "16px",
+                        fontWeight: 600,
+                        color: "#2688EF",
+                        formatter(opts) {
+                            return [opts.globals.series[00], opts.globals.seriesNames[0]];
+                        }
+                    }
+                }
+            }
+        },
+        stroke: {
+          lineCap: 'round'
+        },
+        labels: ['Percent'],
+    };
+
+    var chartVisitCompliance = new ApexCharts(document.querySelector("#chartVisitCompliance"), optionsChartVisitCompliance);
+    var chartFixtureCompliance = new ApexCharts(document.querySelector("#chartFixtureCompliance"), optionsChartFixtureCompliance);
+    var chartPOGCompliance = new ApexCharts(document.querySelector("#chartPOGCompliance"), optionsChartPOGCompliance);
+    var chartPODCompliance = new ApexCharts(document.querySelector("#chartPODCompliance"), optionsChartPODCompliance);
+    var chartPOPCompliance = new ApexCharts(document.querySelector("#chartPOPCompliance"), optionsChartPOPCompliance);
+    var chartInStockCompliance = new ApexCharts(document.querySelector("#chartInStockCompliance"), optionsChartInStockCompliance);
+    var chartActivationKnowHow = new ApexCharts(document.querySelector("#chartActivationKnowHow"), optionsChartActivationKnowHow);
+    var chartPromotionAwareness = new ApexCharts(document.querySelector("#chartPromotionAwareness"), optionsChartPromotionAwareness);
+    var chartComplaintHandling = new ApexCharts(document.querySelector("#chartComplaintHandling"), optionsChartComplaintHandling);
+
+    chartVisitCompliance.render();
+    chartFixtureCompliance.render();
+    chartPOGCompliance.render();
+    chartPODCompliance.render();
+    chartPOPCompliance.render();
+    chartInStockCompliance.render();
+    chartActivationKnowHow.render();
+    chartPromotionAwareness.render();
+    chartComplaintHandling.render();
 
 </script>
 

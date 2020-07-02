@@ -1,3 +1,9 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+.apexcharts-radial-series {
+    pointer-events: none;
+}
+
 .bg-auth {
     background-image: url(/images/bg-auth.jpg);
 }
