@@ -134,13 +134,40 @@ const serviceAdmin = {
             });
         return temp;
     },
-    getGallery: async (Token, month, brand, retailer, fixture, store, dc, md) => {
+    // getGallery: async (Token, month, brand, retailer, fixture, store, dc, md) => {
+    //     temp = {};
+    //     await axios.get(
+    //         consConfig.urlService + 'galery',
+    //         {
+    //             params: {
+    //                 month: month,
+    //                 brand: brand,
+    //                 retailer: retailer,
+    //                 fixture: fixture,
+    //                 store: store,
+    //                 dc: dc,
+    //                 md: md
+    //             },
+    //             headers: Token
+    //         })
+    //         .then(function(response) {
+    //             temp = response.data.data
+    //             console.log("success service getGallery")
+                
+    //         })
+    //         .catch(function (error) {
+    //             console.log("error service getGallery")
+    //         });
+    //     return temp;
+    // },
+    getGallery: async (Token, month, page, brand, retailer, fixture, store, dc, md) => {
         temp = {};
         await axios.get(
             consConfig.urlService + 'galery',
             {
                 params: {
                     month: month,
+                    page: page,
                     brand: brand,
                     retailer: retailer,
                     fixture: fixture,
@@ -151,7 +178,7 @@ const serviceAdmin = {
                 headers: Token
             })
             .then(function(response) {
-                temp = response.data.data
+                temp = response.data
                 console.log("success service getGallery")
                 
             })

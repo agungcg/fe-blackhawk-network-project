@@ -19,6 +19,73 @@
 
         return [date, hourMinute].join(' ')
     }
+
+    function paginationNew(c, m) {
+        tempBrand = brand != '' ? `&brand=`+brand+`` : ''
+        tempRetailer = retailer != '' ? `&retailer=`+retailer+`` : ''
+        tempFixture = fixture != '' ? `&fixture=`+fixture+`` : ''
+        tempStore = store != '' ? `&store=`+store+`` : ''
+        tempDC = dc != '' ? `&dc=`+dc+`` : ''
+        tempMD = md != '' ? `&md=`+md+`` : ''
+
+        pageLi = "";
+        var delta = 2,
+            range = [];
+
+        for (let i = c - delta; i <= c + delta; i++) {
+            if (i <= m && i >= 1) {
+                range.push(i);
+            }
+        }
+
+        if (range[0] !== 1){
+            back = c - 1;
+            pageLi += `
+                <li class="page-item">
+                    <a class="page-link" href="?month=`+month+`&page=1`+tempBrand+tempRetailer+tempFixture+tempStore+tempDC+tempMD+`"><<</a>
+                </li>
+            `;
+            pageLi += `
+                <li class="page-item">
+                    <a class="page-link" href="?month=`+month+`&page=`+back+tempBrand+tempRetailer+tempFixture+tempStore+tempDC+tempMD+`">Previous</a>
+                </li>
+            `;
+        }
+
+        for (let i of range) {
+            if (i == c) {
+                pageLi += `
+                    <li class="page-item active" aria-current="page">
+                        <span class="page-link">
+                            `+i+`
+                        <span class="sr-only">(current)</span>
+                        </span>
+                    </li>
+                `;
+            } else {
+                pageLi += `
+                    <li class="page-item">
+                        <a class="page-link" href="?month=`+month+`&page=`+i+tempBrand+tempRetailer+tempFixture+tempStore+tempDC+tempMD+`">`+i+`</a>
+                    </li>
+                `;
+            }
+        }
+
+        if (range[range.length-1] !== m){
+            next = c + 1;
+            pageLi += `
+                <li class="page-item">
+                    <a class="page-link" href="?month=`+month+`&page=`+next+tempBrand+tempRetailer+tempFixture+tempStore+tempDC+tempMD+`">Next</a>
+                </li>
+            `;
+            pageLi += `
+                <li class="page-item">
+                    <a class="page-link" href="?month=`+month+`&page=`+m+tempBrand+tempRetailer+tempFixture+tempStore+tempDC+tempMD+`">>></a>
+                </li>
+            `;
+        }
+        return pageLi;
+    }
 %>
 
 <div id="layoutSidenav">
@@ -48,29 +115,29 @@
                     <div class="tab-pane fade show active" id="store" role="tabpanel" aria-labelledby="store">
                         <div class="row">
                             <% if (gallery) {
-                                for(var i = 0; i < gallery.length; i++) { %>
+                                for(var i = 0; i < gallery.data.length; i++) { %>
                                     <div class="mb-4 col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                         <div class="card">
-                                            <h5 class="card-header"><%- gallery[i].tbl_store.store_name %></h5>
+                                            <h5 class="card-header"><%- gallery.data[i].tbl_store.store_name %></h5>
                                             <div class="card-body">
                                                 <div class="text-center">
-                                                    <a href="javascript:void(0)" class="parent" onclick="imgPop('<%- domain %><%- gallery[i].img_store %>', 'imgStore'+'<%- i %>')">
-                                                        <img id="imgStore<%- i %>" src="<%- domain %><%- gallery[i].img_store %>" class="rounded img-thumbnail img-gallery" alt="">
+                                                    <a href="javascript:void(0)" class="parent" onclick="imgPop('<%- domain %><%- gallery.data[i].img_store %>', 'imgStore'+'<%- i %>')">
+                                                        <img id="imgStore<%- i %>" src="<%- domain %><%- gallery.data[i].img_store %>" class="rounded img-thumbnail img-gallery" alt="">
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="card-footer bg-white">
                                                 <div class="row">
                                                     <div class="divider-gallery col-6">
-                                                        <h6 class="mb-0">Store Code : <%- gallery[i].tbl_store.store_code %></h3>
+                                                        <h6 class="mb-0">Store Code : <%- gallery.data[i].tbl_store.store_code %></h3>
                                                     </div>
                                                     <div class="col-6">
-                                                        <h6 class="mb-0">City : <%- gallery[i].tbl_store.city %></h3>
+                                                        <h6 class="mb-0">City : <%- gallery.data[i].tbl_store.city %></h3>
                                                     </div>
                                                 </div>
                                                 <div class="mt-2 row">
                                                     <div class="col-12">
-                                                        <label class="mb-0 normal text-secondary"><%- formatDate(gallery[i].visit_date) %></label>
+                                                        <label class="mb-0 normal text-secondary"><%- formatDate(gallery.data[i].visit_date) %></label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -83,29 +150,29 @@
                     <div class="tab-pane fade" id="entryFixture" role="tabpanel" aria-labelledby="entryFixture">
                         <div class="row">
                             <% if (gallery) {
-                                for(var i = 0; i < gallery.length; i++) { %>
+                                for(var i = 0; i < gallery.data.length; i++) { %>
                                     <div class="mb-4 col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                         <div class="card">
-                                            <h5 class="card-header"><%- gallery[i].tbl_store.store_name %></h5>
+                                            <h5 class="card-header"><%- gallery.data[i].tbl_store.store_name %></h5>
                                             <div class="card-body">
                                                 <div class="text-center">
-                                                    <a href="javascript:void(0)" class="parent" onclick="imgPop('<%- domain %><%- gallery[i].img_fixture_in %>', 'imgEntryFixture'+'<%- i %>')">
-                                                        <img id="imgEntryFixture<%- i %>" src="<%- domain %><%- gallery[i].img_fixture_in %>" class="rounded img-thumbnail img-gallery" alt="">
+                                                    <a href="javascript:void(0)" class="parent" onclick="imgPop('<%- domain %><%- gallery.data[i].img_fixture_in %>', 'imgEntryFixture'+'<%- i %>')">
+                                                        <img id="imgEntryFixture<%- i %>" src="<%- domain %><%- gallery.data[i].img_fixture_in %>" class="rounded img-thumbnail img-gallery" alt="">
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="card-footer bg-white">
                                                 <div class="row">
                                                     <div class="divider-gallery col-6">
-                                                        <h6 class="mb-0">Store Code : <%- gallery[i].tbl_store.store_code %></h3>
+                                                        <h6 class="mb-0">Store Code : <%- gallery.data[i].tbl_store.store_code %></h3>
                                                     </div>
                                                     <div class="col-6">
-                                                        <h6 class="mb-0">City : <%- gallery[i].tbl_store.city %></h3>
+                                                        <h6 class="mb-0">City : <%- gallery.data[i].tbl_store.city %></h3>
                                                     </div>
                                                 </div>
                                                 <div class="mt-2 row">
                                                     <div class="col-12">
-                                                        <label class="mb-0 normal text-secondary"><%- formatDate(gallery[i].visit_date) %></label>
+                                                        <label class="mb-0 normal text-secondary"><%- formatDate(gallery.data[i].visit_date) %></label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -118,29 +185,29 @@
                     <div class="tab-pane fade" id="exitFixture" role="tabpanel" aria-labelledby="exitFixture">
                         <div class="row">
                             <% if (gallery) {
-                                for(var i = 0; i < gallery.length; i++) { %>
+                                for(var i = 0; i < gallery.data.length; i++) { %>
                                     <div class="mb-4 col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                         <div class="card">
-                                            <h5 class="card-header"><%- gallery[i].tbl_store.store_name %></h5>
+                                            <h5 class="card-header"><%- gallery.data[i].tbl_store.store_name %></h5>
                                             <div class="card-body">
                                                 <div class="text-center">
-                                                    <a href="javascript:void(0)" class="parent" onclick="imgPop('<%- domain %><%- gallery[i].img_fixture_out %>', 'imgExitFixture'+'<%- i %>')">
-                                                        <img id="imgExitFixture<%- i %>" src="<%- domain %><%- gallery[i].img_fixture_out %>" class="rounded img-thumbnail img-gallery" alt="">
+                                                    <a href="javascript:void(0)" class="parent" onclick="imgPop('<%- domain %><%- gallery.data[i].img_fixture_out %>', 'imgExitFixture'+'<%- i %>')">
+                                                        <img id="imgExitFixture<%- i %>" src="<%- domain %><%- gallery.data[i].img_fixture_out %>" class="rounded img-thumbnail img-gallery" alt="">
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="card-footer bg-white">
                                                 <div class="row">
                                                     <div class="divider-gallery col-6">
-                                                        <h6 class="mb-0">Store Code : <%- gallery[i].tbl_store.store_code %></h3>
+                                                        <h6 class="mb-0">Store Code : <%- gallery.data[i].tbl_store.store_code %></h3>
                                                     </div>
                                                     <div class="col-6">
-                                                        <h6 class="mb-0">City : <%- gallery[i].tbl_store.city %></h3>
+                                                        <h6 class="mb-0">City : <%- gallery.data[i].tbl_store.city %></h3>
                                                     </div>
                                                 </div>
                                                 <div class="mt-2 row">
                                                     <div class="col-12">
-                                                        <label class="mb-0 normal text-secondary"><%- formatDate(gallery[i].visit_date) %></label>
+                                                        <label class="mb-0 normal text-secondary"><%- formatDate(gallery.data[i].visit_date) %></label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -151,6 +218,11 @@
                         </div>
                     </div>
                 </div>
+                <nav aria-label="pagination">
+                    <ul class="pagination justify-content-end">
+                        <%- paginationNew (gallery.curr_page, Math.ceil(gallery.total_data/10)) %>
+                    </ul>
+                </nav>
             </div>
         </main>
         <footer class="py-4 bg-light mt-auto">
