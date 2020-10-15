@@ -415,8 +415,11 @@
     var chartActivationKnowHow = document.getElementById("chartActivationKnowHow");
     var chartPromotionAwareness = document.getElementById("chartPromotionAwareness");
     var chartComplaintHandling = document.getElementById("chartComplaintHandling");
+
+    
     
     if ('<%- trigger %>' === 'visit-compliance') {
+        console.log("cek masuk")
         var configChartVisitCompliance = new Chart(chartVisitCompliance, {
             type: 'bar',
             data: {
@@ -443,7 +446,7 @@
             }
         });
         $(document).ready(function() {
-            tableVisitComplaince(JSON.parse(`<%- JSON.stringify(detail.allDataVisit) %>`))
+            tableVisitComplaince(<%- JSON.stringify(detail) %>)
         });
     } else if ('<%- trigger %>' === 'fixture-compliance') {
         var configChartFixtureCompliance = new Chart(chartFixtureCompliance, {
@@ -471,7 +474,7 @@
             }
         });
         $(document).ready(function() {
-            tableFixtureCompliance(JSON.parse(`<%- JSON.stringify(detail.dataFixComp) %>`))
+            tableFixtureCompliance(<%- JSON.stringify(detail) %>)
         });
     } else if ('<%- trigger %>' === 'POG-compliance') {
         var configChartPOGCompliance = new Chart(chartPOGCompliance, {
@@ -499,7 +502,7 @@
             }
         });
         $(document).ready(function() {
-            tablePOGCompliance(JSON.parse(`<%- JSON.stringify(detail.dataPOGComp) %>`))
+            tablePOGCompliance(<%- JSON.stringify(detail) %>)
         });
     } else if ('<%- trigger %>' === 'POD-compliance') {
         var configChartPODCompliance = new Chart(chartPODCompliance, {
@@ -527,7 +530,7 @@
             }
         });
         $(document).ready(function() {
-            tablePODCompliance(JSON.parse(`<%- JSON.stringify(detail.dataPODCompliance) %>`))
+            tablePODCompliance(<%- JSON.stringify(detail) %>)
         });
     } else if ('<%- trigger %>' === 'POP-compliance') {
         var configConfigChartPOPCompliance = new Chart(chartPOPCompliance, {
@@ -555,7 +558,7 @@
             }
         });
         $(document).ready(function() {
-            tablePOPCompliance(JSON.parse(`<%- JSON.stringify(detail.dataPOPCompliance) %>`))
+            tablePOPCompliance(<%- JSON.stringify(detail) %>)
         });
     } else if ('<%- trigger %>' === 'stock-compliance') {
         var configChartInStockCompliance = new Chart(chartInStockCompliance, {
@@ -583,7 +586,7 @@
             }
         });
         $(document).ready(function() {
-            tableInStockCompliance(JSON.parse(`<%- JSON.stringify(detail.dataInstockCompliance) %>`))
+            tableInStockCompliance(<%- JSON.stringify(detail) %>)
         });
     } else if ('<%- trigger %>' === 'activation-know-how') {
         var configChartActivationKnowHow = new Chart(chartActivationKnowHow, {
@@ -611,7 +614,7 @@
             }
         });
         $(document).ready(function() {
-            tableActivation(JSON.parse(`<%- JSON.stringify(detail.dataActivationKnowHow) %>`))
+            tableActivation(<%- JSON.stringify(detail) %>)
         });
     } else if ('<%- trigger %>' === 'promotion-awareness') {
         var configChartPromotionAwareness = new Chart(chartPromotionAwareness, {
@@ -639,7 +642,7 @@
             }
         });
         $(document).ready(function() {
-            tablePromotionAwareness(JSON.parse(`<%- JSON.stringify(detail.dataPromotionAwareness) %>`))
+            tablePromotionAwareness(<%- JSON.stringify(detail) %>)
         });
     } else if ('<%- trigger %>' === 'complain-handling') {
         var configChartComplaintHandling = new Chart(chartComplaintHandling, {
@@ -667,12 +670,9 @@
             }
         });
         $(document).ready(function() {
-            tableComplaintHandling(JSON.parse(`<%- JSON.stringify(detail.dataComplaintHandling) %>`))
+            tableComplaintHandling(<%- JSON.stringify(detail) %>)
         });
     }
-
-
-   
 </script>
 
 <script src="/js/table.js"></script>

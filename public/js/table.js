@@ -19,7 +19,7 @@ formatDate = function(date) {
 
 function tableVisitComplaince(data) {
     $('#dataTableVisitCompliance').DataTable({
-        data:data,
+        data:data.allDataVisit,
         columns: [
             { data: 'visit_date',
                 render : function (data, type, row) {
@@ -44,8 +44,8 @@ function tableVisitComplaince(data) {
 }
 
 function tableFixtureCompliance(data) {
-    var table = $('#dataTableFixtureCompliance').DataTable({
-        data: data,
+    $('#dataTableFixtureCompliance').DataTable({
+        data: data.dataFixComp,
         columns: [
             { data: 'visit_date',
                 render : function (data, type, row) {
@@ -97,7 +97,7 @@ function tableFixtureCompliance(data) {
 
 function tablePOGCompliance(data) {
     $('#dataTablePOGCompliance').DataTable({
-        data: data,
+        data: data.dataPOGComp,
         columns: [
             { data: 'visit_date',
                 render : function (data, type, row) {
@@ -140,7 +140,7 @@ function tablePOGCompliance(data) {
 
 function tablePODCompliance(data) {
     $('#dataTablePODCompliance').DataTable({
-        data: data,
+        data: data.dataPODCompliance,
         columns: [
             { data: 'visit_date',
                 render : function (data, type, row) {
@@ -212,7 +212,7 @@ function tablePODCompliance(data) {
 
 function tablePOPCompliance(data) {
     $('#dataTablePOPCompliance').DataTable({
-        data: data,
+        data: data.dataPOPCompliance,
         columns: [
             { data: 'visit_date',
                 render : function (data, type, row) {
@@ -273,7 +273,7 @@ function tablePOPCompliance(data) {
 
 function tableInStockCompliance(data) {
     $('#dataTableInStockCompliance').DataTable({
-        data: data,
+        data: data.dataInstockCompliance,
         columns: [
             { data: 'visit_date',
                 render : function (data, type, row) {
@@ -424,7 +424,7 @@ function tableInStockCompliance(data) {
 
 function tableActivation(data) {
     $('#dataTableActivationKnowHow').DataTable({
-        data: data,
+        data: data.dataActivationKnowHow,
         columns: [
             { data: 'visit_date',
                 render : function (data, type, row) {
@@ -458,7 +458,7 @@ function tableActivation(data) {
 
 function tablePromotionAwareness(data) {
     $('#dataTablePromotionAwareness').DataTable({
-        data: data,
+        data: data.dataPromotionAwareness,
         columns: [
             { data: 'visit_date',
                 render : function (data, type, row) {
@@ -492,7 +492,7 @@ function tablePromotionAwareness(data) {
 
 function tableComplaintHandling(data) {
     $('#dataTableComplaintHandling').DataTable({
-        data: data,
+        data: data.dataComplaintHandling,
         columns: [
             { data: 'visit_date',
                 render : function (data, type, row) {

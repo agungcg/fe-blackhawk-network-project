@@ -14,13 +14,13 @@ router.get('/', async function (req, res, next) {
         const monthNow = date.getMonth() + 1;
         const dashboard = await serviceAdmin.getDashboard(sess.token, monthNow)
         const file = await serviceAdmin.getFile(sess.token)
-        // const month = await serviceGlobal.getAllSelectMonth()
-        // const brand = await serviceGlobal.getAllSelectBrand()
-        // const fixtureType = await serviceGlobal.getAllSelectFixtureType(sess.token)
-        // const store = await serviceGlobal.getAllSelectStore(sess.token)
-        // const dc = await serviceGlobal.getAllSelectDC(sess.token)
-        // const md = await serviceGlobal.getAllSelectMD(sess.token)
-        // const retailer = await serviceGlobal.getAllSelectRetailer(sess.token)
+        const month = await serviceGlobal.getAllSelectMonth()
+        const brand = await serviceGlobal.getAllSelectBrand()
+        const fixtureType = await serviceGlobal.getAllSelectFixtureType(sess.token)
+        const store = await serviceGlobal.getAllSelectStore(sess.token)
+        const dc = await serviceGlobal.getAllSelectDC(sess.token)
+        const md = await serviceGlobal.getAllSelectMD(sess.token)
+        const retailer = await serviceGlobal.getAllSelectRetailer(sess.token)
         res.render('admin/dashboard', {
             "titlePage": "Dashboard",
             "month": monthNow,
@@ -35,15 +35,15 @@ router.get('/', async function (req, res, next) {
             "domain": consConfig.urlService,
             "file": file,
             "token": sess.token,
-            // "sidenav": {
-            //     month: month,
-            //     brand: brand,
-            //     fixtureType: fixtureType,
-            //     store: store,
-            //     dc: dc,
-            //     md: md,
-            //     retailer: retailer
-            // }
+            "sidenav": {
+                month: month,
+                brand: brand,
+                fixtureType: fixtureType,
+                store: store,
+                dc: dc,
+                md: md,
+                retailer: retailer
+            }
         });
     } else {
         res.redirect('/')
@@ -55,13 +55,13 @@ router.use('/filter', async function (req, res, next) {
     if (sess.token) {
         const dashboard = await serviceAdmin.getDashboard(sess.token, req.body.selectMonth, req.body.selectBrand, req.body.selectRetailer, req.body.selectFixtureType, req.body.selectStore, req.body.selectDC, req.body.selectMD)
         const file = await serviceAdmin.getFile(sess.token)
-        // const month = await serviceGlobal.getAllSelectMonth()
-        // const brand = await serviceGlobal.getAllSelectBrand()
-        // const fixtureType = await serviceGlobal.getAllSelectFixtureType(sess.token)
-        // const store = await serviceGlobal.getAllSelectStore(sess.token)
-        // const dc = await serviceGlobal.getAllSelectDC(sess.token)
-        // const md = await serviceGlobal.getAllSelectMD(sess.token)
-        // const retailer = await serviceGlobal.getAllSelectRetailer(sess.token)
+        const month = await serviceGlobal.getAllSelectMonth()
+        const brand = await serviceGlobal.getAllSelectBrand()
+        const fixtureType = await serviceGlobal.getAllSelectFixtureType(sess.token)
+        const store = await serviceGlobal.getAllSelectStore(sess.token)
+        const dc = await serviceGlobal.getAllSelectDC(sess.token)
+        const md = await serviceGlobal.getAllSelectMD(sess.token)
+        const retailer = await serviceGlobal.getAllSelectRetailer(sess.token)
         res.render('admin/dashboard', {
             "titlePage": "Dashboard",
             "month": req.body.selectMonth,
@@ -76,15 +76,15 @@ router.use('/filter', async function (req, res, next) {
             "domain": consConfig.urlService,
             "file": file,
             "token": sess.token,
-            // "sidenav": {
-            //     month: month,
-            //     brand: brand,
-            //     fixtureType: fixtureType,
-            //     store: store,
-            //     dc: dc,
-            //     md: md,
-            //     retailer: retailer
-            // }
+            "sidenav": {
+                month: month,
+                brand: brand,
+                fixtureType: fixtureType,
+                store: store,
+                dc: dc,
+                md: md,
+                retailer: retailer
+            }
         });
     } else {
         res.redirect('/')
@@ -95,14 +95,13 @@ router.use('/detail', async function (req, res, next) {
     sess = req.session;
     if (sess.token && req.body.btnDetail != undefined) {
         const detail = await serviceAdmin.getDetail(sess.token, req.body.selectMonth, req.body.selectBrand, req.body.selectRetailer, req.body.selectFixtureType, req.body.selectStore, req.body.selectDC, req.body.selectMD, req.body.btnDetail)
-        // console.log(detail)
-        // const month = await serviceGlobal.getAllSelectMonth()
-        // const brand = await serviceGlobal.getAllSelectBrand()
-        // const fixtureType = await serviceGlobal.getAllSelectFixtureType(sess.token)
-        // const store = await serviceGlobal.getAllSelectStore(sess.token)
-        // const dc = await serviceGlobal.getAllSelectDC(sess.token)
-        // const md = await serviceGlobal.getAllSelectMD(sess.token)
-        // const retailer = await serviceGlobal.getAllSelectRetailer(sess.token)
+        const month = await serviceGlobal.getAllSelectMonth()
+        const brand = await serviceGlobal.getAllSelectBrand()
+        const fixtureType = await serviceGlobal.getAllSelectFixtureType(sess.token)
+        const store = await serviceGlobal.getAllSelectStore(sess.token)
+        const dc = await serviceGlobal.getAllSelectDC(sess.token)
+        const md = await serviceGlobal.getAllSelectMD(sess.token)
+        const retailer = await serviceGlobal.getAllSelectRetailer(sess.token)
         res.render('admin/detail', {
             "titlePage": "Detail Diagram",
             "month": req.body.selectMonth,
@@ -116,15 +115,15 @@ router.use('/detail', async function (req, res, next) {
             "sideNavPath": "/admin/detail/filter",
             "domain": consConfig.urlService,
             "token": sess.token,
-            // "sidenav": {
-            //     month: month,
-            //     brand: brand,
-            //     fixtureType: fixtureType,
-            //     store: store,
-            //     dc: dc,
-            //     md: md,
-            //     retailer: retailer
-            // },
+            "sidenav": {
+                month: month,
+                brand: brand,
+                fixtureType: fixtureType,
+                store: store,
+                dc: dc,
+                md: md,
+                retailer: retailer
+            },
             "trigger": req.body.btnDetail
         });
     } else {
@@ -137,13 +136,13 @@ router.use('/detail/filter', async function (req, res, next) {
     console.log("asuuu", req.body.btnDetail)
     if (sess.token && req.body.btnDetail != undefined) {
         const detail = await serviceAdmin.getDetail(sess.token, req.body.selectMonth, req.body.selectBrand, req.body.selectRetailer, req.body.selectFixtureType, req.body.selectStore, req.body.selectDC, req.body.selectMD, req.body.btnDetail)
-        // const month = await serviceGlobal.getAllSelectMonth()
-        // const brand = await serviceGlobal.getAllSelectBrand()
-        // const fixtureType = await serviceGlobal.getAllSelectFixtureType(sess.token)
-        // const store = await serviceGlobal.getAllSelectStore(sess.token)
-        // const dc = await serviceGlobal.getAllSelectDC(sess.token)
-        // const md = await serviceGlobal.getAllSelectMD(sess.token)
-        // const retailer = await serviceGlobal.getAllSelectRetailer(sess.token)
+        const month = await serviceGlobal.getAllSelectMonth()
+        const brand = await serviceGlobal.getAllSelectBrand()
+        const fixtureType = await serviceGlobal.getAllSelectFixtureType(sess.token)
+        const store = await serviceGlobal.getAllSelectStore(sess.token)
+        const dc = await serviceGlobal.getAllSelectDC(sess.token)
+        const md = await serviceGlobal.getAllSelectMD(sess.token)
+        const retailer = await serviceGlobal.getAllSelectRetailer(sess.token)
         res.render('admin/detail', {
             "titlePage": "Detail Diagram",
             "month": req.body.selectMonth,
@@ -157,15 +156,15 @@ router.use('/detail/filter', async function (req, res, next) {
             "sideNavPath": "/admin/detail/filter",
             "domain": consConfig.urlService,
             "token": sess.token,
-            // "sidenav": {
-            //     month: month,
-            //     brand: brand,
-            //     fixtureType: fixtureType,
-            //     store: store,
-            //     dc: dc,
-            //     md: md,
-            //     retailer: retailer
-            // },
+            "sidenav": {
+                month: month,
+                brand: brand,
+                fixtureType: fixtureType,
+                store: store,
+                dc: dc,
+                md: md,
+                retailer: retailer
+            },
             "trigger": req.body.btnDetail
         });
     } else {
@@ -179,13 +178,13 @@ router.get('/gallery', async function (req, res, next) {
         const monthNow = date.getMonth() + 1;
         console.log(req.query.month, req.query.page)
         const gallery = await serviceAdmin.getGallery(sess.token, typeof req.query.month != "undefined" ? req.query.month : monthNow, typeof req.query.page != "undefined" ? req.query.page : 1)
-        // const month = await serviceGlobal.getAllSelectMonth()
-        // const brand = await serviceGlobal.getAllSelectBrand()
-        // const fixtureType = await serviceGlobal.getAllSelectFixtureType(sess.token)
-        // const store = await serviceGlobal.getAllSelectStore(sess.token)
-        // const dc = await serviceGlobal.getAllSelectDC(sess.token)
-        // const md = await serviceGlobal.getAllSelectMD(sess.token)
-        // const retailer = await serviceGlobal.getAllSelectRetailer(sess.token)
+        const month = await serviceGlobal.getAllSelectMonth()
+        const brand = await serviceGlobal.getAllSelectBrand()
+        const fixtureType = await serviceGlobal.getAllSelectFixtureType(sess.token)
+        const store = await serviceGlobal.getAllSelectStore(sess.token)
+        const dc = await serviceGlobal.getAllSelectDC(sess.token)
+        const md = await serviceGlobal.getAllSelectMD(sess.token)
+        const retailer = await serviceGlobal.getAllSelectRetailer(sess.token)
         res.render('admin/gallery', {
             "titlePage": "Gallery",
             "month": monthNow,
@@ -198,15 +197,15 @@ router.get('/gallery', async function (req, res, next) {
             "md": '',
             "sideNavPath": "/admin/gallery/filter",
             "domain": consConfig.urlService,
-            // "sidenav": {
-            //     month: month,
-            //     brand: brand,
-            //     fixtureType: fixtureType,
-            //     store: store,
-            //     dc: dc,
-            //     md: md,
-            //     retailer: retailer
-            // }
+            "sidenav": {
+                month: month,
+                brand: brand,
+                fixtureType: fixtureType,
+                store: store,
+                dc: dc,
+                md: md,
+                retailer: retailer
+            }
         });
     } else {
         res.redirect('/')
@@ -217,13 +216,13 @@ router.use('/gallery/filter', async function (req, res, next) {
     sess = req.session;
     if (sess.token) {
         const gallery = await serviceAdmin.getGallery(sess.token, typeof req.body.selectMonth != "undefined" ? req.body.selectMonth : req.query.month, typeof req.query.page != "undefined" ? req.query.page : 1, typeof req.body.selectBrand != "undefined" ? req.body.selectBrand : req.query.brand, typeof req.body.selectRetailer != "undefined" ? req.body.selectRetailer : req.query.retailer, typeof req.body.selectFixtureType != "undefined" ? req.body.selectFixtureType : req.query.fixture,typeof req.body.selectStore != "undefined" ? req.body.selectStore : req.query.store, typeof req.body.selectDC != "undefined" ? req.body.selectDC : req.query.dc, typeof req.body.selectMD != "undefined" ? req.body.selectMD : req.query.md)
-        // const month = await serviceGlobal.getAllSelectMonth()
-        // const brand = await serviceGlobal.getAllSelectBrand()
-        // const fixtureType = await serviceGlobal.getAllSelectFixtureType(sess.token)
-        // const store = await serviceGlobal.getAllSelectStore(sess.token)
-        // const dc = await serviceGlobal.getAllSelectDC(sess.token)
-        // const md = await serviceGlobal.getAllSelectMD(sess.token)
-        // const retailer = await serviceGlobal.getAllSelectRetailer(sess.token)
+        const month = await serviceGlobal.getAllSelectMonth()
+        const brand = await serviceGlobal.getAllSelectBrand()
+        const fixtureType = await serviceGlobal.getAllSelectFixtureType(sess.token)
+        const store = await serviceGlobal.getAllSelectStore(sess.token)
+        const dc = await serviceGlobal.getAllSelectDC(sess.token)
+        const md = await serviceGlobal.getAllSelectMD(sess.token)
+        const retailer = await serviceGlobal.getAllSelectRetailer(sess.token)
         console.log(req.body.selectMonth, req.body.selectBrand)
         res.render('admin/gallery', {
             "titlePage": "Gallery",
@@ -237,15 +236,15 @@ router.use('/gallery/filter', async function (req, res, next) {
             "md": typeof req.body.selectMD != "undefined" ? req.body.selectMD : req.query.md,
             "sideNavPath": "/admin/gallery/filter",
             "domain": consConfig.urlService,
-            // "sidenav": {
-            //     month: month,
-            //     brand: brand,
-            //     fixtureType: fixtureType,
-            //     store: store,
-            //     dc: dc,
-            //     md: md,
-            //     retailer: retailer
-            // },
+            "sidenav": {
+                month: month,
+                brand: brand,
+                fixtureType: fixtureType,
+                store: store,
+                dc: dc,
+                md: md,
+                retailer: retailer
+            },
         });
     } else {
         res.redirect('/')
